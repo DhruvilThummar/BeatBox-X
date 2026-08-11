@@ -131,5 +131,40 @@
         "title": "ROCKSTAR: Phir Se Ud Chala (Lyrcial Video) | Ranbir Kapoor | A. R. Rahman | Mohit Chauhan",
         "artist": "T-Series",
         "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Abhi Kuch Dino Se Fu_fbdxYoFb64g.webp",
+        "src": "./music/fbdxYoFb64g.mp3",
+        "title": "Abhi Kuch Dino Se Full Song | Dil Toh Baccha Hai Ji |  Emraan hashmi, Ajay Devgn",
+        "artist": "T-Series",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Subhanallah  Full_QYO6AlxiRE4.jpg",
+        "src": "./music/QYO6AlxiRE4.mp3",
+        "title": "'Subhanallah'  Full Video Song | Yeh Jawaani Hai Deewani | Pritam | Ranbir Kapoor, Deepika Padukone",
+        "artist": "T-Series",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/The Love Mashup 20_HMrnEcMaf2w.webp",
+        "src": "./music/HMrnEcMaf2w.mp3",
+        "title": "The Love Mashup 2.0 - CHASHNI/VE MAAHI/LAMBERGHINI/MERE SOHNEYA/QISMAT| NUPUR PANT | SAURABH KALSI",
+        "artist": "Nupur Pant",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Krishna Bhajan Mashu_Q9f0cruMVDM.webp",
+        "src": "./music/Q9f0cruMVDM.mp3",
+        "title": "Krishna Bhajan Mashup Volume 2 || The Brajkeepers || Dhruv Sharma + Swarna Shri",
+        "artist": "Dhruv Sharma + Swarna Shri",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Madhav Mara Morli Va_JrO4-j-Hktw.webp",
+        "src": "./music/JrO4-j-Hktw.mp3",
+        "title": "Madhav Mara Morli Vada | Sabhiben Ahir | ​⁠​⁠@RAJESH_AHIR | Song OF Faith | New Gujarati Song 2023",
+        "artist": "RAJESH AHIR",
+        "category": "Gujrati"
     }
 ]
