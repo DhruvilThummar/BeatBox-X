@@ -845,5 +845,54 @@
         "title": "Emraan Hashmi Mashup 2023  | SICKVED",
         "artist": "SICKVED",
         "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461516/BeatBoxX/Images/qoxslo8isvgq4utqkxc6.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461525/BeatBoxX/Music/wsu8uk9rhl9bzmnywvdl.mp3",
+        "title": "Radha Ne Kaan Kare Vaat (Official Video) | Aditya Gadhvi | Mir Desai | Jhanvi Gadhvi | Kripa Record",
+        "artist": "Kripa Record",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461548/BeatBoxX/Images/brarklkcymbubvbod5ur.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461563/BeatBoxX/Music/onlcwxwmfglectqdusgy.mp3",
+        "title": "Naagar Nandji Na Laal | Aditya Gadhvi | Ft. Kinjal Rajpriya",
+        "artist": "Aditya Gadhvi",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461579/BeatBoxX/Images/xemxobbmlwr4hr8uxuld.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461594/BeatBoxX/Music/ficsq3bqftnpgkjfnoxc.mp3",
+        "title": "Rang Bhini Radha | Folk Box Feat. Aditya Gadhavi | Kavi Shri 'Daan Alagari'",
+        "artist": "Aditya Gadhvi",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461613/BeatBoxX/Images/rpwfls4cxjhiblbx2luk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461625/BeatBoxX/Music/jrjhtbfv1nnga3f638fd.mp3",
+        "title": "SAIBO RE - Kirtidan Gadhvi, Priya Saraiya| સાઇબો રે | New Gujarati Song 2020 | Gujarati Song 2020",
+        "artist": "Tips Gujarati",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461644/BeatBoxX/Images/ct7jwpzwxtdciex0wzar.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461661/BeatBoxX/Music/dpekxlxjnnarfvb28iuc.mp3",
+        "title": "Tu Haiye Haali Aave",
+        "artist": "Jigrra",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461686/BeatBoxX/Images/yp9p7cwsf5kyvqu37ykq.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461714/BeatBoxX/Music/vmppo1zjjkadijonrdnq.mp3",
+        "title": "Mann Mohan Song | Laalo Krishna Sada Sahaayate | Shruhad Goswami | KRISHNA, Smmit Jay, Prem Dave",
+        "artist": "Soul Sutra ",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1786461739/BeatBoxX/Images/kvbfshecpomhhenfxzzb.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1786461747/BeatBoxX/Music/f7kdkxh16y35aaopwfjp.mp3",
+        "title": "Manorath Jeev (From 'Laalo')",
+        "artist": "Kirtidan Gadhvi Official",
+        "category": "Gujrati"
     }
 ]
