@@ -21,7 +21,7 @@
     <meta name="description" content="Experience music like never before with Beat Box X. A luxurious cloud-based responsive music player with smart category filters and seamless playback.">
     <meta name="keywords" content="Beat Box X, music player, cloud audio player, premium music, online playlist, mp3 player, gujarati songs, hindi songs">
     <meta name="author" content="Dhruvil Thummar">
-    <meta name="theme-color" content="#D4AF37"> <!-- Premium Gold Color -->
+    <meta name="theme-color" content="#D4AF37"> 
 
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
@@ -42,19 +42,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            /* Matte Black / Charcoal Luxury Gradient */
             background: linear-gradient(-45deg, #0a0a0c, #1a1a24, #0a0a0c, #1f1f2e);
             background-size: 400% 400%; animation: gradientBG 20s ease infinite;
-            
-            min-height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: flex-end; /* PC/TV mate niche chipkavelu */
-            justify-content: center;
-            overflow-x: hidden;
-            color: #fff;
-            padding: 20px; 
-            padding-bottom: 40px; 
+            min-height: 100vh; width: 100vw; display: flex; align-items: flex-end; 
+            justify-content: center; overflow-x: hidden; color: #fff; padding: 20px; padding-bottom: 40px; 
         }
 
         @keyframes gradientBG {
@@ -65,16 +56,11 @@
 
         .ios-glass {
             background: rgba(20, 20, 25, 0.7); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(212, 175, 55, 0.2); /* Subtle Gold Border */
-            border-top: 1px solid rgba(212, 175, 55, 0.4); 
+            border: 1px solid rgba(212, 175, 55, 0.2); border-top: 1px solid rgba(212, 175, 55, 0.4); 
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
         }
 
-        /* PLAYER DESKTOP */
-        .player {
-            width: 100%; max-width: 1000px; padding: 20px 30px; border-radius: 40px; 
-            display: flex; align-items: center; gap: 30px; z-index: 10; transition: all 0.4s;
-        }
+        .player { width: 100%; max-width: 1000px; padding: 20px 30px; border-radius: 40px; display: flex; align-items: center; gap: 30px; z-index: 10; transition: all 0.4s; }
 
         .disc { width: 75px; height: 75px; border-radius: 50%; position: relative; flex-shrink: 0; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8); animation: spin 6s linear infinite paused; border: 2px solid rgba(212, 175, 55, 0.5); overflow: hidden; }
         .disc__art { width: 100%; height: 100%; object-fit: cover; }
@@ -88,7 +74,6 @@
         .seek-container { display: flex; align-items: center; gap: 15px; width: 100%; }
         .time { font-size: 12px; color: #aaa; font-family: monospace; white-space: nowrap; font-weight: bold; }
         
-        /* Gold Progress Bar */
         input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; outline: none; cursor: pointer; --progress: 0%; background-image: linear-gradient(#D4AF37, #FFD700); background-size: var(--progress) 100%; background-repeat: no-repeat; }
         input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 8px rgba(212, 175, 55, 0.8); transition: transform 0.2s; }
 
@@ -97,10 +82,14 @@
         .btn:hover { opacity: 1; transform: scale(1.15); }
         .btn.is-on { color: #D4AF37; opacity: 1; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
         
-        /* Play Button - Premium Look */
         .btn--play { background: linear-gradient(135deg, #D4AF37, #B8860B); color: #000; border-radius: 50%; width: 48px; height: 48px; opacity: 1; margin: 0 5px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
 
-        /* VOLUME POPUP */
+        /* LOADING SPINNER CSS */
+        .spinner { animation: rotate 2s linear infinite; width: 24px; height: 24px; }
+        .spinner circle { stroke: #000; stroke-width: 4; stroke-dasharray: 1, 200; stroke-dashoffset: 0; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 90, 200; stroke-dashoffset: -35px; } 100% { stroke-dasharray: 90, 200; stroke-dashoffset: -124px; } }
+
         .volume-wrapper { position: relative; display: flex; align-items: center; justify-content: center; margin-left: 5px; }
         .vol-popup { position: absolute; bottom: 70px; left: 50%; border-radius: 20px; padding: 15px 10px 20px 10px; display: flex; flex-direction: column; align-items: center; opacity: 0; visibility: hidden; pointer-events: none; transform: translateX(-50%) translateY(20px) scale(0.9); transition: all 0.4s; z-index: 100; }
         .vol-popup.show { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0) scale(1); }
@@ -108,7 +97,6 @@
         .vol-slider-wrap { height: 110px; width: 30px; display: flex; justify-content: center; align-items: center; }
         input[type="range"]#volume-bar { width: 110px; height: 6px; transform: rotate(-90deg); background-image: linear-gradient(#D4AF37, #D4AF37); }
 
-        /* MODAL & SCROLLBAR */
         .playlist-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s; }
         .playlist-modal-overlay.open { opacity: 1; visibility: visible; }
         .modal-content { background: rgba(20, 20, 25, 0.9); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; width: 90%; max-width: 440px; padding: 25px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8); transform: translateY(40px) scale(0.95); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -146,51 +134,16 @@
         .custom-options::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
         .custom-options::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.5); border-radius: 10px; }
 
-
-        /* ==========================================
-           🌟 ALL DEVICE RESPONSIVE MEDIA QUERIES 🌟
-           ========================================== */
-        @media (min-width: 1440px) {
-            body { padding-bottom: 60px; } 
-            .player { max-width: 1200px; padding: 25px 40px; gap: 40px; }
-            .disc { width: 90px; height: 90px; }
-            .meta__title { font-size: 24px; }
-            .btn svg { width: 26px; height: 26px; }
-            .btn--play { width: 56px; height: 56px; }
-        }
-
-        @media (max-width: 1024px) and (min-width: 801px) {
-            .player { width: 100%; padding: 15px 20px; gap: 15px; }
-            .disc { width: 65px; height: 65px; }
-        }
-
-        @media (max-width: 800px) {
-            body { align-items: center; padding-bottom: 20px; }
-            .player { flex-direction: column; width: 100%; max-width: 400px; padding: 35px 25px; border-radius: 35px; gap: 25px; margin: 0 auto; }
-            .disc { width: 220px; height: 220px; margin: 0 auto; border-radius: 20px; animation: none !important; }
-            .disc__art { border-radius: 20px; }
-            .disc__hub { display: none; }
-            .meta { text-align: center; width: 100%; max-width: 100%; }
-            .meta__title { font-size: 22px; margin-bottom: 6px; }
-            .seek-container { flex-direction: column; gap: 10px; width: 100%; }
-            .time { display: flex; justify-content: space-between; width: 100%; font-size: 13px; }
-            .controls { width: 100%; justify-content: space-between; margin-top: 10px; margin-left: 0; }
-            .volume-wrapper { position: absolute; top: 25px; right: 25px; }
-            .vol-popup { top: 50px; bottom: auto; left: auto; right: -10px; transform: translateY(-10px) scale(0.9); }
-            .vol-popup.show { transform: translateY(0) scale(1); }
-            .modal-content { width: 95%; padding: 20px; max-height: 85vh; }
-        }
-
-        @media (max-width: 400px) {
-            .player { padding: 25px 20px; gap: 20px; }
-            .disc { width: 180px; height: 180px; }
-        }
+        /* RESPONSIVE CSS */
+        @media (min-width: 1440px) { body { padding-bottom: 60px; } .player { max-width: 1200px; padding: 25px 40px; gap: 40px; } .disc { width: 90px; height: 90px; } .meta__title { font-size: 24px; } .btn svg { width: 26px; height: 26px; } .btn--play { width: 56px; height: 56px; } }
+        @media (max-width: 1024px) and (min-width: 801px) { .player { width: 100%; padding: 15px 20px; gap: 15px; } .disc { width: 65px; height: 65px; } }
+        @media (max-width: 800px) { body { align-items: center; padding-bottom: 20px; } .player { flex-direction: column; width: 100%; max-width: 400px; padding: 35px 25px; border-radius: 35px; gap: 25px; margin: 0 auto; } .disc { width: 220px; height: 220px; margin: 0 auto; border-radius: 20px; animation: none !important; } .disc__art { border-radius: 20px; } .disc__hub { display: none; } .meta { text-align: center; width: 100%; max-width: 100%; } .meta__title { font-size: 22px; margin-bottom: 6px; } .seek-container { flex-direction: column; gap: 10px; width: 100%; } .time { display: flex; justify-content: space-between; width: 100%; font-size: 13px; } .controls { width: 100%; justify-content: space-between; margin-top: 10px; margin-left: 0; } .volume-wrapper { position: absolute; top: 25px; right: 25px; } .vol-popup { top: 50px; bottom: auto; left: auto; right: -10px; transform: translateY(-10px) scale(0.9); } .vol-popup.show { transform: translateY(0) scale(1); } .modal-content { width: 95%; padding: 20px; max-height: 85vh; } }
+        @media (max-width: 400px) { .player { padding: 25px 20px; gap: 20px; } .disc { width: 180px; height: 180px; } }
     </style>
 </head>
 
 <body>
 
-    <!-- BRANDING TITLE (Golden glow) -->
     <h1 style="position: absolute; top: 30px; left: 30px; font-size: 24px; font-weight: bold; letter-spacing: 2px; color: rgba(212,175,55,0.4); text-shadow: 0 0 10px rgba(212,175,55,0.1); z-index: 1;">
         BEAT BOX X</h1>
 
@@ -213,10 +166,16 @@
                     <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
                 </svg></button>
             <button id="prev" class="btn" aria-label="Previous track"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg></button>
+            
+            <!-- PLAY BUTTON WITH SPINNER -->
             <button id="play" class="btn btn--play" aria-label="Play/Pause">
                 <svg id="i-play" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                 <svg id="i-pause" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg>
+                <svg id="i-loader" class="spinner" viewBox="0 0 50 50" style="display:none;">
+                    <circle cx="25" cy="25" r="20" fill="none"></circle>
+                </svg>
             </button>
+            
             <button id="next" class="btn" aria-label="Next track"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"></path></svg></button>
             <button id="listBtn" class="btn" aria-label="Open Playlist"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3zm15-6.5l4 3-4 3z"></path></svg></button>
         </div>
@@ -234,7 +193,8 @@
                 </svg>
             </button>
         </div>
-        <audio id="audio-player" crossorigin="anonymous"></audio>
+        <!-- Preload Metadata lagavyu che speed vadharva mate -->
+        <audio id="audio-player" crossorigin="anonymous" preload="metadata"></audio>
     </section>
 
     <!-- PLAYLIST MODAL -->
@@ -255,7 +215,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT: CLOUD JSON SYNC & LOCK SCREEN -->
+    <!-- JAVASCRIPT -->
     <script>
         let playlistData = [];
         const audio = document.getElementById("audio-player");
@@ -263,29 +223,22 @@
         const categoryFilters = document.getElementById("category-filters");
         const songSearchInput = document.getElementById("song-search");
 
+        const iPlay = document.getElementById("i-play");
+        const iPause = document.getElementById("i-pause");
+        const iLoader = document.getElementById("i-loader");
+        const playerSection = document.getElementById("player");
+
         let isPlaying = false, isShuffle = false, currentTrackIndex = 0;
         let activeCategory = "All";
 
-        // Fetching the JSON (Now contains Cloudinary URLs!)
         fetch('playlist.json')
-            .then(response => {
-                if (!response.ok) throw new Error("playlist.json not found");
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 playlistData = data;
                 if (playlistData.length > 0) {
                     setupCategories();
                     loadTrack(0);
-                } else {
-                    document.getElementById("title").innerText = "Cloud is Empty";
-                    document.getElementById("artist").innerText = "Run your Python script to upload songs";
                 }
-            })
-            .catch(error => {
-                console.error("Error loading Beat Box X playlist:", error);
-                document.getElementById("title").innerText = "Error Loading Songs";
-                document.getElementById("artist").innerText = "Could not fetch playlist.json";
             });
 
         function setupCategories() {
@@ -310,10 +263,11 @@
             playlistData.forEach((track, index) => {
                 let li = document.createElement("li");
                 li.dataset.category = track.category || "All";
-
+                
+                // Added loading="lazy" for ultra fast performance
                 li.innerHTML = `
                     <div class="list-left">
-                        <img src="${track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'}" alt="Cover Art">
+                        <img src="${track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'}" alt="Cover Art" loading="lazy">
                         <div>
                             <span class="title">${track.title}</span>
                             <span class="artist">${track.artist}</span>
@@ -343,15 +297,36 @@
         }
         songSearchInput.addEventListener("input", (e) => filterSongs(e.target.value));
 
-        // 🌟 LOAD TRACK & LOCK SCREEN SYNC 🌟
+        function showLoading() {
+            iPlay.style.display = "none";
+            iPause.style.display = "none";
+            iLoader.style.display = "block";
+            playerSection.classList.remove("playing"); // Stop rotating disk while buffering
+        }
+
+        function hideLoading(isNowPlaying) {
+            iLoader.style.display = "none";
+            if (isNowPlaying) {
+                iPlay.style.display = "none";
+                iPause.style.display = "block";
+                playerSection.classList.add("playing");
+            } else {
+                iPlay.style.display = "block";
+                iPause.style.display = "none";
+                playerSection.classList.remove("playing");
+            }
+        }
+
         function loadTrack(index) {
             if (!playlistData.length) return;
             currentTrackIndex = index;
             const track = playlistData[index];
-            audio.src = track.src; // This is now your secure Cloudinary MP3 URL
+            
+            // Start Loading state
+            showLoading();
+            audio.src = track.src;
 
             let coverUrl = track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400';
-            
             document.getElementById("title").innerText = track.title;
             document.getElementById("artist").innerText = track.artist;
             document.getElementById("cover").src = coverUrl;
@@ -360,54 +335,60 @@
             renderPlaylist();
             filterSongs(songSearchInput.value);
             
-            // LOCK SCREEN MEDIA SESSION API
             if ('mediaSession' in navigator) {
                 navigator.mediaSession.metadata = new MediaMetadata({
-                    title: track.title,
-                    artist: track.artist,
-                    album: 'Beat Box X Cloud',
+                    title: track.title, artist: track.artist, album: 'Beat Box X Cloud',
                     artwork: [{ src: coverUrl, sizes: '512x512', type: 'image/jpeg' }]
                 });
-
                 navigator.mediaSession.setActionHandler('play', () => { isPlaying = true; updatePlayState(); });
                 navigator.mediaSession.setActionHandler('pause', () => { isPlaying = false; updatePlayState(); });
                 navigator.mediaSession.setActionHandler('previoustrack', playPrev);
                 navigator.mediaSession.setActionHandler('nexttrack', playNext);
             }
 
-            if (isPlaying) audio.play();
+            if (isPlaying) {
+                audio.play().catch(e => console.log(e));
+            } else {
+                hideLoading(false);
+            }
         }
 
         function updatePlayState() {
             if (isPlaying) {
+                showLoading();
                 audio.play().then(() => {
                     if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'playing';
-                }).catch(e => console.log("Playback error:", e));
-                
-                document.getElementById("i-play").style.display = "none";
-                document.getElementById("i-pause").style.display = "block";
-                document.getElementById("player").classList.add("playing");
+                }).catch(e => console.log(e));
             } else {
                 audio.pause();
                 if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'paused';
-                
-                document.getElementById("i-play").style.display = "block";
-                document.getElementById("i-pause").style.display = "none";
-                document.getElementById("player").classList.remove("playing");
-                document.title = "Beat Box X | Premium Cloud Music Player";
+                hideLoading(false);
             }
         }
 
+        // =====================================
+        // SMART AUDIO EVENTS FOR LOADING INDICATOR
+        // =====================================
+        audio.addEventListener("waiting", () => {
+            if (isPlaying) showLoading(); // Buffering thay tyare loader dekhado
+        });
+
+        audio.addEventListener("playing", () => {
+            hideLoading(true); // Song chalalu thai jay tyare pause button dekhado
+        });
+
+        audio.addEventListener("canplay", () => {
+            if (!isPlaying) hideLoading(false);
+        });
+
+        // Controls
         document.getElementById("play").addEventListener("click", () => { if (playlistData.length) { isPlaying = !isPlaying; updatePlayState(); } });
         document.getElementById("shuffle").addEventListener("click", () => { isShuffle = !isShuffle; document.getElementById("shuffle").classList.toggle("is-on"); });
 
         function playNext() {
             if (!playlistData.length) return;
-            if (isShuffle) {
-                loadTrack(Math.floor(Math.random() * playlistData.length));
-            } else {
-                loadTrack((currentTrackIndex + 1) % playlistData.length);
-            }
+            if (isShuffle) loadTrack(Math.floor(Math.random() * playlistData.length));
+            else loadTrack((currentTrackIndex + 1) % playlistData.length);
             if (!isPlaying) { isPlaying = true; updatePlayState(); }
         }
         
@@ -419,8 +400,6 @@
 
         document.getElementById("next").addEventListener("click", playNext);
         document.getElementById("prev").addEventListener("click", playPrev);
-        
-        // AUTO-LOOP 
         audio.addEventListener("ended", playNext);
 
         audio.addEventListener("timeupdate", () => {
