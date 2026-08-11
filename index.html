@@ -1,12 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic JSON Responsive Music Player</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVHP81KQKE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BVHP81KQKE');
+    </script>
+
+    <!-- ==========================================
+         🌟 SEO, META TAGS & ICONS FOR BEAT BOX X 🌟
+         ========================================== -->
+    <!-- Primary Meta Tags -->
+    <title>Beat Box X | Premium Liquid Glass Music Player</title>
+    <meta name="title" content="Beat Box X | Premium Liquid Glass Music Player">
+    <meta name="description"
+        content="Experience music like never before with Beat Box X. A futuristic, liquid glass UI responsive music player with real-time JSON sync, volume boost, and smart category filters.">
+    <meta name="keywords"
+        content="Beat Box X, music player, web audio player, liquid glass UI, responsive music player, online playlist, mp3 player, gujarati songs, hindi songs">
+    <meta name="author" content="Dhruvil Thummar">
+    <meta name="theme-color" content="#23d5ab">
+
+    <!-- 🚀 Favicon & App Icons (Navu Add Karyu) -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg"> <!-- iOS Home Screen App Icon mate -->
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://beat-box-x.vercel.app/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beat-box-x.vercel.app/">
+    <meta property="og:title" content="Beat Box X | Premium Music Player">
+    <meta property="og:description"
+        content="A futuristic liquid glass UI responsive music player with smart category filters and a 200% volume boost feature.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1614149162883-504ce4d13909?w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://beat-box-x.vercel.app/">
+    <meta property="twitter:title" content="Beat Box X | Premium Music Player">
+    <meta property="twitter:description"
+        content="A futuristic liquid glass UI responsive music player with smart category filters and a 200% volume boost feature.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1614149162883-504ce4d13909?w=1200&q=80">
+
+    <!-- 🚀 Schema.org Markup (Navu Logo Update Karyu) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Beat Box X",
+      "url": "https://beat-box-x.vercel.app/",
+      "image": "https://beat-box-x.vercel.app/logo.svg", 
+      "description": "A futuristic liquid glass UI responsive music player with real-time JSON sync and volume boost.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Dhruvil Thummar"
+      }
+    }
+    </script>
+    <!-- ========================================== -->
+
     <style>
-        /* BASIC RESET & BACKGROUND */
+        /* BASIC SETUP */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -591,77 +653,91 @@
 
 <body>
 
-    <section class="player ios-glass" id="player">
-        <div class="disc" id="disc">
-            <img id="cover" class="disc__art" src="">
-            <span class="disc__hub"></span>
-        </div>
-        <div class="meta">
-            <p class="meta__title" id="title">Loading songs...</p>
-            <p class="meta__artist" id="artist">Please wait</p>
-            <div class="seek-container">
-                <input type="range" id="seek-bar" value="0" max="100">
-                <div class="time"><span id="tCur">0:00</span> / <span id="tDur">0:00</span></div>
+    <!-- BRANDING (Visible for SEO, styled for UI context if needed) -->
+    <h1
+        style="position: absolute; top: 30px; left: 30px; font-size: 24px; font-weight: bold; letter-spacing: 2px; color: rgba(255,255,255,0.3); z-index: 1;">
+        BEAT BOX X</h1>
+
+    <!-- PLAYER UI -->
+    <main>
+        <section class="player ios-glass" id="player">
+            <div class="disc" id="disc">
+                <img id="cover" class="disc__art" src="" alt="Beat Box X Cover Art">
+                <span class="disc__hub"></span>
             </div>
-        </div>
-        <div class="controls">
-            <button id="shuffle" class="btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path
-                        d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
-                </svg></button>
-            <button id="prev" class="btn"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
-                </svg></button>
-            <button id="play" class="btn btn--play">
-                <svg id="i-play" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"></path>
-                </svg>
-                <svg id="i-pause" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;">
-                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
-                </svg>
-            </button>
-            <button id="next" class="btn"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                    <path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"></path>
-                </svg></button>
-            <button id="listBtn" class="btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3zm15-6.5l4 3-4 3z"></path>
-                </svg></button>
-        </div>
-        <div class="volume-wrapper">
-            <div class="vol-popup ios-glass" id="vol-popup">
-                <span id="vol-percent-text" class="vol-percentage">100%</span>
-                <div class="vol-slider-wrap"><input type="range" id="volume-bar" min="0" max="2" step="0.02" value="1">
+            <div class="meta">
+                <p class="meta__title" id="title">Loading Beat Box X...</p>
+                <p class="meta__artist" id="artist">Please wait</p>
+                <div class="seek-container">
+                    <input type="range" id="seek-bar" value="0" max="100" aria-label="Seek progress">
+                    <div class="time"><span id="tCur">0:00</span> / <span id="tDur">0:00</span></div>
                 </div>
             </div>
-            <button id="mute-btn" class="btn">
-                <svg id="vol-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                    <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
-                    <path id="vol-low" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
-                    <path id="vol-high"
-                        d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
-                    </path>
-                    <path id="vol-muted"
-                        d="M21.28 19.86L4.14 2.72c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l17.14 17.14c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41z"
-                        style="display: none;"></path>
-                </svg>
-            </button>
-        </div>
-        <audio id="audio-player" crossorigin="anonymous"></audio>
-    </section>
+            <div class="controls">
+                <button id="shuffle" class="btn" aria-label="Shuffle"><svg viewBox="0 0 24 24" width="20" height="20"
+                        fill="currentColor">
+                        <path
+                            d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+                    </svg></button>
+                <button id="prev" class="btn" aria-label="Previous track"><svg viewBox="0 0 24 24" width="22"
+                        height="22" fill="currentColor">
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+                    </svg></button>
+                <button id="play" class="btn btn--play" aria-label="Play/Pause">
+                    <svg id="i-play" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                    <svg id="i-pause" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"
+                        style="display:none;">
+                        <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
+                    </svg>
+                </button>
+                <button id="next" class="btn" aria-label="Next track"><svg viewBox="0 0 24 24" width="22" height="22"
+                        fill="currentColor">
+                        <path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"></path>
+                    </svg></button>
+                <button id="listBtn" class="btn" aria-label="Open Playlist"><svg viewBox="0 0 24 24" width="20"
+                        height="20" fill="currentColor">
+                        <path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3zm15-6.5l4 3-4 3z"></path>
+                    </svg></button>
+            </div>
+            <div class="volume-wrapper">
+                <div class="vol-popup ios-glass" id="vol-popup">
+                    <span id="vol-percent-text" class="vol-percentage">100%</span>
+                    <div class="vol-slider-wrap"><input type="range" id="volume-bar" min="0" max="2" step="0.02"
+                            value="1" aria-label="Volume Boost"></div>
+                </div>
+                <button id="mute-btn" class="btn" aria-label="Volume controls">
+                    <svg id="vol-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                        <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
+                        <path id="vol-low" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z">
+                        </path>
+                        <path id="vol-high"
+                            d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                        </path>
+                        <path id="vol-muted"
+                            d="M21.28 19.86L4.14 2.72c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l17.14 17.14c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41z"
+                            style="display: none;"></path>
+                    </svg>
+                </button>
+            </div>
+            <audio id="audio-player" crossorigin="anonymous"></audio>
+        </section>
+    </main>
 
     <!-- PLAYLIST MODAL -->
-    <div class="playlist-modal-overlay" id="playlist-modal">
+    <div class="playlist-modal-overlay" id="playlist-modal" role="dialog" aria-modal="true">
         <div class="modal-content ios-glass">
             <div class="modal-header">
-                <h3>Playlist</h3>
-                <button id="close-modal-btn">×</button>
+                <h3>Beat Box X Playlist</h3>
+                <button id="close-modal-btn" aria-label="Close Playlist">×</button>
             </div>
             <div class="search-wrapper">
                 <svg class="search-icon" viewBox="0 0 24 24">
                     <path
                         d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
                 </svg>
-                <input type="text" id="song-search" class="search-bar" placeholder="Search song...">
+                <input type="text" id="song-search" class="search-bar" placeholder="Search song in Beat Box X...">
             </div>
             <div class="category-filters" id="category-filters"></div>
             <ul class="custom-options" id="custom-options-list"></ul>
@@ -679,10 +755,9 @@
         let isPlaying = false, isShuffle = false, currentTrackIndex = 0;
         let activeCategory = "All";
 
-        // 🌟 FETCHING playlist.json DYNAMICALLY
         fetch('playlist.json')
             .then(response => {
-                if (!response.ok) throw new Error("playlist.json not found. Run downloader.py first!");
+                if (!response.ok) throw new Error("playlist.json not found");
                 return response.json();
             })
             .then(data => {
@@ -692,13 +767,13 @@
                     loadTrack(0);
                 } else {
                     document.getElementById("title").innerText = "No Songs Available";
-                    document.getElementById("artist").innerText = "Add songs using downloader.py";
+                    document.getElementById("artist").innerText = "Add songs via Python script";
                 }
             })
             .catch(error => {
-                console.error("Error loading playlist:", error);
+                console.error("Error loading Beat Box X playlist:", error);
                 document.getElementById("title").innerText = "Error Loading Songs";
-                document.getElementById("artist").innerText = "Check console or run python server";
+                document.getElementById("artist").innerText = "Could not fetch playlist.json";
             });
 
         function setupCategories() {
@@ -726,7 +801,7 @@
 
                 li.innerHTML = `
                     <div class="list-left">
-                        <img src="${track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'}" alt="cover">
+                        <img src="${track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'}" alt="${track.title} Cover Art">
                         <div>
                             <span class="title">${track.title}</span>
                             <span class="artist">${track.artist}</span>
@@ -761,9 +836,14 @@
             currentTrackIndex = index;
             const track = playlistData[index];
             audio.src = track.src;
+
             document.getElementById("title").innerText = track.title;
             document.getElementById("artist").innerText = track.artist;
             document.getElementById("cover").src = track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400';
+
+            // Dynamic Title Update for SEO / Tab visibility
+            document.title = `${track.title} - Beat Box X`;
+
             renderPlaylist();
             filterSongs(songSearchInput.value);
             if (isPlaying) audio.play();
@@ -780,6 +860,7 @@
                 document.getElementById("i-play").style.display = "block";
                 document.getElementById("i-pause").style.display = "none";
                 document.getElementById("player").classList.remove("playing");
+                document.title = "Beat Box X | Premium Liquid Glass Music Player";
             }
         }
 
