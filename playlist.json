@@ -82,5 +82,54 @@
         "title": "Oonchi Oonchi Waadi | Akshay Kumar, Pankaj Tripathi, Yami G | Hansraj Raghuwanshi | OMG 2 | Lyrical",
         "artist": "Zee Music Company",
         "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Ram Siya Ram Lyrica_Tl4bQBfOtbg.webp",
+        "src": "./music/Tl4bQBfOtbg.mp3",
+        "title": "Ram Siya Ram (Lyrical) Adipurush | Prabhas | Sachet-Parampara,Manoj Muntashir S |Om Raut | Bhushan K",
+        "artist": "T-Series",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Tera Mera Rishta Con_6rvUyBiBtik.webp",
+        "src": "./music/6rvUyBiBtik.mp3",
+        "title": "Tera Mera Rishta Continues (Film Ballad)| Awarapan 2| Emraan, Disha| Mithoon, Saaj, Sayeed, Mustafa",
+        "artist": "Sony Music India",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Sang Rahiyo Officia_8PTOkwze0Vw.webp",
+        "src": "./music/8PTOkwze0Vw.mp3",
+        "title": "Sang Rahiyo (Official Video) | Jasleen Royal ft. Ranveer Allahbadia | Ujjwal Kashyap,Neeraj Rajawat",
+        "artist": "Jasleen Royal",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Shiv Kailasho Ke Vas_qJWysCaxZyo.webp",
+        "src": "./music/qJWysCaxZyo.mp3",
+        "title": "Shiv Kailasho Ke Vasi (Video Song): Jubin Nautiyal | Traditional Shiv Bhajan | Bhushan Kumar",
+        "artist": "T-Series",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/LUDO Aabaad Barbaad_jh66Pjtqr4k.webp",
+        "src": "./music/jh66Pjtqr4k.mp3",
+        "title": "LUDO: Aabaad Barbaad (Full Video) Abhishek B, Aditya K, Rajkummar R, Sanya, Fatima | Arijit, Pritam",
+        "artist": "T-Series",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Manzar Hai Yeh Naya_x5fYTPvrz4g.webp",
+        "src": "./music/x5fYTPvrz4g.mp3",
+        "title": "Manzar Hai Yeh Naya - Full Video | URI | Vicky Kaushal & Yami Gautam | Shantanu S & Shashwat S",
+        "artist": "Zee Music Company",
+        "category": "Gujrati"
+    },
+    {
+        "cover": "./images/ROCKSTAR Phir Se Ud_-3gQ6HIkRys.webp",
+        "src": "./music/-3gQ6HIkRys.mp3",
+        "title": "ROCKSTAR: Phir Se Ud Chala (Lyrcial Video) | Ranbir Kapoor | A. R. Rahman | Mohit Chauhan",
+        "artist": "T-Series",
+        "category": "Gujrati"
     }
 ]
