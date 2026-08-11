@@ -2,7 +2,7 @@
 # 🚫 Beat Box X - .gitignore
 # =========================================
 
-# 🎵 1. Media Folders (Karan ke have badhu Cloudinary par che)
+# 🎵 1. Media Folders (Badhu Cloudinary par che)
 music/
 images/
 *.mp3
@@ -13,7 +13,11 @@ images/
 *.png
 *.webp
 
-# 🐍 2. Python Cache & Virtual Environments
+# 🚀 2. Backend / Downloader Scripts (API Keys Security)
+downloader.py
+
+
+# 🐍 3. Python Cache & Virtual Environments
 __pycache__/
 *.py[cod]
 *$py.class
@@ -21,12 +25,12 @@ venv/
 env/
 .env/
 
-# 🔐 3. Security & API Keys (Bahu Jaroori!)
+# 🔐 4. Security
 .env
 secret.json
 keys.txt
 
-# 💻 4. System Files (Windows / Mac kachro)
+# 💻 5. System Files (PC no kachro)
 .DS_Store
 Thumbs.db
 desktop.ini
