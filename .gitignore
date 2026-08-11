@@ -1,0 +1,32 @@
+# =========================================
+# 🚫 Beat Box X - .gitignore
+# =========================================
+
+# 🎵 1. Media Folders (Karan ke have badhu Cloudinary par che)
+music/
+images/
+*.mp3
+*.mp4
+*.m4a
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# 🐍 2. Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env/
+
+# 🔐 3. Security & API Keys (Bahu Jaroori!)
+.env
+secret.json
+keys.txt
+
+# 💻 4. System Files (Windows / Mac kachro)
+.DS_Store
+Thumbs.db
+desktop.ini
