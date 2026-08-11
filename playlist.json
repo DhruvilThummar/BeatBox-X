@@ -824,5 +824,12 @@
         "title": "Tulsishyam | Udaybhai Dhadhal",
         "artist": "Udaybhai Dhadhal",
         "category": "Gujrati"
+    },
+    {
+        "cover": "./images/Teri Baaton Mein Ais_XLqmL9cPN1E.webp",
+        "src": "./music/XLqmL9cPN1E.mp3",
+        "title": "Teri Baaton Mein Aisa Uljha Jiya (Title Track): Shahid Kapoor, Kriti Sanon | Raghav,Tanishk,Asees",
+        "artist": "T-Series",
+        "category": "Gujrati"
     }
 ]
