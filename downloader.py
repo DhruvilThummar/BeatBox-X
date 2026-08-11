@@ -141,3 +141,6 @@ for category, playlist_url in youtube_playlists.items():
 print("\n=======================================")
 print(f"🎉 ALL DOWNLOADS COMPLETE! Data saved to '{JSON_FILE}' 🎉")
 print("=======================================\n")
+
+
+# https://www.youtube.com/watch?v=CBb0XBH_fT0&list=RDCBb0XBH_fT0&start_radio=1
