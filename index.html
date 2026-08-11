@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +11,12 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-BVHP81KQKE');
     </script>
+
     <!-- ==========================================
          🌟 SEO, META TAGS & ICONS FOR BEAT BOX X 🌟
          ========================================== -->
-    <!-- Primary Meta Tags -->
     <title>Beat Box X | Premium Liquid Glass Music Player</title>
     <meta name="title" content="Beat Box X | Premium Liquid Glass Music Player">
     <meta name="description"
@@ -24,11 +26,9 @@
     <meta name="author" content="Dhruvil Thummar">
     <meta name="theme-color" content="#23d5ab">
 
-    <!-- 🚀 Favicon & App Icons (Navu Add Karyu) -->
     <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="apple-touch-icon" href="logo.svg"> <!-- iOS Home Screen App Icon mate -->
+    <link rel="apple-touch-icon" href="logo.svg">
 
-    <!-- Canonical Link -->
     <link rel="canonical" href="https://beat-box-x.vercel.app/">
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -47,7 +47,6 @@
         content="A futuristic liquid glass UI responsive music player with smart category filters and a 200% volume boost feature.">
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1614149162883-504ce4d13909?w=1200&q=80">
 
-    <!-- 🚀 Schema.org Markup (Navu Logo Update Karyu) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -111,7 +110,7 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
-        /* PLAYER DESKTOP */
+        /* PLAYER DESKTOP (Default PC Layout) */
         .player {
             width: 95%;
             max-width: 1000px;
@@ -557,7 +556,68 @@
             border-radius: 10px;
         }
 
-        /* MOBILE RESPONSIVE */
+
+        /* ==========================================
+           🌟 ALL DEVICE RESPONSIVE MEDIA QUERIES 🌟
+           ========================================== */
+
+        /* 1. 4K TVs & Large Projectors (> 1440px) */
+        @media (min-width: 1440px) {
+            .player {
+                max-width: 1200px;
+                padding: 25px 40px;
+                gap: 40px;
+                bottom: 60px;
+            }
+
+            .disc {
+                width: 90px;
+                height: 90px;
+            }
+
+            .meta__title {
+                font-size: 24px;
+            }
+
+            .meta__artist {
+                font-size: 16px;
+            }
+
+            .btn svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .btn--play {
+                width: 56px;
+                height: 56px;
+            }
+
+            .btn--play svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* 2. Tablets & Small Laptops (801px to 1024px) */
+        @media (max-width: 1024px) and (min-width: 801px) {
+            .player {
+                width: 96%;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .disc {
+                width: 65px;
+                height: 65px;
+            }
+
+            .meta__title {
+                font-size: 16px;
+            }
+        }
+
+        /* 3. Mobile Card Layout (< 800px) */
         @media (max-width: 800px) {
             body {
                 align-items: center;
@@ -647,12 +707,124 @@
                 max-height: 85vh;
             }
         }
+
+        /* 4. Small Phones (< 400px) */
+        @media (max-width: 400px) {
+            .player {
+                padding: 25px 20px;
+                width: 95%;
+                gap: 20px;
+            }
+
+            .disc {
+                width: 180px;
+                height: 180px;
+            }
+
+            .meta__title {
+                font-size: 20px;
+            }
+
+            .btn--play {
+                width: 50px;
+                height: 50px;
+            }
+
+            .vol-popup {
+                right: -5px;
+            }
+        }
+
+        /* 5. Very Small Phones / Smart Displays (< 350px) */
+        @media (max-width: 350px) {
+            .player {
+                padding: 20px 15px;
+            }
+
+            .disc {
+                width: 150px;
+                height: 150px;
+            }
+
+            .meta__title {
+                font-size: 18px;
+            }
+
+            .btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .btn--play {
+                width: 45px;
+                height: 45px;
+            }
+
+            .btn--play svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        /* 6. Landscape Mode / Photo Frames (Height < 600px) */
+        @media (max-height: 600px) and (max-width: 800px) {
+            .player {
+                padding: 15px 20px;
+                gap: 15px;
+                flex-direction: row;
+                /* Switch back to row */
+                width: 95%;
+                max-width: none;
+                border-radius: 25px;
+                margin-top: 20px;
+            }
+
+            .disc {
+                width: 60px;
+                height: 60px;
+                margin: 0;
+                border-radius: 50%;
+            }
+
+            .disc__art {
+                border-radius: 50%;
+            }
+
+            .meta {
+                text-align: left;
+            }
+
+            .volume-wrapper {
+                position: relative;
+                top: 0;
+                right: 0;
+            }
+
+            .vol-popup {
+                bottom: 60px;
+                top: auto;
+                right: -10px;
+                transform: translateY(20px) scale(0.9);
+            }
+        }
+
+        /* Modal Constraint for small height screens */
+        @media (max-height: 500px) {
+            .modal-content {
+                padding: 15px;
+                max-height: 90vh;
+            }
+
+            .custom-options {
+                max-height: 35vh;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- BRANDING (Visible for SEO, styled for UI context if needed) -->
+    <!-- BRANDING -->
     <h1
         style="position: absolute; top: 30px; left: 30px; font-size: 24px; font-weight: bold; letter-spacing: 2px; color: rgba(255,255,255,0.3); z-index: 1;">
         BEAT BOX X</h1>
@@ -840,7 +1012,6 @@
             document.getElementById("artist").innerText = track.artist;
             document.getElementById("cover").src = track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400';
 
-            // Dynamic Title Update for SEO / Tab visibility
             document.title = `${track.title} - Beat Box X`;
 
             renderPlaylist();
