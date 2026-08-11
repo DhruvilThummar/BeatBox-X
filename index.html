@@ -14,6 +14,13 @@
     </script>
     
     <!-- ==========================================
+         🌟 CUTE & LUXURY FONT (QUICKSAND) 🌟
+         ========================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ==========================================
          🌟 SEO & PREMIUM META TAGS FOR BEAT BOX X 🌟
          ========================================== -->
     <title>Beat Box X | Premium Cloud Music Player</title>
@@ -36,12 +43,12 @@
 
     <style>
         /* ==========================================
-           🌟 1. PREMIUM VIP THEME (OBSIDIAN & GOLD) 🌟
-           ========================================== */
+           🌟 1. CUTE FONT & VIP THEME (OBSIDIAN & GOLD) 🌟
+           ========================================== -->
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Quicksand', sans-serif; /* Cute, rounded & luxury font */
             background: linear-gradient(-45deg, #0a0a0c, #1a1a24, #0a0a0c, #1f1f2e);
             background-size: 400% 400%; animation: gradientBG 20s ease infinite;
             min-height: 100vh; width: 100vw; display: flex; align-items: flex-end; 
@@ -70,9 +77,9 @@
 
         .meta { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         .meta__title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #fff; }
-        .meta__artist { font-size: 13px; color: #b3b3b3; margin-bottom: 12px; }
+        .meta__artist { font-size: 13px; color: #b3b3b3; margin-bottom: 12px; font-weight: 500; }
         .seek-container { display: flex; align-items: center; gap: 15px; width: 100%; }
-        .time { font-size: 12px; color: #aaa; font-family: monospace; white-space: nowrap; font-weight: bold; }
+        .time { font-size: 12px; color: #aaa; font-family: 'Quicksand', monospace; white-space: nowrap; font-weight: 600; }
         
         input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; outline: none; cursor: pointer; --progress: 0%; background-image: linear-gradient(#D4AF37, #FFD700); background-size: var(--progress) 100%; background-repeat: no-repeat; }
         input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 8px rgba(212, 175, 55, 0.8); transition: transform 0.2s; }
@@ -109,12 +116,12 @@
         
         .search-wrapper { position: relative; margin-bottom: 20px; }
         .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: rgba(255, 255, 255, 0.4); }
-        .search-bar { width: 100%; padding: 12px 15px 12px 40px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.5); color: #fff; font-size: 14px; outline: none; transition: all 0.3s; }
+        .search-bar { width: 100%; padding: 12px 15px 12px 40px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.5); color: #fff; font-size: 14px; outline: none; transition: all 0.3s; font-family: 'Quicksand', sans-serif; }
         .search-bar:focus { border-color: #D4AF37; box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
 
         .category-filters { display: flex; gap: 10px; overflow-x: auto; margin-bottom: 15px; padding-bottom: 5px; scrollbar-width: none; }
         .category-filters::-webkit-scrollbar { display: none; }
-        .cat-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #ccc; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; font-size: 13px; transition: 0.3s; }
+        .cat-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #ccc; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; font-size: 13px; transition: 0.3s; font-family: 'Quicksand', sans-serif; font-weight: 600; }
         .cat-btn.active { background: rgba(212, 175, 55, 0.2); color: #D4AF37; border-color: #D4AF37; font-weight: bold; }
 
         .custom-options { list-style: none; max-height: 40vh; overflow-y: auto; padding-right: 8px; margin-right: -4px; }
@@ -125,10 +132,10 @@
         .list-left { display: flex; gap: 12px; align-items: center; }
         .custom-options li img { width: 46px; height: 46px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); }
         .custom-options li div { display: flex; flex-direction: column; }
-        .custom-options li span.title { font-weight: 600; color: #fff; margin-bottom: 3px; font-size: 14px; }
-        .custom-options li span.artist { font-size: 12px; color: #999; }
+        .custom-options li span.title { font-weight: 700; color: #fff; margin-bottom: 3px; font-size: 14px; }
+        .custom-options li span.artist { font-size: 12px; color: #999; font-weight: 500; }
         .custom-options li.active-option span.title { color: #D4AF37; }
-        .cat-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; color: #bbb; border: 1px solid rgba(255,255,255,0.1); }
+        .cat-tag { font-size: 11px; font-weight: 700; padding: 4px 10px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; color: #bbb; border: 1px solid rgba(255,255,255,0.1); }
 
         .custom-options::-webkit-scrollbar { width: 4px; }
         .custom-options::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
@@ -144,7 +151,7 @@
 
 <body>
 
-    <h1 style="position: absolute; top: 30px; left: 30px; font-size: 24px; font-weight: bold; letter-spacing: 2px; color: rgba(212,175,55,0.4); text-shadow: 0 0 10px rgba(212,175,55,0.1); z-index: 1;">
+    <h1 style="position: absolute; top: 30px; left: 30px; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: rgba(212,175,55,0.4); text-shadow: 0 0 10px rgba(212,175,55,0.1); z-index: 1;">
         BEAT BOX X</h1>
 
     <!-- 🌟 PLAYER UI 🌟 -->
@@ -193,7 +200,6 @@
                 </svg>
             </button>
         </div>
-        <!-- Preload Auto for lightning fast playback buffer -->
         <audio id="audio-player" crossorigin="anonymous" preload="auto"></audio>
     </section>
 
@@ -237,7 +243,9 @@
                 playlistData = data;
                 if (playlistData.length > 0) {
                     setupCategories();
-                    loadTrack(0);
+                    // 🌟 LOAD RANDOM SONG ON EVERY RELOAD/OPEN 🌟
+                    const randomIdx = Math.floor(Math.random() * playlistData.length);
+                    loadTrack(randomIdx);
                 }
             });
 
@@ -316,15 +324,12 @@
             }
         }
 
-        // 🌟 LOAD TRACK (Instant Lightning Fast CDN Streaming) 🌟
         function loadTrack(index) {
             if (!playlistData.length) return;
             currentTrackIndex = index;
             const track = playlistData[index];
             
             showLoading();
-
-            // Direct original raw Cloudinary URL (Zero translation delay, instant CDN delivery)
             audio.src = track.src;
 
             let coverUrl = track.cover || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400';
@@ -408,7 +413,6 @@
             let curSec = Math.floor(audio.currentTime % 60);
             document.getElementById("tCur").innerText = `${curMin}:${curSec < 10 ? '0' : ''}${curSec}`;
 
-            // Check if duration is valid (Guards against Infinity or NaN bug)
             if (audio.duration && !isNaN(audio.duration) && audio.duration !== Infinity) {
                 const percent = (audio.currentTime / audio.duration) * 100;
                 document.getElementById("seek-bar").value = percent;
