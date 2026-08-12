@@ -3,22 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVHP81KQKE"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-BVHP81KQKE');
-    </script>
-
-    <!-- ==========================================
-         🌟 CUTE & LUXURY FONT (QUICKSAND) 🌟
-         ========================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <title>Beat Box X | Premium Cloud Music Player</title>
+    <title>Beat Box X | Music Player</title>
     <meta name="theme-color" content="#D4AF37"> 
 
     <style>
@@ -27,8 +15,8 @@
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(-45deg, #0a0a0c, #1a1a24, #0a0a0c, #1f1f2e);
             background-size: 400% 400%; animation: gradientBG 20s ease infinite;
-            min-height: 100vh; width: 100vw; display: flex; align-items: flex-end; 
-            justify-content: center; overflow-x: hidden; color: #fff; padding: 15px; padding-bottom: 30px; 
+            min-height: 100vh; width: 100vw; display: flex; align-items: center; 
+            justify-content: center; color: #fff; padding: 15px;
         }
 
         @keyframes gradientBG {
@@ -38,280 +26,135 @@
         }
 
         .ios-glass {
-            background: rgba(20, 20, 25, 0.75); backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(212, 175, 55, 0.2); border-top: 1px solid rgba(212, 175, 55, 0.4); 
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            background: rgba(20, 20, 25, 0.85); backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* 🌟 DESKTOP PLAYER LAYOUT 🌟 */
-        .player { width: 100%; max-width: 900px; padding: 20px 30px; border-radius: 40px; display: flex; align-items: center; gap: 25px; z-index: 10; }
+        .player { width: 100%; max-width: 450px; padding: 25px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
-        .disc { width: 75px; height: 75px; border-radius: 50%; position: relative; flex-shrink: 0; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8); animation: spin 6s linear infinite paused; border: 2px solid rgba(212, 175, 55, 0.5); overflow: hidden; }
+        .disc { width: 180px; height: 180px; border-radius: 20px; position: relative; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); border: 2px solid rgba(212, 175, 55, 0.3); overflow: hidden; }
         .disc__art { width: 100%; height: 100%; object-fit: cover; }
-        .disc__hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: #fff; border-radius: 50%; }
-        .player.playing .disc { animation-play-state: running; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .meta { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
-        .meta__title { font-size: 17px; font-weight: 700; margin-bottom: 3px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .meta__artist { font-size: 13px; color: #b3b3b3; margin-bottom: 4px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .meta__quote { font-size: 11px; color: #D4AF37; font-style: italic; font-weight: 600; margin-bottom: 8px; opacity: 0.9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-        .seek-container { display: flex; align-items: center; gap: 12px; width: 100%; }
-        .time { font-size: 11px; color: #aaa; white-space: nowrap; font-weight: 600; }
         
-        input[type="range"] {
-            -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; outline: none; cursor: pointer; --progress: 0%; background-image: linear-gradient(#D4AF37, #FFD700); background-size: var(--progress) 100%; background-repeat: no-repeat;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            height: 14px; width: 14px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px rgba(212,175,55,0.8);
-        }
+        .meta { text-align: center; width: 100%; }
+        .meta__title { font-size: 20px; font-weight: 700; margin-bottom: 5px; }
+        .meta__artist { font-size: 14px; color: #aaa; margin-bottom: 8px; }
+        .meta__quote { font-size: 12px; color: #D4AF37; font-style: italic; font-weight: 600; margin-bottom: 15px; }
 
-        .controls { display: flex; align-items: center; gap: 12px; margin-left: 5px; flex-shrink: 0; }
-        .btn { background: transparent; color: #fff; border: none; cursor: pointer; opacity: 0.7; padding: 6px; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
-        .btn:hover { opacity: 1; transform: scale(1.1); }
-        .btn--play { background: linear-gradient(135deg, #D4AF37, #B8860B); border-radius: 50%; width: 48px; height: 48px; opacity: 1; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(212,175,55,0.4); }
+        .seek-container { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+        input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 5px; cursor: pointer; background-image: linear-gradient(#D4AF37, #D4AF37); background-size: 0% 100%; background-repeat: no-repeat; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; height: 14px; width: 14px; border-radius: 50%; background: #fff; }
 
-        /* Loader */
-        .spinner { animation: rotate 2s linear infinite; width: 24px; height: 24px; }
+        .controls { display: flex; align-items: center; gap: 25px; justify-content: center; width: 100%; }
+        .btn { background: transparent; color: #fff; border: none; cursor: pointer; padding: 10px; }
+        .btn--play { background: #D4AF37; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; color: #000; }
+
+        .spinner { animation: rotate 2s linear infinite; width: 30px; height: 30px; }
         @keyframes rotate { 100% { transform: rotate(360deg); } }
 
-        /* Modal Styles */
-        .modal { position: fixed; top:0; left:0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
-        .modal.open { opacity: 1; visibility: visible; }
-        .modal-content { background: rgba(20, 20, 25, 0.95); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; width: 92%; max-width: 420px; padding: 20px; }
-        
-        .search-bar { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5); color: #fff; margin-bottom: 12px; outline: none; font-family: 'Quicksand', sans-serif; font-size: 14px; }
-        .options { list-style: none; max-height: 45vh; overflow-y: auto; padding-right: 5px; }
-        .options::-webkit-scrollbar { width: 4px; }
-        .options::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
-        .options li { padding: 10px; border-radius: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; display: flex; align-items: center; gap: 12px; margin-bottom: 4px; transition: 0.2s; }
-        .options li:hover { background: rgba(212, 175, 55, 0.1); }
-        .options li span { font-size: 13px; font-weight: 600; line-height: 1.3; }
-
-
-        /* ==========================================
-           📱 MOBILE RESPONSIVE UI FIX (MAX-WIDTH: 768px) 📱
-           ========================================== */
-        @media (max-width: 768px) {
-            body { padding: 10px; padding-bottom: 20px; align-items: center; justify-content: center; }
-            
-            /* Title hidden or adjusted for mobile cleaner view */
-            h1 { display: none; } 
-
-            .player {
-                flex-direction: column;
-                width: 100%;
-                max-width: 380px;
-                padding: 25px 20px;
-                border-radius: 30px;
-                gap: 20px;
-                text-align: center;
-                background: rgba(20, 20, 25, 0.85);
-            }
-
-            /* Big Center Album Art for Mobile */
-            .disc {
-                width: 190px;
-                height: 190px;
-                border-radius: 20px;
-                margin: 0 auto;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-                animation: none !important; /* Stop spinning on mobile for clean look */
-                border: 2px solid rgba(212, 175, 55, 0.4);
-            }
-            .disc__art { border-radius: 18px; }
-            .disc__hub { display: none; }
-
-            .meta { width: 100%; align-items: center; }
-            .meta__title { font-size: 19px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-            .meta__artist { font-size: 13px; }
-            .meta__quote { font-size: 12px; margin-bottom: 15px; }
-
-            /* Seekbar & Time alignment */
-            .seek-container { flex-direction: column; gap: 8px; width: 100%; }
-            .time { display: flex; justify-content: space-between; width: 100%; font-size: 12px; }
-
-            /* Spread out controls on mobile */
-            .controls {
-                width: 100%;
-                justify-content: space-around;
-                margin-left: 0;
-                margin-top: 5px;
-            }
-            .btn--play { width: 56px; height: 56px; }
-        }
+        /* Modal */
+        .modal { position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 1000; visibility: hidden; opacity: 0; transition: 0.3s; }
+        .modal.open { visibility: visible; opacity: 1; }
+        .modal-content { background: #1a1a24; padding: 20px; border-radius: 20px; width: 90%; max-width: 400px; border: 1px solid #D4AF37; }
+        .options { list-style: none; max-height: 40vh; overflow-y: auto; margin-top: 15px; }
+        .options li { padding: 12px; border-bottom: 1px solid #333; cursor: pointer; display: flex; align-items: center; gap: 10px; }
     </style>
 </head>
 
 <body>
 
-    <h1 style="position: absolute; top: 25px; left: 30px; font-size: 22px; font-weight: 700; color: rgba(212,175,55,0.4); letter-spacing: 2px;">BEAT BOX X</h1>
+    <h1 style="position: absolute; top: 20px; font-size: 20px; color: #D4AF37; letter-spacing: 2px;">BEAT BOX X</h1>
 
     <section class="player ios-glass" id="player">
-        <div class="disc" id="disc">
-            <img id="cover" class="disc__art" src="" alt="Cover Art">
-            <span class="disc__hub"></span>
-        </div>
+        <div class="disc"><img id="cover" class="disc__art" src="" alt="Art"></div>
         <div class="meta">
             <p class="meta__title" id="title">Loading...</p>
             <p class="meta__artist" id="artist">...</p>
-            <p class="meta__quote" id="quote-text">"संगीत ही रूह की असली दवा है..."</p>
+            <p class="meta__quote" id="quote-text"></p>
             <div class="seek-container">
                 <input type="range" id="seek-bar" value="0" max="100">
-                <div class="time"><span id="tCur">0:00</span> / <span id="tDur">0:00</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:12px; color:#aaa;">
+                    <span id="tCur">0:00</span> <span id="tDur">0:00</span>
+                </div>
             </div>
         </div>
         <div class="controls">
-            <button id="play" class="btn btn--play" aria-label="Play/Pause">
-                <svg id="i-play" viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
-                <svg id="i-pause" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg>
+            <button id="play" class="btn btn--play">
+                <svg id="i-play" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+                <svg id="i-pause" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg>
                 <svg id="i-loader" class="spinner" viewBox="0 0 50 50" style="display:none;"><circle cx="25" cy="25" r="20" fill="none" stroke="#000" stroke-width="4"></circle></svg>
             </button>
-            <button id="next" class="btn" aria-label="Next Track"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg></button>
-            <button id="listBtn" class="btn" aria-label="Open Playlist"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3z"></path></svg></button>
+            <button id="next" class="btn"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg></button>
+            <button id="listBtn" class="btn"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3z"></path></svg></button>
         </div>
         <audio id="audio-player" crossorigin="anonymous" preload="auto"></audio>
     </section>
 
     <div class="modal" id="playlist-modal">
         <div class="modal-content ios-glass">
-            <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search library...">
+            <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search...">
             <ul class="options" id="options-list"></ul>
-            <button id="close-modal" style="width: 100%; padding: 12px; margin-top: 15px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; color: #000; font-family: 'Quicksand', sans-serif; font-size: 14px;">Close</button>
+            <button id="close-modal" style="width:100%; padding:10px; background:#D4AF37; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Close</button>
         </div>
     </div>
 
     <script>
-        let playlistData = [];
-        let currentTrackIndex = 0;
+        let playlistData = [], currentTrackIndex = 0;
         const audio = document.getElementById("audio-player");
         const optionsList = document.getElementById("options-list");
         const songSearch = document.getElementById("song-search");
-        
-        const shayariList = [
-            "🎵 संगीत ही रूह की असली दवा है...", "✨ जब अल्फ़ाज़ कम पड़ जाएं, तब धुनें बोलती हैं।",
-            "🤎 दिल की धड़कनों से मिलता है आपके संगीत का सुकून।", "🎶 सफर खूबसूरत है, इस सुरीले साथ के साथ...",
-            "🌟 हर गाने में एक कहानी और हर सुर में एक जज़्बा है।", "💫 जहाँ शब्द खत्म होते हैं, वहां संगीत शुरू होता है।",
-            "🎶 संगीत वो भाषा है जो सीधे दिल को छू जाती है।", "✨ यादों के कारवां और सुरीली शामों का संगम।",
-            "🤎 सुरों का जादू और दिल का सुकून...", "🎵 जिंदगी एक धुन है, और हर गाना एक खूबसूरत पल।",
-            "✨ संगीत के बिना जीवन एक अधूरी किताब जैसा है।", "💫 धुन में खो जाना ही सबसे बड़ी खुशी है।",
-            "🌟 सुरों की मिठास और दिल का एहसास।", "🎶 दिल से सुनो, संगीत में सब कुछ है।",
-            "🤎 संगीत एक ऐसा सफर है जिसका कोई अंत नहीं।", "🎵 हर धड़कन में एक धुन छिपी है।",
-            "✨ सन्नाटे में भी एक सुर होता है।", "💫 अपनी पसंद का संगीत सुनें, खुश रहें।",
-            "🎶 रूह को सुकून देने वाला साथी - संगीत।", "🌟 दिल की बात, संगीत के साथ।",
-            "✨ जिंदगी को गुनगुनाने की कला है संगीत।", "🎵 म्यूजिक - आत्मा का आईना।",
-            "🤎 सुरों के बिना सब अधूरा है।", "🎶 संगीत - मन की शांति का जरिया।",
-            "💫 जो न कह सको, वो गाने में कह दो।", "🌟 दिल के करीब, संगीत के साज़।",
-            "🎵 संगीत, जो वक्त को थमने पर मजबूर कर दे।", "✨ सुनहरे पल, सुरीले गाने।",
-            "🤎 जहाँ संगीत है, वहाँ जिंदगी है।", "🎶 सुरों के साथ, सुकून की बात।"
-        ];
+        const shayariList = ["🎵 संगीत ही रूह की असली दवा है...", "✨ धुन में खो जाना ही सबसे बड़ी खुशी है।", "🎶 संगीत वो भाषा है जो सीधे दिल को छू जाती है।", "🤎 दिल की धड़कनों से मिलता है संगीत का सुकून।"];
 
         fetch('playlist.json').then(r => r.json()).then(data => {
             playlistData = data;
-            if (playlistData.length > 0) {
-                const randomIdx = Math.floor(Math.random() * playlistData.length);
-                loadTrack(randomIdx);
-            }
+            if (playlistData.length > 0) loadTrack(Math.floor(Math.random() * playlistData.length));
         });
 
         function loadTrack(index) {
             currentTrackIndex = index;
-            const track = playlistData[index];
-            showLoading();
-            audio.src = track.src;
-            document.getElementById("title").innerText = track.title;
-            document.getElementById("artist").innerText = track.artist;
-            document.getElementById("cover").src = track.cover;
-            
-            const randomQuote = shayariList[Math.floor(Math.random() * shayariList.length)];
-            document.getElementById("quote-text").innerText = `"${randomQuote}"`;
-            
+            const t = playlistData[index];
+            audio.src = t.src;
+            document.getElementById("title").innerText = t.title;
+            document.getElementById("artist").innerText = t.artist;
+            document.getElementById("cover").src = t.cover;
+            document.getElementById("quote-text").innerText = `"${shayariList[Math.floor(Math.random() * shayariList.length)]}"`;
+            document.getElementById("i-play").style.display = "none";
+            document.getElementById("i-loader").style.display = "block";
             audio.play().catch(e => console.log(e));
         }
 
-        function showLoading() {
-            document.getElementById("i-play").style.display = "none";
-            document.getElementById("i-pause").style.display = "none";
-            document.getElementById("i-loader").style.display = "block";
-            document.getElementById("player").classList.remove("playing");
-        }
-
-        audio.addEventListener("playing", () => {
+        audio.onplaying = () => {
             document.getElementById("i-loader").style.display = "none";
             document.getElementById("i-play").style.display = "none";
             document.getElementById("i-pause").style.display = "block";
-            document.getElementById("player").classList.add("playing");
-        });
+        };
 
-        audio.addEventListener("pause", () => {
-            document.getElementById("i-loader").style.display = "none";
+        audio.onpause = () => {
             document.getElementById("i-pause").style.display = "none";
             document.getElementById("i-play").style.display = "block";
-            document.getElementById("player").classList.remove("playing");
-        });
+        };
 
-        document.getElementById("play").addEventListener("click", () => {
-            if(audio.paused) { audio.play().catch(e => console.log(e)); }
-            else { audio.pause(); }
-        });
-
-        document.getElementById("next").addEventListener("click", () => {
-            const nextIdx = (currentTrackIndex + 1) % playlistData.length;
-            loadTrack(nextIdx);
-        });
-
-        document.getElementById("listBtn").addEventListener("click", () => {
-            document.getElementById("playlist-modal").classList.add("open");
-            renderList();
-        });
-
-        document.getElementById("close-modal").addEventListener("click", () => document.getElementById("playlist-modal").classList.remove("open"));
+        document.getElementById("play").onclick = () => audio.paused ? audio.play() : audio.pause();
+        document.getElementById("next").onclick = () => loadTrack((currentTrackIndex + 1) % playlistData.length);
+        document.getElementById("listBtn").onclick = () => { document.getElementById("playlist-modal").classList.add("open"); renderList(); };
+        document.getElementById("close-modal").onclick = () => document.getElementById("playlist-modal").classList.remove("open");
 
         function renderList() {
             optionsList.innerHTML = "";
             playlistData.forEach((t, i) => {
                 let li = document.createElement("li");
-                li.innerHTML = `<img src="${t.cover}" width="42" height="42" style="border-radius:8px; object-fit:cover; flex-shrink:0;"> <span style="display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${t.title}</span>`;
+                li.innerHTML = `<img src="${t.cover}" width="40" height="40" style="border-radius:8px;"> <span>${t.title}</span>`;
                 li.onclick = () => { loadTrack(i); document.getElementById("playlist-modal").classList.remove("open"); };
                 optionsList.appendChild(li);
             });
         }
 
-        songSearch.addEventListener("input", (e) => {
-            const val = e.target.value.toLowerCase();
-            const items = optionsList.getElementsByTagName("li");
-            Array.from(items).forEach(li => {
-                li.style.display = li.innerText.toLowerCase().includes(val) ? "flex" : "none";
-            });
-        });
-
-        audio.addEventListener("timeupdate", () => {
-            let curMin = Math.floor(audio.currentTime / 60);
-            let curSec = Math.floor(audio.currentTime % 60);
-            document.getElementById("tCur").innerText = `${curMin}:${curSec < 10 ? '0' : ''}${curSec}`;
-
-            if (audio.duration && !isNaN(audio.duration) && audio.duration !== Infinity) {
-                const percent = (audio.currentTime / audio.duration) * 100;
-                document.getElementById("seek-bar").value = percent;
-                document.getElementById("seek-bar").style.setProperty('--progress', `${percent}%`);
-                
-                let durMin = Math.floor(audio.duration / 60);
-                let durSec = Math.floor(audio.duration % 60);
-                document.getElementById("tDur").innerText = `${durMin}:${durSec < 10 ? '0' : ''}${durSec}`;
-            } else {
-                document.getElementById("tDur").innerText = "0:00";
+        audio.ontimeupdate = () => {
+            if (audio.duration && !isNaN(audio.duration)) {
+                document.getElementById("seek-bar").value = (audio.currentTime / audio.duration) * 100;
+                document.getElementById("seek-bar").style.backgroundSize = (audio.currentTime / audio.duration) * 100 + "% 100%";
             }
-        });
-
-        document.getElementById("seek-bar").addEventListener("input", (e) => {
-            if (audio.duration && !isNaN(audio.duration) && audio.duration !== Infinity) {
-                audio.currentTime = (e.target.value / 100) * audio.duration;
-            }
-        });
+        };
     </script>
 </body>
 </html>
