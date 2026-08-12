@@ -13,11 +13,11 @@
     </script>
 
     <!-- ==========================================
-         🌟 CUTE & LUXURY FONT (QUICKSAND) 🌟
+         🌟 PREMIUM FONTS (CINZEL FOR LOGO, QUICKSAND FOR APP) 🌟
          ========================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <title>Beat Box X | Premium Cloud Music Player</title>
     <meta name="theme-color" content="#D4AF37">
@@ -39,41 +39,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end; /* 🌟 PC Ma Niche Ni Side 🌟 */
             overflow-x: hidden;
             color: #fff;
             padding: 20px;
+            padding-bottom: 40px; /* Niche thi space */
         }
 
         @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* 🌟 MAIN TITLE 🌟 */
+        /* 🌟 MAIN TITLE (PC MA TOP LEFT & NAVO LUXURY FONT) 🌟 */
         .app-title {
-            font-size: 26px;
+            position: fixed;
+            top: 30px;
+            left: 45px;
+            font-family: 'Cinzel', serif; /* VIP Font */
+            font-size: 32px;
             font-weight: 700;
-            color: rgba(212, 175, 55, 0.7);
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-            margin-bottom: 30px;
-            text-align: center;
-            width: 100%;
+            color: rgba(212, 175, 55, 0.9);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            margin: 0;
+            z-index: 100;
         }
 
-        /* 🌟 DESKTOP PLAYER LAYOUT 🌟 */
+        /* 🌟 DESKTOP PLAYER LAYOUT (Small & Sleek Bottom Bar) 🌟 */
         .ios-glass {
-            background: rgba(20, 20, 25, 0.75);
+            background: rgba(20, 20, 25, 0.85);
             backdrop-filter: blur(40px) saturate(180%);
             -webkit-backdrop-filter: blur(40px) saturate(180%);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -83,18 +79,19 @@
 
         .player {
             width: 100%;
-            max-width: 950px;
-            padding: 25px 35px;
+            max-width: 800px; /* Sleek Size for PC */
+            padding: 15px 30px;
             border-radius: 40px;
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
             z-index: 10;
+            transition: all 0.4s;
         }
 
         .disc {
-            width: 90px;
-            height: 90px;
+            width: 65px; /* Small Album Art for PC */
+            height: 65px;
             border-radius: 50%;
             position: relative;
             flex-shrink: 0;
@@ -104,32 +101,17 @@
             overflow: hidden;
         }
 
-        .disc__art {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        .disc__art { width: 100%; height: 100%; object-fit: cover; }
         .disc__hub {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 18px;
-            height: 18px;
-            background: #fff;
-            border-radius: 50%;
+            width: 14px; height: 14px;
+            background: #fff; border-radius: 50%;
         }
 
-        .player.playing .disc {
-            animation-play-state: running;
-        }
+        .player.playing .disc { animation-play-state: running; }
 
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
         .meta {
             flex-grow: 1;
@@ -140,9 +122,9 @@
         }
 
         .meta__title {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             color: #fff;
             white-space: nowrap;
             overflow: hidden;
@@ -150,9 +132,9 @@
         }
 
         .meta__artist {
-            font-size: 14px;
+            font-size: 12px;
             color: #b3b3b3;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
@@ -160,38 +142,27 @@
         }
 
         .meta__quote {
-            font-size: 12px;
+            font-size: 11px;
             color: #D4AF37;
             font-style: italic;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             opacity: 0.9;
-        }
-
-        .seek-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .time {
-            font-size: 13px;
-            color: #aaa;
             white-space: nowrap;
-            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
+        .seek-container { display: flex; align-items: center; gap: 12px; width: 100%; }
+        .time { font-size: 12px; color: #aaa; white-space: nowrap; font-weight: 600; }
 
         input[type="range"] {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            width: 100%;
-            height: 6px;
+            width: 100%; height: 5px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            outline: none;
-            cursor: pointer;
+            border-radius: 5px; outline: none; cursor: pointer;
             --progress: 0%;
             background-image: linear-gradient(#D4AF37, #FFD700);
             background-size: var(--progress) 100%;
@@ -202,340 +173,165 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            background: #fff;
+            height: 12px; width: 12px;
+            border-radius: 50%; background: #fff;
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
         }
 
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-shrink: 0;
-        }
-
+        .controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-left: 10px; }
+        
         .btn {
-            background: transparent;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            opacity: 0.7;
-            padding: 6px;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: transparent; color: #fff; border: none; cursor: pointer;
+            opacity: 0.7; padding: 6px; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        .btn:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .btn.is-on {
-            color: #D4AF37;
-            opacity: 1;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
+        .btn:hover { opacity: 1; transform: scale(1.1); }
+        .btn.is-on { color: #D4AF37; opacity: 1; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+        
         .btn--play {
             background: linear-gradient(135deg, #D4AF37, #B8860B);
             border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            opacity: 1;
-            color: #000;
+            width: 50px; height: 50px;
+            opacity: 1; color: #000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             margin: 0 5px;
         }
 
-        .spinner {
-            animation: rotate 2s linear infinite;
-            width: 26px;
-            height: 26px;
-        }
+        .spinner { animation: rotate 2s linear infinite; width: 24px; height: 24px; }
 
         /* 🌟 VOLUME 200% POPUP 🌟 */
-        .volume-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        .volume-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
         .vol-popup {
-            position: absolute;
-            bottom: 65px;
-            left: 50%;
-            border-radius: 20px;
-            padding: 15px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
+            position: absolute; bottom: 65px; left: 50%;
+            border-radius: 20px; padding: 15px 10px;
+            display: flex; flex-direction: column; align-items: center;
+            opacity: 0; visibility: hidden;
             transform: translateX(-50%) translateY(15px) scale(0.9);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 100;
             background: rgba(20, 20, 25, 0.95);
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
-
-        .vol-popup.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0) scale(1);
-        }
-
-        .vol-percentage {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 12px;
-            color: #D4AF37;
-        }
-
-        .vol-slider-wrap {
-            height: 100px;
-            width: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        input[type="range"]#volume-bar {
-            width: 100px;
-            height: 5px;
-            transform: rotate(-90deg);
-            background-image: linear-gradient(#D4AF37, #D4AF37);
-        }
+        .vol-popup.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1); }
+        .vol-percentage { font-size: 12px; font-weight: bold; margin-bottom: 12px; color: #D4AF37; }
+        .vol-slider-wrap { height: 100px; width: 30px; display: flex; justify-content: center; align-items: center; }
+        input[type="range"]#volume-bar { width: 100px; height: 5px; transform: rotate(-90deg); background-image: linear-gradient(#D4AF37, #D4AF37); }
 
         /* 🌟 MODAL (PLAYLIST & SEARCH) 🌟 */
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s;
         }
-
-        .modal.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .modal.open { opacity: 1; visibility: visible; }
         .modal-content {
             background: rgba(20, 20, 25, 0.95);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 24px;
-            width: 92%;
-            max-width: 450px;
-            padding: 25px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border-radius: 24px; width: 92%; max-width: 450px;
+            padding: 25px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
-
         .search-bar {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
+            width: 100%; padding: 14px 16px; border-radius: 12px;
             border: 1px solid rgba(212, 175, 55, 0.4);
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            margin-bottom: 15px;
-            outline: none;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 15px;
+            background: rgba(0, 0, 0, 0.6); color: #fff;
+            margin-bottom: 15px; outline: none;
+            font-family: 'Quicksand', sans-serif; font-size: 15px;
             transition: 0.3s;
         }
-
-        .search-bar:focus {
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .options {
-            list-style: none;
-            max-height: 50vh;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-
-        .options::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .options::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 10px;
-        }
-
+        .search-bar:focus { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+        .options { list-style: none; max-height: 50vh; overflow-y: auto; padding-right: 5px; }
+        .options::-webkit-scrollbar { width: 5px; }
+        .options::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
         .options li {
-            padding: 12px;
-            border-radius: 12px;
+            padding: 12px; border-radius: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 5px;
-            transition: 0.2s;
+            cursor: pointer; display: flex; align-items: center;
+            gap: 15px; margin-bottom: 5px; transition: 0.2s;
         }
-
-        .options li:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
-
+        .options li:hover { background: rgba(212, 175, 55, 0.1); }
         .options li img {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            width: 45px; height: 45px; border-radius: 8px;
+            object-fit: cover; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
-
-        .options li div {
-            display: flex;
-            flex-direction: column;
-        }
-
+        .options li div { display: flex; flex-direction: column; }
         .options li span.s-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 14px; font-weight: 700; color: #fff;
+            display: -webkit-box; -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical; overflow: hidden;
         }
-
-        .options li span.s-artist {
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 3px;
-        }
+        .options li span.s-artist { font-size: 12px; color: #aaa; margin-top: 3px; }
 
         /* ==========================================
            📱 MOBILE RESPONSIVE UI FIX (MAX-WIDTH: 800px) 📱
            ========================================== */
         @media (max-width: 800px) {
+            body {
+                justify-content: center; /* 🌟 Mobile Ma Barabar Vachhe (Center) 🌟 */
+                padding-bottom: 20px;
+            }
 
-            /* Keep header on screen */
+            /* Title centered for mobile */
             .app-title {
-                font-size: 22px;
-                margin-bottom: 20px;
+                position: absolute;
+                top: 25px; left: 0;
+                width: 100%; text-align: center;
+                font-size: 24px; letter-spacing: 3px;
             }
 
             .player {
                 flex-direction: column;
-                width: 100%;
-                max-width: 400px;
+                width: 100%; max-width: 380px;
                 padding: 30px 20px;
                 border-radius: 35px;
-                gap: 20px;
-                text-align: center;
+                gap: 20px; text-align: center;
+                margin-top: 20px;
             }
 
             /* Big Center Album Art for Mobile */
             .disc {
-                width: 200px;
-                height: 200px;
-                border-radius: 20px;
-                margin: 0 auto;
+                width: 200px; height: 200px;
+                border-radius: 20px; margin: 0 auto;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-                animation: none !important;
-                /* Stop spinning on mobile for clean look */
+                animation: none !important; /* Stop spinning on mobile for clean look */
             }
 
-            .disc__art {
-                border-radius: 18px;
-            }
+            .disc__art { border-radius: 18px; }
+            .disc__hub { display: none; }
 
-            .disc__hub {
-                display: none;
-            }
-
-            .meta {
-                width: 100%;
-                align-items: center;
-            }
-
+            .meta { width: 100%; align-items: center; }
             .meta__title {
-                font-size: 22px;
-                white-space: normal;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
+                font-size: 22px; white-space: normal;
+                display: -webkit-box; -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical; overflow: hidden;
                 margin-bottom: 5px;
             }
-
-            .meta__artist {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
-
-            .meta__quote {
-                font-size: 13px;
-                margin-bottom: 18px;
-            }
+            .meta__artist { font-size: 14px; margin-bottom: 10px; }
+            .meta__quote { font-size: 13px; margin-bottom: 18px; }
 
             /* Seekbar & Time */
-            .seek-container {
-                flex-direction: column;
-                gap: 8px;
-                width: 100%;
-            }
+            .seek-container { flex-direction: column; gap: 8px; width: 100%; }
+            .time { display: flex; justify-content: space-between; width: 100%; font-size: 13px; }
 
-            .time {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                font-size: 13px;
-            }
-
-            /* Spread out ALL controls evenly on mobile */
+            /* 🌟 Spread out ALL controls evenly on mobile 🌟 */
             .controls {
                 width: 100%;
                 justify-content: space-between;
-                margin: 0;
-                padding-top: 10px;
+                margin: 0; padding-top: 10px;
             }
 
-            .btn svg {
-                width: 24px;
-                height: 24px;
-            }
+            .btn svg { width: 24px; height: 24px; }
+            .btn--play { width: 60px; height: 60px; }
+            .btn--play svg { width: 28px; height: 28px; }
 
-            .btn--play {
-                width: 60px;
-                height: 60px;
-            }
-
-            .btn--play svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .vol-popup {
-                bottom: 85px;
-                transform: translateX(-50%) scale(0.9);
-            }
+            .vol-popup { bottom: 85px; transform: translateX(-50%) scale(0.9); }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- 🌟 TITLE ALWAYS VISIBLE 🌟 -->
+    <!-- 🌟 TITLE -->
     <h1 class="app-title">BEAT BOX X</h1>
 
     <section class="player ios-glass" id="player">
@@ -560,57 +356,43 @@
         <!-- 🌟 ALL CONTROLS RESTORED 🌟 -->
         <div class="controls">
             <!-- Shuffle -->
-            <button id="shuffle" class="btn" aria-label="Shuffle"><svg viewBox="0 0 24 24" width="22" height="22"
-                    fill="currentColor">
-                    <path
-                        d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
-                </svg></button>
+            <button id="shuffle" class="btn" aria-label="Shuffle"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+            </svg></button>
 
             <!-- Previous -->
-            <button id="prev" class="btn" aria-label="Previous"><svg viewBox="0 0 24 24" width="26" height="26"
-                    fill="currentColor">
-                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
-                </svg></button>
+            <button id="prev" class="btn" aria-label="Previous"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+            </svg></button>
 
             <!-- Play / Pause / Loader -->
             <button id="play" class="btn btn--play" aria-label="Play/Pause">
-                <svg id="i-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                    <path d="M8 5v14l11-7z"></path>
-                </svg>
-                <svg id="i-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none;">
-                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
-                </svg>
-                <svg id="i-loader" class="spinner" viewBox="0 0 50 50" style="display:none;">
-                    <circle cx="25" cy="25" r="20" fill="none" stroke="#000" stroke-width="4"></circle>
-                </svg>
+                <svg id="i-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+                <svg id="i-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"></path></svg>
+                <svg id="i-loader" class="spinner" viewBox="0 0 50 50" style="display:none;"><circle cx="25" cy="25" r="20" fill="none" stroke="#000" stroke-width="4"></circle></svg>
             </button>
 
             <!-- Next -->
-            <button id="next" class="btn" aria-label="Next Track"><svg viewBox="0 0 24 24" width="26" height="26"
-                    fill="currentColor">
-                    <path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"></path>
-                </svg></button>
+            <button id="next" class="btn" aria-label="Next Track"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                <path d="M16 6h2v12h-2zm-2 6L5.5 6v12z"></path>
+            </svg></button>
 
             <!-- Playlist -->
-            <button id="listBtn" class="btn" aria-label="Open Playlist"><svg viewBox="0 0 24 24" width="24" height="24"
-                    fill="currentColor">
-                    <path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3z"></path>
-                </svg></button>
+            <button id="listBtn" class="btn" aria-label="Open Playlist"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3z"></path>
+            </svg></button>
 
             <!-- Volume 200% -->
             <div class="volume-wrapper">
                 <div class="vol-popup" id="vol-popup">
                     <span id="vol-percent-text" class="vol-percentage">100%</span>
-                    <div class="vol-slider-wrap"><input type="range" id="volume-bar" min="0" max="2" step="0.02"
-                            value="1"></div>
+                    <div class="vol-slider-wrap"><input type="range" id="volume-bar" min="0" max="2" step="0.02" value="1"></div>
                 </div>
                 <button id="mute-btn" class="btn" aria-label="Volume controls">
                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                         <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
                         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
-                        <path
-                            d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
-                        </path>
+                        <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
                     </svg>
                 </button>
             </div>
@@ -624,8 +406,7 @@
             <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search songs, artists...">
             <ul class="options" id="options-list"></ul>
             <button id="close-modal"
-                style="width: 100%; padding: 12px; margin-top: 15px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; color: #000; font-family: 'Quicksand', sans-serif; font-size: 15px;">Close
-                Playlist</button>
+                style="width: 100%; padding: 12px; margin-top: 15px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; color: #000; font-family: 'Quicksand', sans-serif; font-size: 15px;">Close Playlist</button>
         </div>
     </div>
 
