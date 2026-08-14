@@ -1,51 +1,50 @@
-# 🌾 AgricastAI: Enterprise Agritech Intelligence & Price Forecasting Platform
+# 🎵 Beat Box X — Premium Cloud Music Player & 3D Audio Experience
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github)
-![Python Version](https://img.shields.io/badge/python-3.11%2B-blue?style=for-the-badge&logo=python)
-![Django Version](https://img.shields.io/badge/django-5.0-092E20?style=for-the-badge&logo=django)
-![React Version](https://img.shields.io/badge/react-18.2-61DAFB?style=for-the-badge&logo=react)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=vercel)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-gold?style=for-the-badge)
 
-> **Predictive Agricultural Intelligence Engine & Market Telemetry Platform for Indian Farmers & Supply Chains.**
+> **A futuristic, ad-free, high-performance web music player with interactive 3D WebGL background animations, native mobile ergonomics, and cloud playlist sync.**
+
+🌐 **Live Demo**: [https://beat-box-x.vercel.app/](https://beat-box-x.vercel.app/)
 
 ---
 
 ## 📌 Executive Overview
 
-**AgricastAI** is an enterprise-grade Agritech forecasting and intelligence platform engineered to bridge the critical information gap in Indian agricultural supply chains. By synthesizing high-frequency mandi price data, real-time localized weather telemetry, and minimum support price (MSP) metrics, AgricastAI delivers actionable price trend forecasts and crop market risk indicators.
+**Beat Box X** is a modern, web-based cloud music player engineered for seamless audio playback across mobile and desktop devices. Built with performance, privacy, and visual elegance in mind, Beat Box X combines an iOS-inspired glassmorphism UI with low-latency WebGL graphics, native mobile app touch ergonomics, and instant cloud dataset synchronization.
 
-### Key Pain Points Solved
-* **Asymmetric Mandi Pricing**: Equips farmers with real-time APMC Mandi commodity rates extracted via automated scrapers.
-* **Weather-Induced Price Shock**: Quantifies climate severity (heatwaves, unexpected rainfall, frost) into a weighted `weather_impact_score`.
-* **Sub-Optimal Harvesting Timelines**: Predicts target prices and price movement directions (Bullish / Bearish / Neutral) over 7-to-30 day horizons using a 10-feature GBDT model.
+### Key Highlights
+* **Zero-Ad Listening**: Streamlined playback without disruptive popups or audio ads.
+* **Native App UX on Mobile**: Bottom navigation bar, sticky top bar, 48x48px touch targets, and native sliding bottom sheet modals.
+* **Immersive 3D Graphics**: Asynchronously loaded Three.js particle cloud and dynamic wave mesh reacting softly to user touch and mouse movements.
+* **Volume 200% Booster**: Integrated volume controller offering precise gain adjustments.
+* **Lock-Screen Controls**: Full integration with the browser's `MediaSession` API for seamless background audio control on iOS and Android.
 
 ---
 
 ## 🏗 System Architecture
 
-AgricastAI follows a decoupled, resilient architecture engineered for high availability and fault tolerance in outdoor, low-bandwidth environments.
+Beat Box X follows an unbundled, lightweight client-side architecture that minimizes initial bundle overhead while maintaining high GPU efficiency.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           REACT / VITE FRONTEND                                 │
-│  - Native Mobile App Layout (Fixed Bottom Nav, 48px Touch Targets, Safe Areas)  │
-│  - High-Contrast Outdoor Sunlight Mode & Skeleton Shimmer Loaders                │
-│  - Interactive AgriChatbot Floating Widget                                     │
-└────────────────────────────────────────┬────────────────────────────────────────┘
-                                         │ HTTPS / REST JSON
-                                         ▼
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                            DJANGO REST BACKEND                                  │
-│  - API Router & Request Sanitization                                            │
-│  - In-Memory Cache (Redis) & Telemetry Controller                               │
+│                           BEAT BOX X FRONTEND UI                                │
+│  - Sticky Top App Bar & Fixed Bottom Navigation Bar                             │
+│  - Main Content Area (100dvh, overflow-y: auto, overscroll-behavior: none)      │
+│  - Safe Area Inset Handling (env(safe-area-inset-bottom/top))                   │
 └───────────────────┬────────────────────┬────────────────────┬───────────────────┘
                     │                    │                    │
                     ▼                    ▼                    ▼
 ┌───────────────────────┐  ┌───────────────────────┐  ┌───────────────────────────┐
-│   WEATHER PIPELINE    │  │   LIVE SCRAPER ENGINE │  │    AI / ML INFERENCE      │
-│  - OpenWeather API    │  │  - BeautifulSoup /    │  │  - 10-Feature Scikit GBDT │
-│  - Climate Risk Score │  │    Yahoo Finance      │  │  - Hot-Reload .joblib     │
-│    (Heatwave/Frost)   │  │  - Rupee (₹) Regex    │  │  - Heuristic Math Fallback│
+│   3D WEBGL ENGINE     │  │   AUDIO & MEDIA CORE  │  │   CLOUD DATASET SYNC      │
+│  - Three.js (r128)    │  │  - HTML5 Audio API    │  │  - JSON Playlist Streamer │
+│  - Low-Poly Mesh Wave │  │  - MediaSession Metadata│ │  - Real-Time Search Filter│
+│  - Capped DPR (Max 2) │  │  - 200% Volume Boost  │  │  - Shayari/Quote Engine   │
+│  - Idle Lazy Loader   │  │  - Lock-Screen Handler│  │  - Zero CLS Skeletons     │
 └───────────────────────┘  └───────────────────────┘  └───────────────────────────┘
 ```
 
@@ -53,176 +52,101 @@ AgricastAI follows a decoupled, resilient architecture engineered for high avail
 
 ## ✨ Key Technical Features
 
-### 🌟 AI/ML Engine & Predictive Analytics
-* **10-Feature GBDT Pipeline**: Built with Scikit-Learn `HistGradientBoostingRegressor` and `HistGradientBoostingClassifier` trained on 100,000+ historical agricultural dataset samples.
-* **Engineered Domain Features**: Includes computed ratios such as `weather_impact_score` and `msp_difference_pct` (percentage divergence from government MSP).
-* **Hot-Reloadable Model Lifecycle**: Listens for `.joblib` binary updates and reloads weights in memory without restarting the production Django web worker processes.
-* **Mathematical Heuristic Fallback Engine**: If ML model inference fails due to missing features or memory constraints, execution gracefully degrades to a deterministic mathematical model based on moving averages and climate index multipliers.
+### 🎨 High-Performance 3D WebGL Background (`three-bg.js`)
+* **Asynchronous Deferral**: Loaded dynamically via `requestIdleCallback` after DOM layout completion to ensure unblocked main thread initialization.
+* **GPU & Battery Optimizations**: Capped `devicePixelRatio` at `Math.min(window.devicePixelRatio, 2)` to prevent hardware strain on retina displays.
+* **Interactive Parallax**: Smooth lerped rotation and tilt reacting to mouse position on desktop and touch drag on mobile.
+* **Memory Sanitation**: Complete `.dispose()` teardown routine for geometries, materials, and WebGL renderers during lifecycle cleanup.
 
-### ⚡ Data Engineering & Real-Time Scrapers
-* **OpenWeather Telemetry**: Computes environmental severity scores penalizing extreme heatwaves or frost conditions while boosting optimal crop growth conditions.
-* **Live Mandi Scraper**: Uses `BeautifulSoup4` and regex parsers to scrape and normalize APMC Mandi rates across Indian regional markets into clean float values.
+### 📱 Native Mobile App-Like Architecture
+* **Bottom Navigation Routing**: Bottom fixed tab navigation bar (`Player`, `Search`, `Playlist`) designed for single-thumb ergonomics.
+* **Touch Target Standard**: Enforces minimum `48x48px` touch bounds with active touch feedback (`:active` scale animations).
+* **Bottom Sheet Modals**: Converts playlist search overlays into native iOS/Android bottom sheets sliding up smoothly with a top drag indicator pill.
+* **Zero CLS Skeleton Loaders**: Structured CSS shimmer placeholders (`.skeleton-card`, `.skeleton-disc`) matching exact player bounds before track meta loads.
 
-### 📱 Mobile-First Native UI/UX
-* **App-Like Navigation**: Features sticky Top App Bar, fixed Bottom Navigation Bar, and independently scrollable content containers (`overflow-y: auto`, `height: 100dvh`).
-* **Ergonomics & Touch Feedback**: Enforces 48x48px minimum touch targets, zero tap highlight (`-webkit-tap-highlight-color: transparent`), and active touch scale effects.
-* **Outdoor Sunlight Mode**: High-contrast theme toggle designed specifically for high-glare field environments.
-* **Zero CLS Skeleton Loaders**: Layout-matched Skeleton shimmer loading states preventing layout shifts while data fetches asynchronously.
-* **AgriChatbot Widget**: Embedded conversational assistant offering real-time guidance on crop diseases, optimal fertilizers, and mandi prices.
+### 🎵 Advanced Audio & Telemetry Features
+* **MediaSession API Integration**: Exposes track title, artist, high-res album art, and hardware play/pause/next/prev controls to native mobile lock screens and smartwatch notifications.
+* **200% Volume Control**: Custom popover vertical slider supporting up to 2.0x gain expansion.
+* **Shuffle & Auto-Play**: Built-in state management for random track selection and uninterrupted continuous playback.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Category | Technology | Usage Description |
+| Category | Technology | Description |
 | :--- | :--- | :--- |
-| **Frontend** | React 18 / Vite | Single Page Application framework with modular component structure |
-| **Styling** | Vanilla CSS3 / CSS Modules | Safe area variables, mobile-first flex/grid, smooth keyframes |
-| **Backend** | Python 3.11 / Django 5.0 | High-performance REST API router and orchestration service |
-| **Machine Learning** | Scikit-Learn / Joblib / NumPy | 10-feature GBDT regression & classification pipelines |
-| **Data Pipelines** | BeautifulSoup4 / Requests | APMC Mandi web scraping & OpenWeather API integration |
-| **Icons & Fonts** | Google Fonts (Cinzel, Quicksand) | Typography tuned for readability and aesthetic precision |
+| **Core UI** | HTML5 / Vanilla JS (ES6+) | Lightweight, dependency-free application logic |
+| **Styling** | Vanilla CSS3 | Glassmorphism, CSS Custom Properties, Safe Area Insets |
+| **3D Graphics** | Three.js (r128) / WebGL | Custom particle system and animated low-poly wave grid |
+| **Fonts** | Google Fonts | `Cinzel` (Logo/Headers), `Quicksand` (App Body UI) |
+| **Analytics & Deployment** | Vercel / Speed Insights / GA4 | Cloud hosting, continuous integration, web vitals monitoring |
 
 ---
 
 ## 🚀 Local Setup & Installation
 
 ### Prerequisites
-* **Python**: `3.11` or higher
-* **Node.js**: `v18.0.0` or higher
-* **npm**: `v9.0.0` or higher
+To run Beat Box X locally, you only need a modern web browser or a local web server (e.g., Python `http.server`, VS Code Live Server, or `serve`).
 
-### 1. Backend Setup (Django)
-```bash
-# Clone repository
-git clone https://github.com/DhruvilThummar/AgricastAI.git
-cd AgricastAI/backend
+### Step-by-Step Instructions
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/DhruvilThummar/BeatBox-X.git
+   cd BeatBox-X
+   ```
 
-# Install Python dependencies
-pip install -r requirements.txt
+2. **Launch via Python Local Server**:
+   ```bash
+   python -m http.server 8000
+   ```
 
-# Create environment file
-cp .env.example .env
-
-# Run database migrations
-python manage.py migrate
-
-# Start Django development server
-python manage.py runserver 8000
-```
-
-### 2. Frontend Setup (React / Vite)
-```bash
-# Navigate to frontend directory
-cd ../frontend
-
-# Install dependencies
-npm install
-
-# Start Vite development server
-npm run dev
-```
-
-The application will be accessible at `http://localhost:5173`.
+3. **Open in Browser**:
+   Navigate to `http://localhost:8000` in your web browser.
 
 ---
 
-## 🔑 Environment Variables
+## 🔑 Environment & Vercel Configuration
 
-Create a `.env` file in the root of the backend folder using the format below:
+For Vercel deployment, the repository includes a pre-configured `vercel.json` file:
 
-```ini
-# ==========================================
-# 🌿 AGRICAST AI - ENVIRONMENT CONFIGURATION
-# ==========================================
-
-# Django Configuration
-DJANGO_SECRET_KEY=django-insecure-agricast-ai-super-secret-key-change-in-prod
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1,.vercel.app
-
-# External API Integrations
-OPENWEATHER_API_KEY=your_openweather_api_key_here
-MANDI_SCRAPER_TIMEOUT=10
-
-# ML Model Configuration
-MODEL_PATH=ml_models/crop_price_gbdt.joblib
-HOT_RELOAD_INTERVAL=60
-
-# CORS Configuration
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-```
-
----
-
-## 📡 API Reference
-
-### 1. Crop Price Prediction Endpoint
-`POST /api/predict/`
-
-**Request Payload**:
 ```json
 {
-  "crop_name": "Wheat",
-  "state": "Punjab",
-  "mandi_id": "APMC-AMRITSAR-01",
-  "rainfall_mm": 120.5,
-  "temp_celsius": 31.2,
-  "current_mandi_price": 2250.00,
-  "msp_price": 2125.00
-}
-```
-
-**Response**:
-```json
-{
-  "status": "success",
-  "crop": "Wheat",
-  "predicted_target_price": 2380.50,
-  "price_trend": "BULLISH",
-  "confidence_score": 0.92,
-  "features_used": {
-    "weather_impact_score": 0.85,
-    "msp_difference_pct": 5.88
-  },
-  "inference_mode": "ML_MODEL_GBDT"
-}
-```
-
-### 2. Live Mandi Commodity Prices
-`GET /api/commodity-prices/?crop=Rice&state=Haryana`
-
-**Response**:
-```json
-{
-  "crop": "Rice",
-  "state": "Haryana",
-  "timestamp": "2026-08-14T17:48:22Z",
-  "prices": [
-    { "mandi": "Karnal", "min_price": 3100, "max_price": 3450, "modal_price": 3300 },
-    { "mandi": "Kurukshetra", "min_price": 3050, "max_price": 3400, "modal_price": 3250 }
+  "version": 2,
+  "name": "beat-box-x",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400" }
+      ]
+    }
   ]
 }
 ```
 
-### 3. AgriChatbot Query Endpoint
-`POST /api/chatbot/`
+---
 
-**Request Payload**:
+## 📁 Data Schema (`playlist.json`)
+
+The playlist data pipeline consumes a clean JSON array structure located at `playlist.json`:
+
 ```json
-{
-  "message": "What is the best harvesting time for Mustard in Rajasthan during dry spells?"
-}
+[
+  {
+    "title": "Kesariya",
+    "artist": "Arijit Singh",
+    "src": "https://example.com/audio/kesariya.mp3",
+    "cover": "https://images.unsplash.com/photo-1614149162883-504ce4d13909?w=500&q=80"
+  }
+]
 ```
 
 ---
 
-## 🛡 License & Acknowledgments
+## 🛡 License & Author
 
-This project is open-source under the **MIT License**.
+This project is licensed under the **MIT License**.
 
-Designed and developed with ❤️ for the Indian agricultural ecosystem by **Dhruvil Thummar** & the AgricastAI Engineering Team.
+Designed & Developed with ❤️ by **[Dhruvil Thummar](https://github.com/DhruvilThummar)**.
