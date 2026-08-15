@@ -1432,6 +1432,7 @@
                 let durMin = Math.floor(audio.duration / 60);
                 let durSec = Math.floor(audio.duration % 60);
                 document.getElementById("tDur").innerText = `${durMin}:${durSec < 10 ? '0' : ''}${durSec}`;
+                updatePositionState();
             } else {
                 document.getElementById("tDur").innerText = "0:00";
             }
