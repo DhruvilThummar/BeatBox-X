@@ -1,0 +1,13 @@
+# Vercel Deployment Ignore List
+.git
+.github
+downloader.py
+temp/
+*.py
+*.pyc
+__pycache__/
+venv/
+.env
+secret.json
+keys.txt
+README.md

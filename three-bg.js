@@ -1,21 +1,24 @@
 /**
- * High-Performance Responsive 3D Background Component
- * Tech Stack: Plain HTML / JS / Three.js
- * Visual Style: Floating Glowing Abstract Particles & Undulating Low-Poly Grid
+ * Premium 3D Background Component for Beat Box X
+ * Tech Stack: Plain HTML / JS / Three.js (WebGL)
+ * Visual Style: Glowing Soft Bokeh Particles, Floating 3D Geometric Nodes & Undulating Wave Grid
  * 
  * Features:
- * - 100vw / 100dvh full viewport coverage
- * - Capped DevicePixelRatio (Max 2) for retina screen performance & battery saving
- * - Smooth lerped mouse & touch parallax interactivity
- * - Full memory cleanup & object disposal method
+ * - High-Performance 100vw / 100dvh full viewport coverage
+ * - Soft canvas-generated radial gradient bokeh textures (no square pixels)
+ * - Floating 3D geometric objects (Torus & Icosahedron with golden glow)
+ * - Multi-harmonic liquid wave terrain
+ * - Capped DevicePixelRatio (Max 2) for retina screens & smooth 60fps
+ * - Mouse tilt & touch parallax interactivity with smooth lerp damping
+ * - Full memory cleanup & object disposal
  */
 
 class ThreeBackground {
   constructor(options = {}) {
     this.container = options.container || document.body;
-    this.primaryColor = options.primaryColor || 0xD4AF37; // Gold accent
-    this.secondaryColor = options.secondaryColor || 0x4a3b10;
-    this.particleCount = options.particleCount || 1200;
+    this.primaryColor = options.primaryColor || 0xD4AF37; // Rich Gold
+    this.secondaryColor = options.secondaryColor || 0x4a3b10; // Dark Amber
+    this.particleCount = options.particleCount || 1000;
 
     this.mouseX = 0;
     this.mouseY = 0;
@@ -25,14 +28,36 @@ class ThreeBackground {
     this.init();
   }
 
+  // Create soft radial glow texture for circular bokeh particles
+  createParticleTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+
+    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gradient.addColorStop(0, 'rgba(255, 230, 150, 1.0)');
+    gradient.addColorStop(0.3, 'rgba(212, 175, 55, 0.8)');
+    gradient.addColorStop(0.7, 'rgba(180, 130, 30, 0.3)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 64, 64);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true;
+    return texture;
+  }
+
   init() {
     // 1. Scene Setup
     this.scene = new THREE.Scene();
+    this.scene.fog = new THREE.FogExp2(0x0a0a0c, 0.015);
 
     // 2. Camera Setup
     const aspect = window.innerWidth / window.innerHeight;
     this.camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
-    this.camera.position.set(0, 0, 30);
+    this.camera.position.set(0, 5, 32);
 
     // 3. Renderer Setup
     this.renderer = new THREE.WebGLRenderer({
@@ -60,10 +85,20 @@ class ThreeBackground {
     this.container.appendChild(this.canvas);
 
     // 4. Create 3D Objects
+    this.particleTexture = this.createParticleTexture();
     this.createParticles();
+    this.createFloatingGeometries();
     this.createWaveGrid();
 
-    // 5. Event Listeners
+    // 5. Ambient Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    this.scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(this.primaryColor, 2, 100);
+    pointLight.position.set(0, 10, 10);
+    this.scene.add(pointLight);
+
+    // 6. Event Listeners
     this.handleResize = this.onWindowResize.bind(this);
     this.handleMouseMove = this.onMouseMove.bind(this);
     this.handleTouchMove = this.onTouchMove.bind(this);
@@ -73,7 +108,7 @@ class ThreeBackground {
     window.addEventListener('mousemove', this.handleMouseMove, { passive: true });
     window.addEventListener('touchmove', this.handleTouchMove, { passive: true });
 
-    // 6. Start Loop
+    // 7. Start Loop
     this.clock = new THREE.Clock();
     this.animate();
   }
@@ -84,20 +119,21 @@ class ThreeBackground {
     const scales = new Float32Array(this.particleCount);
 
     for (let i = 0; i < this.particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
-      scales[i] = Math.random() * 1.5 + 0.5;
+      positions[i * 3] = (Math.random() - 0.5) * 90;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 70;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+      scales[i] = Math.random() * 1.8 + 0.6;
     }
 
     this.particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    // Custom Soft Particle Material
+    // Custom Glowing Particle Material with Soft Canvas Texture
     this.particleMaterial = new THREE.PointsMaterial({
       color: this.primaryColor,
-      size: 0.35,
+      size: 1.2,
+      map: this.particleTexture,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
       depthWrite: false
     });
@@ -106,23 +142,57 @@ class ThreeBackground {
     this.scene.add(this.particles);
   }
 
+  createFloatingGeometries() {
+    this.floatingObjects = [];
+
+    // Floating Torus (Gold Glowing Ring)
+    const torusGeo = new THREE.TorusGeometry(6, 0.4, 16, 100);
+    const torusMat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      wireframe: true,
+      emissive: 0x4a3b10,
+      roughness: 0.3,
+      metalness: 0.8,
+      transparent: true,
+      opacity: 0.45
+    });
+    this.torusMesh = new THREE.Mesh(torusGeo, torusMat);
+    this.torusMesh.position.set(-18, 4, -10);
+    this.scene.add(this.torusMesh);
+    this.floatingObjects.push({ mesh: this.torusMesh, rotX: 0.008, rotY: 0.012, floatSpeed: 1.2 });
+
+    // Floating Icosahedron
+    const icoGeo = new THREE.IcosahedronGeometry(4, 1);
+    const icoMat = new THREE.MeshStandardMaterial({
+      color: 0xFFD700,
+      wireframe: true,
+      emissive: 0x664d03,
+      transparent: true,
+      opacity: 0.35
+    });
+    this.icoMesh = new THREE.Mesh(icoGeo, icoMat);
+    this.icoMesh.position.set(20, 8, -12);
+    this.scene.add(this.icoMesh);
+    this.floatingObjects.push({ mesh: this.icoMesh, rotX: -0.01, rotY: 0.007, floatSpeed: 0.9 });
+  }
+
   createWaveGrid() {
-    const width = 80;
-    const height = 80;
-    const segments = 40;
+    const width = 100;
+    const height = 100;
+    const segments = 50;
 
     this.gridGeometry = new THREE.PlaneGeometry(width, height, segments, segments);
     this.gridMaterial = new THREE.MeshBasicMaterial({
       color: this.secondaryColor,
       wireframe: true,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.22,
       blending: THREE.AdditiveBlending
     });
 
     this.gridMesh = new THREE.Mesh(this.gridGeometry, this.gridMaterial);
-    this.gridMesh.rotation.x = -Math.PI / 2.5;
-    this.gridMesh.position.y = -12;
+    this.gridMesh.rotation.x = -Math.PI / 2.3;
+    this.gridMesh.position.y = -10;
     this.scene.add(this.gridMesh);
   }
 
@@ -131,31 +201,42 @@ class ThreeBackground {
 
     const elapsedTime = this.clock.getElapsedTime();
 
-    // Subtle Particle Drift & Rotation
+    // 1. Smooth Particle Drift & Rotation
     if (this.particles) {
-      this.particles.rotation.y = elapsedTime * 0.03;
-      this.particles.rotation.x = elapsedTime * 0.015;
+      this.particles.rotation.y = elapsedTime * 0.025;
+      this.particles.rotation.x = Math.sin(elapsedTime * 0.015) * 0.05;
     }
 
-    // Undulating Wave Grid Animation
+    // 2. Floating Geometries Animation
+    if (this.floatingObjects) {
+      this.floatingObjects.forEach((obj, idx) => {
+        obj.mesh.rotation.x += obj.rotX;
+        obj.mesh.rotation.y += obj.rotY;
+        obj.mesh.position.y += Math.sin(elapsedTime * obj.floatSpeed + idx) * 0.02;
+      });
+    }
+
+    // 3. Multi-Harmonic Wave Grid Animation
     if (this.gridGeometry) {
       const pos = this.gridGeometry.attributes.position;
       for (let i = 0; i < pos.count; i++) {
         const u = pos.getX(i);
         const v = pos.getY(i);
-        const z = Math.sin(u * 0.2 + elapsedTime * 1.5) * 0.8 + Math.cos(v * 0.2 + elapsedTime * 1.2) * 0.8;
+        const z = Math.sin(u * 0.18 + elapsedTime * 1.6) * 0.9 +
+                  Math.cos(v * 0.18 + elapsedTime * 1.3) * 0.9 +
+                  Math.sin((u + v) * 0.1 + elapsedTime * 2.0) * 0.4;
         pos.setZ(i, z);
       }
       pos.needsUpdate = true;
     }
 
-    // Smooth Lerp Mouse Parallax
-    this.mouseX += (this.targetMouseX - this.mouseX) * 0.05;
-    this.mouseY += (this.targetMouseY - this.mouseY) * 0.05;
+    // 4. Smooth Damped Mouse Parallax
+    this.mouseX += (this.targetMouseX - this.mouseX) * 0.04;
+    this.mouseY += (this.targetMouseY - this.mouseY) * 0.04;
 
-    this.camera.position.x = this.mouseX * 3;
-    this.camera.position.y = -this.mouseY * 3;
-    this.camera.lookAt(this.scene.position);
+    this.camera.position.x = this.mouseX * 4;
+    this.camera.position.y = 5 - (this.mouseY * 3);
+    this.camera.lookAt(0, 0, -5);
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -184,24 +265,21 @@ class ThreeBackground {
   }
 
   dispose() {
-    // 1. Stop animation loop
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
 
-    // 2. Remove event listeners
     window.removeEventListener('resize', this.handleResize);
     window.removeEventListener('orientationchange', this.handleResize);
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('touchmove', this.handleTouchMove);
 
-    // 3. Dispose Geometries and Materials
     if (this.particleGeometry) this.particleGeometry.dispose();
     if (this.particleMaterial) this.particleMaterial.dispose();
+    if (this.particleTexture) this.particleTexture.dispose();
     if (this.gridGeometry) this.gridGeometry.dispose();
     if (this.gridMaterial) this.gridMaterial.dispose();
 
-    // 4. Dispose Renderer & Canvas
     if (this.renderer) {
       this.renderer.dispose();
       if (this.canvas && this.canvas.parentNode) {
@@ -211,7 +289,6 @@ class ThreeBackground {
   }
 }
 
-// Global Export or Auto-Init
 if (typeof window !== 'undefined') {
   window.ThreeBackground = ThreeBackground;
 }

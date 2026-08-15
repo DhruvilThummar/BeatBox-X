@@ -1,0 +1,19 @@
+{
+  "name": "Beat Box X — Premium Cloud Music Player",
+  "short_name": "Beat Box X",
+  "description": "Futuristic ad-free cloud music player with 3D WebGL background and native controls.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0c",
+  "theme_color": "#D4AF37",
+  "categories": ["music", "entertainment", "utilities"],
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
