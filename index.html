@@ -207,6 +207,8 @@
             padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
             padding-left: max(16px, env(safe-area-inset-left, 0px));
             padding-right: max(16px, env(safe-area-inset-right, 0px));
+            position: relative;
+            z-index: 1;
         }
 
         /* 🌟 FIXED BOTTOM NAVIGATION BAR 🌟 */
@@ -1639,34 +1641,69 @@
         });
     </script>
 
-    <!-- 🌟 ASYNCHRONOUS LAZY LOADING OF HEAVY 3D BACKGROUND (UNBLOCK MAIN THREAD) 🌟 -->
+    <!-- 🌟 ASYNCHRONOUS LAZY LOADING OF HEAVY 3D BACKGROUND (MULTI-CDN FALLBACK & RELIABLE INIT) 🌟 -->
     <script>
         function load3DBackground() {
-            const threeScript = document.createElement('script');
-            threeScript.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-            threeScript.async = true;
-            threeScript.onload = () => {
-                const bgScript = document.createElement('script');
-                bgScript.src = "three-bg.js";
-                bgScript.async = true;
-                bgScript.onload = () => {
-                    if (window.ThreeBackground) {
-                        new window.ThreeBackground({
-                            primaryColor: 0xD4AF37,
-                            secondaryColor: 0x4a3b10,
-                            particleCount: 1000
-                        });
-                    }
+            if (window._threeBgInitialized) return;
+            window._threeBgInitialized = true;
+
+            if (window.ThreeBackground && window.THREE) {
+                try {
+                    new window.ThreeBackground({
+                        primaryColor: 0xD4AF37,
+                        secondaryColor: 0x4a3b10,
+                        particleCount: 1000
+                    });
+                } catch(e) { console.warn("3D Background Init Exception:", e); }
+                return;
+            }
+
+            const cdnUrls = [
+                "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+                "https://unpkg.com/three@0.128.0/build/three.min.js",
+                "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"
+            ];
+            let cdnIdx = 0;
+
+            function tryNextCDN() {
+                if (cdnIdx >= cdnUrls.length) {
+                    console.warn("All Three.js CDN sources failed to load.");
+                    return;
+                }
+                const threeScript = document.createElement('script');
+                threeScript.src = cdnUrls[cdnIdx];
+                threeScript.async = true;
+                threeScript.onload = () => {
+                    const bgScript = document.createElement('script');
+                    bgScript.src = "three-bg.js";
+                    bgScript.async = true;
+                    bgScript.onload = () => {
+                        if (window.ThreeBackground) {
+                            try {
+                                new window.ThreeBackground({
+                                    primaryColor: 0xD4AF37,
+                                    secondaryColor: 0x4a3b10,
+                                    particleCount: 1000
+                                });
+                            } catch(e) { console.warn("3D Background error:", e); }
+                        }
+                    };
+                    document.body.appendChild(bgScript);
                 };
-                document.body.appendChild(bgScript);
-            };
-            document.body.appendChild(threeScript);
+                threeScript.onerror = () => {
+                    cdnIdx++;
+                    tryNextCDN();
+                };
+                document.body.appendChild(threeScript);
+            }
+
+            tryNextCDN();
         }
 
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(load3DBackground, { timeout: 1500 });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', load3DBackground);
         } else {
-            window.addEventListener('load', () => setTimeout(load3DBackground, 200));
+            load3DBackground();
         }
 
         // 🌟 SERVICE WORKER REGISTRATION (PWA & OFFLINE SHELL CACHING) 🌟

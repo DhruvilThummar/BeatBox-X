@@ -50,39 +50,40 @@ class ThreeBackground {
   }
 
   init() {
-    // 1. Scene Setup
-    this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(0x0a0a0c, 0.015);
+    try {
+      // 1. Scene Setup
+      this.scene = new THREE.Scene();
+      this.scene.fog = new THREE.FogExp2(0x0a0a0c, 0.015);
 
-    // 2. Camera Setup
-    const aspect = window.innerWidth / window.innerHeight;
-    this.camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
-    this.camera.position.set(0, 5, 32);
+      // 2. Camera Setup
+      const aspect = window.innerWidth / window.innerHeight;
+      this.camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
+      this.camera.position.set(0, 5, 32);
 
-    // 3. Renderer Setup
-    this.renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance"
-    });
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      // 3. Renderer Setup
+      this.renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Style Canvas for Fixed Background Integration
-    this.canvas = this.renderer.domElement;
-    Object.assign(this.canvas.style, {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      width: '100vw',
-      height: '100dvh',
-      zIndex: '-1',
-      pointerEvents: 'auto',
-      outline: 'none',
-      border: 'none'
-    });
+      // Style Canvas for Fixed Background Integration (zIndex 0 floats above body BG, pointerEvents none prevents blocking UI)
+      this.canvas = this.renderer.domElement;
+      Object.assign(this.canvas.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100vw',
+        height: '100dvh',
+        zIndex: '0',
+        pointerEvents: 'none',
+        outline: 'none',
+        border: 'none'
+      });
 
-    this.container.appendChild(this.canvas);
+      this.container.appendChild(this.canvas);
 
     // 4. Create 3D Objects
     this.particleTexture = this.createParticleTexture();
@@ -111,6 +112,9 @@ class ThreeBackground {
     // 7. Start Loop
     this.clock = new THREE.Clock();
     this.animate();
+    } catch (err) {
+      console.warn("ThreeBackground WebGL initialization skipped or failed:", err);
+    }
   }
 
   createParticles() {
