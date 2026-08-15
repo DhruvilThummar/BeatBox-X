@@ -664,14 +664,14 @@
                 position: relative;
                 width: 92%;
                 max-width: 420px;
-                padding: 26px 20px;
-                border-radius: 36px;
+                padding: 20px 16px;
+                border-radius: 32px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                gap: 20px;
+                gap: 14px;
                 margin: auto;
                 box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.25);
             }
@@ -681,12 +681,12 @@
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                gap: 16px;
+                gap: 12px;
             }
 
             .disc {
-                width: 220px;
-                height: 220px;
+                width: clamp(160px, 42vw, 210px);
+                height: clamp(160px, 42vw, 210px);
                 border-radius: 50%;
                 position: relative;
                 flex-shrink: 0;
@@ -707,11 +707,11 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 26px;
-                height: 26px;
+                width: 22px;
+                height: 22px;
                 background: #fff;
                 border-radius: 50%;
-                border: 4px solid #000;
+                border: 3px solid #000;
             }
 
             .player.playing .disc {
@@ -733,27 +733,41 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
+                gap: 8px;
                 width: 100%;
+                max-width: 100%;
+                overflow: hidden;
             }
 
             .meta__title {
-                font-size: 18px;
+                font-size: 17px;
                 font-weight: 700;
                 color: #fff;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 80%;
             }
 
             .meta__artist {
                 font-size: 13px;
                 color: rgba(255, 255, 255, 0.7);
-                margin-top: 3px;
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 90%;
             }
 
             .meta__quote {
                 font-size: 11px;
                 color: #D4AF37;
                 font-style: italic;
-                margin-top: 6px;
+                margin-top: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 95%;
             }
 
             .player-center {
@@ -761,25 +775,123 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 18px;
+                gap: 14px;
             }
 
             .controls-main {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                gap: 14px;
+                justify-content: space-between;
+                gap: 6px;
                 width: 100%;
+                max-width: 100%;
+                flex-wrap: nowrap;
+            }
+
+            .controls-main .btn {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                min-height: 38px;
+                padding: 0;
+                flex-shrink: 0;
+            }
+
+            .controls-main .btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .controls-main .btn--play {
+                width: 52px;
+                height: 52px;
+                min-width: 52px;
+                min-height: 52px;
+                flex-shrink: 0;
+            }
+
+            .controls-main .btn--play svg {
+                width: 24px;
+                height: 24px;
             }
 
             .player-right {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 20px;
+                gap: 18px;
                 width: 100%;
                 border-top: 1px solid rgba(212, 175, 55, 0.18);
-                padding-top: 14px;
+                padding-top: 12px;
+            }
+
+            .player-right .btn {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                min-height: 40px;
+                padding: 0;
+            }
+        }
+
+        /* 🌟 SMALL MOBILE SCREENS (<= 380px) 🌟 */
+        @media (max-width: 380px) {
+            .player, .skeleton-card {
+                padding: 16px 10px;
+                gap: 10px;
+            }
+
+            .disc {
+                width: 150px;
+                height: 150px;
+            }
+
+            .controls-main {
+                gap: 3px;
+            }
+
+            .controls-main .btn {
+                width: 34px;
+                height: 34px;
+                min-width: 34px;
+                min-height: 34px;
+            }
+
+            .controls-main .btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .controls-main .btn--play {
+                width: 46px;
+                height: 46px;
+                min-width: 46px;
+                min-height: 46px;
+            }
+
+            .controls-main .btn--play svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .meta__title {
+                font-size: 15px;
+            }
+
+            .meta__artist {
+                font-size: 12px;
+            }
+
+            .player-right {
+                gap: 12px;
+                padding-top: 10px;
+            }
+
+            .player-right .btn {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+                min-height: 36px;
             }
         }
 
