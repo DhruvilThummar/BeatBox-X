@@ -1116,6 +1116,32 @@
     <header class="top-app-bar">
         <h1 class="app-title">BEAT BOX X</h1>
         <div class="top-bar-actions">
+            <!-- Sleep Timer -->
+            <button id="sleep-btn" class="btn btn--icon-only" aria-label="Sleep Timer" title="Sleep Timer" style="position:relative;">
+                <span id="sleep-badge" style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#D4AF37; color:#000; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-.76 1.08z"/>
+                </svg>
+            </button>
+
+            <!-- Equalizer -->
+            <button id="eq-btn" class="btn btn--icon-only" aria-label="Audio Equalizer" title="Equalizer">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"/>
+                </svg>
+            </button>
+
+            <!-- Offline Save Track -->
+            <button id="offline-btn" class="btn btn--icon-only" aria-label="Save Track Offline" title="Save Offline">
+                <svg id="icon-offline-download" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                </svg>
+                <svg id="icon-offline-saved" viewBox="0 0 24 24" width="20" height="20" fill="#FFD700" style="display:none;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </button>
+
+            <!-- Search Tracks -->
             <button id="top-search-btn" class="btn btn--icon-only" aria-label="Search Tracks" title="Search Tracks">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                     <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
@@ -1305,11 +1331,54 @@
                 <button class="tab-btn" id="tab-liked-songs">
                     ❤️ Liked Songs (<span id="cnt-liked">0</span>)
                 </button>
+                <button class="tab-btn" id="tab-recent-songs">
+                    📜 History
+                </button>
             </div>
             <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search songs, artists...">
             <ul class="options" id="options-list"></ul>
             <button id="close-modal"
                 style="width: 100%; padding: 14px; margin-top: 15px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 16px; font-weight: bold; cursor: pointer; color: #000; font-family: 'Quicksand', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">Close Playlist</button>
+        </div>
+    </div>
+
+    <!-- 🌟 SLEEP TIMER MODAL 🌟 -->
+    <div class="modal" id="sleep-modal">
+        <div class="modal-content ios-glass" style="max-width: 400px; text-align: center;">
+            <div class="sheet-handle"></div>
+            <h3 style="color: #D4AF37; margin-bottom: 15px; font-family: 'Cinzel', serif;">⏳ Sleep Timer</h3>
+            <div class="timer-options" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn-timer-opt" data-time="0">Turn Off Timer</button>
+                <button class="btn-timer-opt" data-time="15">15 Minutes</button>
+                <button class="btn-timer-opt" data-time="30">30 Minutes</button>
+                <button class="btn-timer-opt" data-time="45">45 Minutes</button>
+                <button class="btn-timer-opt" data-time="60">60 Minutes</button>
+            </div>
+            <button id="close-sleep-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 14px; color: #fff; font-weight: bold; cursor: pointer;">Close</button>
+        </div>
+    </div>
+
+    <!-- 🌟 EQUALIZER MODAL 🌟 -->
+    <div class="modal" id="eq-modal">
+        <div class="modal-content ios-glass" style="max-width: 460px; text-align: center;">
+            <div class="sheet-handle"></div>
+            <h3 style="color: #D4AF37; margin-bottom: 15px; font-family: 'Cinzel', serif;">🎚️ 5-Band Equalizer</h3>
+            <div class="eq-presets" style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px;">
+                <button class="eq-preset-btn active" data-preset="flat">Flat</button>
+                <button class="eq-preset-btn" data-preset="bass">Bass Boost</button>
+                <button class="eq-preset-btn" data-preset="vocal">Vocal Boost</button>
+                <button class="eq-preset-btn" data-preset="treble">Treble Boost</button>
+                <button class="eq-preset-btn" data-preset="rock">Rock</button>
+                <button class="eq-preset-btn" data-preset="pop">Pop</button>
+            </div>
+            <div class="eq-sliders" style="display: flex; justify-content: space-around; height: 140px; align-items: center;">
+                <div class="eq-band"><input type="range" class="eq-slider" id="eq-60" min="-12" max="12" value="0"><span>60Hz</span></div>
+                <div class="eq-band"><input type="range" class="eq-slider" id="eq-250" min="-12" max="12" value="0"><span>250Hz</span></div>
+                <div class="eq-band"><input type="range" class="eq-slider" id="eq-1k" min="-12" max="12" value="0"><span>1kHz</span></div>
+                <div class="eq-band"><input type="range" class="eq-slider" id="eq-4k" min="-12" max="12" value="0"><span>4kHz</span></div>
+                <div class="eq-band"><input type="range" class="eq-slider" id="eq-12k" min="-12" max="12" value="0"><span>12kHz</span></div>
+            </div>
+            <button id="close-eq-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 14px; color: #000; font-weight: bold; cursor: pointer;">Done</button>
         </div>
     </div>
 
@@ -1320,9 +1389,11 @@
         let repeatMode = 'off'; // 'off', 'all', 'one'
         let isLiked = false;
         let likedTracks = new Set(JSON.parse(localStorage.getItem("beatbox_liked") || "[]"));
+        let playedHistory = JSON.parse(localStorage.getItem("beatbox_history") || "[]");
+        let offlineTracks = new Set(JSON.parse(localStorage.getItem("beatbox_offline") || "[]"));
 
-        let currentViewMode = 'all'; // 'all' or 'liked' tab view in playlist modal
-        let currentQueueMode = 'all'; // 'all' or 'liked' active playback queue
+        let currentViewMode = 'all'; // 'all', 'liked', or 'recent'
+        let currentQueueMode = 'all'; // 'all', 'liked', or 'recent'
 
         const audio = document.getElementById("audio-player");
         const optionsList = document.getElementById("options-list");
@@ -1336,6 +1407,7 @@
         const muteBtn = document.getElementById("mute-btn");
         const volPopup = document.getElementById("vol-popup");
         const volumeBar = document.getElementById("volume-bar");
+        const offlineBtn = document.getElementById("offline-btn");
 
         const navPlayer = document.getElementById("nav-player");
         const navSearch = document.getElementById("nav-search");
@@ -1343,15 +1415,158 @@
 
         const tabAll = document.getElementById("tab-all-songs");
         const tabLiked = document.getElementById("tab-liked-songs");
+        const tabRecent = document.getElementById("tab-recent-songs");
+
+        const sleepBtn = document.getElementById("sleep-btn");
+        const sleepBadge = document.getElementById("sleep-badge");
+        const sleepModal = document.getElementById("sleep-modal");
+        const eqBtn = document.getElementById("eq-btn");
+        const eqModal = document.getElementById("eq-modal");
 
         const shayariList = [
+            // 🎶 MUSIC & CHILL VIBES
             "✨ कुछ धुनें कभी पुरानी नहीं होतीं, बस यादें ताज़ा कर देती हैं।",
             "🤎 लफ़्ज़ों की कमी को, संगीत अक्सर पूरा कर देता है।",
             "🎶 वो गीत ही क्या, जो दिल के तारों को न छुए।",
             "🌟 शोर भरी इस दुनिया में, संगीत ही मेरा सुकून है।",
             "🎵 हर गाने में एक चेहरा, और हर चेहरे में एक कहानी छिपी होती है।",
             "💫 कुछ बातें होंठों से नहीं, बस इयरफ़ोन से समझी जाती हैं।",
-            "✨ संगीत वो जादू है, जो बिना छुए दिल को सहला देता है।"
+            "✨ संगीत वो जादू है, जो बिना छुए दिल को सहला देता है।",
+            "🌙 रात, हल्की बारिश और पसंदीदा संगीत... जिंदगी और क्या चाहती है!",
+            "🎧 जब शब्द हार जाते हैं, तब संगीत बोलना शुरू करता है।",
+            "🌌 सुरों की इस महफ़िल में, हर धड़कन एक नया नगमा गाती है।",
+            "🍃 हेडफोन लगाओ, आंखें बंद करो और अपनी ही खूबसूरत दुनिया में खो जाओ।",
+            "🔥 बीट बॉक्स एक्स: जहाँ हर धड़कन को अपना नया सुर मिलता है।",
+            "🎸 कुछ गाने सिर्फ कान नहीं, सीधा रूह में उतर जाते हैं।",
+            "🔮 हर धुन में एक अहसास है, जो बयां न हो सके वो मिठास है।",
+            "🎶 संगीत हवा की तरह है, दिखता नहीं पर रूह को छू जाता है।",
+            "🎧 जब दिल में हलचल हो, तो ईयरफ़ोन ही सबसे सुकून भरा रास्ता है।",
+            "🌙 ढलती शाम, हल्की कॉफ़ी और धीमा म्यूज़िक... सुकून का सही पता!",
+            "✨ सुरों की लहरों में बहते जाओ, दुनिया की फिक्र छोड़ते जाओ।",
+            "💫 हर धुन के पीछे एक अनकही कहानी छुपी होती है।",
+            "🎸 गिटार की तारों से निकलती हर आवाज़ दिल के घाव भर देती है।",
+            "🎹 पियानो की हर की (Key) में ज़िन्दगी का एक नया रंग छुपा है।",
+
+            // ❤️ LOVE & ROMANCE (इश्क़ / प्रेम)
+            "❤️ तेरी आवाज़ में वो मिठास है, जो हर उदास शाम को हसीन बना दे।",
+            "🌹 दिल की धड़कन और गाने की बीट, जब दोनों मिल जाएं तो इश्क़ बनता है।",
+            "🕊️ संगीतमय शाम हो, और तेरी यादों का साथ हो... फिर हर दर्द मीठा लगता है।",
+            "🌈 हर सुर में तेरा ज़िक्र है, हर ताल में तेरी फ़िक्र है।",
+            "✨ जब से तुम मिले हो, ज़िंदगी के हर पल में एक नया महकता संगीत है।",
+            "💖 तुम और तुम्हारा पसंदीदा गाना... दोनों ही दिल के सबसे करीब हैं।",
+            "🌸 इश्क़ में कुछ भी कहो, वो पुराना रोमांटिक गाना हमेशा सच लगता है।",
+            "🎶 अल्फाज़ तो हर कोई समझ लेता है, जो खामोशी और संगीत समझे वही अपना है।",
+            "❤️ तेरी आँखों में जो सुकून है, वो किसी भी रोमांटिक गाने में नहीं।",
+            "🌹 हमारी मोहब्बत की धुन हमेशा हर दिल में गूंजेगी।",
+            "💖 जब तेरा हाथ मेरे हाथ में होता है, तो हवा भी संगीत गाने लगती है।",
+            "✨ तुम मेरी वो फेवरिट प्लेलिस्ट हो, जिसे मैं उम्र भर सुनना चाहता हूँ।",
+            "🌸 तेरे बिना हर गीत अधूरा, तेरे साथ हर लम्हा सुहाना!",
+            "💞 मोहब्बत भी उस प्यारे गाने जैसी है, जो कितनी बार भी सुनो बोर नहीं करता।",
+            "🎶 आँखों ही आँखों में बातें हो जाएं, जब दोनों एक ही ईयरफ़ोन शेयर करें।",
+
+            // 🌧️ SAD, EMOTIONAL & NOSTALGIA (दर्द, यादें & तन्हाई)
+            "🍁 पुराना गाना और भूली बिसरी यादें... दिल फिर से बच्चा बन जाता है।",
+            "🌧️ बारिश की बूंदें और धीमा लो-फ़ाई संगीत, बीते दिनों की याद दिला ही देता है।",
+            "🥀 कुछ घाव दवा से नहीं, सिर्फ सही गाने को लूप पर सुनने से भरते हैं।",
+            "💔 जब दिल टूटता है, तब गानों के बोल पहली बार समझ आते हैं।",
+            "🕊️ तन्हाई में संगीत ही एकमात्र साथी है जो कभी साथ नहीं छोड़ता।",
+            "🌙 रात के सन्नाटे में, ईयरफोन में बजता गाना और आँखों में नमी... एक अलग सुकून देती है।",
+            "🎼 जब दिल उदास हो, तो बीट बढ़ा दो... दुनिया की आवाज़ अपने आप धीमी हो जाएगी।",
+            "🥀 जो दर्द जुबां बयां नहीं कर पाती, वो अश्क और उदास गाने कह जाते हैं।",
+            "💔 कभी-कभी एक गाना ही काफी होता है पूरा पुराना दर्द जगाने के लिए।",
+            "🌧️ बारिश की हर बूंद में तेरी यादों का एक पुराना नगमा है।",
+            "🕊️ खामोशी भी एक खूबसूरत गाना है, बस सुनने वाला दिल चाहिए।",
+            "🍁 बिखरे हुए कागज़ और पुराना संगीत... यही है तन्हाई की खूबसूरत महफ़िल।",
+            "🖤 अंधेरे कमरे में लूप पर चलता उदास गाना, दिल का दर्द हल्का कर देता है।",
+
+            // ⚡ ATTITUDE & SWAG (एटीट्यूड / स्वैग)
+            "⚡ बीट मेरी हाई है, और मेरी वाइब किसी की समझ से बाहर है!",
+            "😎 दुनिया का शोर फ़िल्टर करो, और अपनी बीट पर मार्च करो।",
+            "🔥 ना किसी के आने की खुशी, ना जाने का गम... बेस बढ़ाओ और जियो अपने दम!",
+            "👑 मेरी पसंद का संगीत मेरी पहचान है, साधारण रहने का इरादा नहीं है।",
+            "🔊 वॉल्यूम बढ़ाओ, सोच बदलो और दुनिया को अपने गानों पर नचाओ!",
+            "🎧 बीट की ताल पर थिरकते कदम, और संगीतमय यादों में खोता मन।",
+            "🔥 मेरी लाइफ, मेरी चॉइस, और मेरा ही म्यूज़िक प्लेयर!",
+            "⚡ कम सुनो, अच्छा सुनो, और अपनी वाइब हमेशा हाई रखो।",
+            "😎 दूसरों के इशारों पर नहीं, अपनी खुद की बीट पर नाचो!",
+            "👑 शेर अकेला चलता है, और अपना म्यूज़िक लाउड रखता है!",
+            "🔊 जब दुनिया बकवास करे, तो अपना वॉल्यूम फुल कर दो।",
+            "💥 एटीट्यूड भी उस भारी बेस (Bass) जैसा होना चाहिए जो सबको हिला दे!",
+
+            // 🚀 MOTIVATION & LIFE (ज़िंदगी & प्रेरणा)
+            "🚀 ज़िन्दगी एक गाना है,इसे अपने अंदाज़ में गाओ और मस्त रहो!",
+            "🌈 गिरना, संभालना और फिर मुस्कुराना... संगीत ही तो जीना सिखाता है।",
+            "💪 जब तक सांसें चल रही हैं, अपनी जीवन की धुन को बजने दो।",
+            "✨ रास्ते कठिन हो सकते हैं, लेकिन अपनी बीट कभी टूटने मत दो!",
+            "🌟 खुद के रास्ते खुद बनाओ, दुनिया तो बस शोर मचाना जानती है।",
+            "💫 संगीत आत्मा का वो भोजन है, जो दिल के घावों को भर देता है।",
+            "✨ जब ज़िन्दगी शोर मचाए, तो इयरफ़ोन लगा कर खुद में खो जाओ।",
+            "🚀 हर मुश्किल मोड़ पर हिम्मत का नया गाना गाओ!",
+            "💪 असफलताएं तो बस रीटेक्स हैं, असली शो अभी बाकी है।",
+            "🌟 सूरज की तरह चमकना है तो पहले सुरों की तरह तपना सीखो।",
+            "✨ अपनी ज़िंदगी के खुद कंपोज़र बनो, किसी और को धुन मत तय करने दो।",
+            "🌈 अँधेरे के बाद ही सबसे खूबसूरत सुबह का सवेरा आता है।",
+
+            // 🍻 FRIENDSHIP & MEMORIES (दोस्ती & महफ़िल)
+            "🍻 दोस्तों के साथ कार राइड और तेज़ गाना... यही असली ज़िंदगी के पल हैं!",
+            "🎉 यारों की महफ़िल हो और धमाकेदार म्यूज़िक, फिर कोई गम टिक ही नहीं सकता।",
+            "🤝 दोस्त वो हैं जो आपके दिल की धुन को समझते हैं जब आप बोलना भूल जाते हैं।",
+            "🍻 गाड़ी की खिड़की खोलकर यारों के साथ गाना गाने की खुशी ही अलग है!",
+            "🎉 यारों की हंसी में जो म्यूज़िक है, वो किसी कॉन्सर्ट में नहीं।",
+            "🤝 सच्ची दोस्ती वो है जहाँ बेसुरा गाने पर भी दोस्त ताली बजाएं!",
+            "🔥 कॉलेज की वो कैंटीन और दोस्तों का बेसुरा कोरस... यादें अमर हैं!",
+
+            // 🌸 GUJARATI TOUCH & DIL SE (ગુજરાતી અહેસાસ)
+            "💖 संगीताना सूरमां दिल नी वातो छुपायेली होय छे, जे कहेवुं अघरुं छे ए गावुं सहेलुं होय छे।",
+            "✨ सुराली साँझ, कप चाय अने तमारुं गमतुं संगीत... आ ज तो खरी जिंदगी छे!",
+            "🌸 મનગમતું સંગીત અને દિલથી ગમતી વ્યક્તિ, બંને જિંદગીને સુંદર બનાવે છે.",
+            "🍃 ગમે તેટલો થાક હોય, પણ એક સારું ગીત આખી સાંજ તાજી કરી દે છે.",
+            "💫 ગીતોના સૂર અને આપણી યાદો, આ બે જ તો જિંદગીના સાચા સાથી છે.",
+            "🎵 હૃદયના ધબકારા પણ સંગીત જ ગાય છે, જો તમે ધ્યાનથી સાંભળો તો.",
+            "☕ ચાની ચુસકી, ધીમું સંગીત અને જૂની યાદો... શાંતિનો આડંબર!",
+            "✨ સંગીત એ હૃદયની ભાષા છે જે શબ્દો વગર સમજાય છે.",
+            "🌸 મોડી રાત્રે ગમતું ગીત સાંભળવું એ પણ એક પ્રકારનું ધ્યાન (Meditation) જ છે.",
+            "🍃 તમારા મૂડને પળવારમાં બદલી નાખવાની તાકાત માત્ર સંગીતમાં છે.",
+            "💫 સંબંધોમાં સૂર હોવા જોઈએ, પછી સંગીત તો આપોઆપ વાગશે.",
+            "🕊️ સૂફી કલામ અને ઈશ્કનો અહેસાસ... આત્માને પરમાત્મા સાથે જોડે છે.",
+            "🔮 રાધે-કૃષ્ણની વાંસળીનો સૂર, જે હૃદયમાં પ્રેમ અને શાંતિ ભરી દે.",
+            "🍁 ગુજરાતી ગરબાની તાલ હોય કે ધીમું ગઝલ... સંગીત જ તો આપણી ઓળખ છે.",
+
+            // 📻 RETRO 90S & CLASSIC MELODIES (90s की यादें)
+            "📻 90s का म्यूज़िक, पुराना क्यासेट टेप और वो बीता हुआ दौर... अलग ही जादू था!",
+            "🎻 लता जी की सुरीली आवाज़ और किशोर दा का अंदाज़... संगीतमय अमर युग!",
+            "🎶 पुराने गानों के लफ़्ज़ों में जो सादगी थी, वो आज के शोर में कहाँ!",
+            "📻 रेडियो पर बजता वो पुराना गाना, बचपन के सुनहरे दिनों की याद दिला देता है।",
+            "✨ जगजीत सिंह जी की गज़लें और रात का सन्नाटा... रूह को सुकून देने का बेहतरीन जरिया।",
+
+            // 🌌 MIDNIGHT THOUGHTS & STARS (देर रात का सुकून)
+            "🌌 2 AM, आसमान में चमकते सितारे और ईयरफ़ोन में लो-फ़ाई बीट्स... आत्मा का सुकून!",
+            "🌙 जब पूरी दुनिया सो जाती है, तब संगीत मेरी तन्हाई की महफ़िल सजाता है।",
+            "🌟 तारों भरी रात में अगर पसंदीदा गाना बज रहा हो, तो पूरी कायनात अपनी लगती है।",
+            "💫 देर रात तक जागना और पुराने गानों को लूप पर सुनना... दिल का पसंदीदा शगल है।",
+            "🎧 रात 3 बजे की खामोशी और हेडफोन से बहती सुरीली धुन... स्वर्ग जैसा अहसास!",
+
+            // 🔮 MYSTIC, SUFI & INNER PEACE (सूफ़ी और शांति)
+            "🕊️ सूफियाना कलाम सुनो, तो दिल का हर मैल धुल जाता है।",
+            "🔮 'कुन फाया कुन' की धुन में वो रूहानी ताकत है, जो हर उदास दिल को संभाल ले।",
+            "🌸 इबादत जैसी लगती है वो सुरीली धुन, जो सीधे खुदा से जोड़ दे।",
+            "✨ साज़ भले ही दुनिया के हों, पर सुरों का मालिक तो वही ऊपरवाला है।",
+            "🍃 दिल को जब सच्चा सुकून चाहिए हो, तो सूफ़ियाना संगीत ही राह दिखाता है।",
+
+            // 🌟 MORE GUJARATI DIL SE (વધુ ગુજરાતી મનમોહક શાયરીઓ)
+            "🍁 જેમ ચા વગર સવાર અધૂરી છે, તેમ સંગીત વગર જિંદગીની દરેક સાંજ અધૂરી છે.",
+            "💖 જેને શબ્દોમાં નથી કહી શકાતું, એને આપણા મનગમતા ગીતો કહી દે છે.",
+            "🌸 ગમે તેવી મુશ્કેલી હોય, જો કાનમાં મનગમતું ગીત વાગતું હોય તો હિંમત આવી જાય છે.",
+            "✨ દિલના તાર જ્યારે યોગ્ય સૂર સાથે મળે, ત્યારે જ સંગીત અને પ્રેમનો જન્મ થાય છે.",
+            "🎶 સુરતી મસ્તી, અમદાવાદનો રોશનીનો મહોલ અને સંગીતની ધૂન... આ જ તો આપણી શાન છે!",
+            "☕ શાંત વાતાવરણ, મનગમતી પ્લેલિસ્ટ અને ખુલ્લું આકાશ... મનની સાચી શાંતિ!",
+
+            // 🚀 MORE LIFE, SWAG & VIBE
+            "⚡ मेरी वाइब मेरी बीट तय करती है, दुनिया का ओपिनियन नहीं!",
+            "🔥 जब तक खुद पर यकीन है, लाइफ का हर ट्रैक हिट ही जाएगा!",
+            "🎯 लाइफ में चाहे कितनी भी प्रॉब्लम्स आएं, अपना रिदम कभी लूज़ मत करो!",
+            "💥 जब बेस ड्रॉप (Bass Drop) होता है, तो सारी नेगेटिविटी अपने आप गायब हो जाती है!",
+            "🚀 सपने बड़े हैं, इरादे पक्के हैं, और म्यूज़िक प्लेयर हमेशा ऑन है!"
         ];
 
         // 🌟 HELPER TO GET UNIQUE TRACK KEY 🌟
@@ -1359,10 +1574,13 @@
             return t ? (t.video_id || t.src) : '';
         }
 
-        // 🌟 WEB AUDIO API FOR TRUE 200% VOLUME BOOST 🌟
+        // 🌟 WEB AUDIO API: ANALYSER + 5-BAND EQUALIZER + GAIN BOOST 🌟
         let audioCtx = null;
+        let analyserNode = null;
         let gainNode = null;
         let sourceNode = null;
+        let eqFilters = [];
+        let animAnalyserId = null;
 
         function initWebAudio() {
             if (audioCtx) {
@@ -1373,15 +1591,95 @@
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 if (AudioContext) {
                     audioCtx = new AudioContext();
-                    gainNode = audioCtx.createGain();
                     sourceNode = audioCtx.createMediaElementSource(audio);
-                    sourceNode.connect(gainNode);
+                    
+                    // 5-Band EQ filters (60Hz, 250Hz, 1kHz, 4kHz, 12kHz)
+                    const freqs = [60, 250, 1000, 4000, 12000];
+                    const types = ['lowshelf', 'peaking', 'peaking', 'peaking', 'highshelf'];
+                    eqFilters = freqs.map((f, i) => {
+                        const filter = audioCtx.createBiquadFilter();
+                        filter.type = types[i];
+                        filter.frequency.value = f;
+                        filter.gain.value = 0;
+                        return filter;
+                    });
+
+                    analyserNode = audioCtx.createAnalyser();
+                    analyserNode.fftSize = 64;
+                    gainNode = audioCtx.createGain();
+
+                    // Connect graph: Source -> EQ0 -> EQ1 -> EQ2 -> EQ3 -> EQ4 -> Analyser -> Gain -> Destination
+                    let lastNode = sourceNode;
+                    eqFilters.forEach(filter => {
+                        lastNode.connect(filter);
+                        lastNode = filter;
+                    });
+                    lastNode.connect(analyserNode);
+                    analyserNode.connect(gainNode);
                     gainNode.connect(audioCtx.destination);
+
                     gainNode.gain.value = parseFloat(volumeBar.value || 1);
+                    startBeatAnalyser();
                 }
             } catch (e) {
                 console.log("Web Audio API setup notice:", e);
             }
+        }
+
+        // 🌟 BEAT-SYNCED 3D VISUALIZER ANALYSER 🌟
+        function startBeatAnalyser() {
+            if (!analyserNode) return;
+            const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
+            
+            function updateBeat() {
+                animAnalyserId = requestAnimationFrame(updateBeat);
+                if (audio.paused) {
+                    if (window.threeBgInstance) window.threeBgInstance.setBeatData(0, 0);
+                    return;
+                }
+                analyserNode.getByteFrequencyData(dataArray);
+                let bassSum = 0;
+                for (let i = 0; i < 4; i++) bassSum += dataArray[i];
+                const bassAvg = (bassSum / 4) / 255; // 0.0 to 1.0
+
+                if (window.threeBgInstance) {
+                    window.threeBgInstance.setBeatData(bassAvg, 0);
+                }
+            }
+            updateBeat();
+        }
+
+        // 🌟 DYNAMIC COVER ART ACCENT COLOR EXTRACTION 🌟
+        function extractCoverColor(imgUrl) {
+            if (!imgUrl) return;
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 20;
+                    canvas.height = 20;
+                    ctx.drawImage(img, 0, 0, 20, 20);
+                    const data = ctx.getImageData(0, 0, 20, 20).data;
+                    let r = 0, g = 0, b = 0, count = 0;
+                    for (let i = 0; i < data.length; i += 16) {
+                        r += data[i];
+                        g += data[i + 1];
+                        b += data[i + 2];
+                        count++;
+                    }
+                    r = Math.floor(r / count);
+                    g = Math.floor(g / count);
+                    b = Math.floor(b / count);
+
+                    const hex = (r << 16) | (g << 8) | b;
+                    if (window.threeBgInstance) {
+                        window.threeBgInstance.setAccentColor(hex);
+                    }
+                } catch(e) {}
+            };
+            img.src = imgUrl;
         }
 
         // 🌟 LOAD PLAYLIST & INITIALIZE 🌟
@@ -1420,10 +1718,20 @@
             document.getElementById("artist").innerText = track.artist;
             document.getElementById("cover").src = track.cover;
 
-            // Sync persistent like state
+            // Extract vibrant cover color for 3D background accent
+            extractCoverColor(track.cover);
+
+            // Track Recently Played History
             const key = getTrackKey(track);
+            playedHistory = playedHistory.filter(k => k !== key);
+            playedHistory.unshift(key);
+            if (playedHistory.length > 30) playedHistory.pop();
+            localStorage.setItem("beatbox_history", JSON.stringify(playedHistory));
+
+            // Sync persistent like & offline state
             isLiked = likedTracks.has(key);
             likeBtn.classList.toggle("is-liked", isLiked);
+            updateOfflineIcon(key);
 
             const randomQuote = shayariList[Math.floor(Math.random() * shayariList.length)];
             document.getElementById("quote-text").innerText = `"${randomQuote}"`;
@@ -1475,6 +1783,20 @@
                 } catch (e) {
                     console.log('MediaSession handler error: ', e);
                 }
+
+                try {
+                    navigator.mediaSession.setActionHandler('like', () => {
+                        if (!playlistData[currentTrackIndex]) return;
+                        toggleLikeTrack(playlistData[currentTrackIndex]);
+                    });
+                } catch (e) {}
+
+                try {
+                    navigator.mediaSession.setActionHandler('togglefavorite', () => {
+                        if (!playlistData[currentTrackIndex]) return;
+                        toggleLikeTrack(playlistData[currentTrackIndex]);
+                    });
+                } catch (e) {}
             }
 
             const playPromise = audio.play();
@@ -1611,7 +1933,6 @@
             }
             localStorage.setItem("beatbox_liked", JSON.stringify(Array.from(likedTracks)));
 
-            // Sync main player heart button if this is the currently playing track
             if (playlistData[currentTrackIndex] && getTrackKey(playlistData[currentTrackIndex]) === key) {
                 isLiked = likedTracks.has(key);
                 likeBtn.classList.toggle("is-liked", isLiked);
@@ -1620,10 +1941,142 @@
             renderList();
         }
 
-        // Toggle like on current track via main player heart button
         likeBtn.addEventListener("click", () => {
             if (!playlistData[currentTrackIndex]) return;
             toggleLikeTrack(playlistData[currentTrackIndex]);
+        });
+
+        // 🌟 OFFLINE SONG CACHING 🌟
+        async function toggleOfflineTrack(track) {
+            if (!track) return;
+            const key = getTrackKey(track);
+            const isSaved = offlineTracks.has(key);
+            
+            if ('caches' in window) {
+                try {
+                    const cache = await caches.open('beatbox-audio-offline-v1');
+                    if (isSaved) {
+                        await cache.delete(track.src);
+                        if (track.cover) await cache.delete(track.cover);
+                        offlineTracks.delete(key);
+                    } else {
+                        await cache.add(track.src);
+                        if (track.cover) await cache.add(track.cover);
+                        offlineTracks.add(key);
+                    }
+                    localStorage.setItem("beatbox_offline", JSON.stringify(Array.from(offlineTracks)));
+                    updateOfflineIcon(key);
+                    renderList();
+                } catch(e) {
+                    console.log("Offline cache error:", e);
+                }
+            }
+        }
+
+        function updateOfflineIcon(key) {
+            const isSaved = offlineTracks.has(key);
+            document.getElementById("icon-offline-download").style.display = isSaved ? "none" : "block";
+            document.getElementById("icon-offline-saved").style.display = isSaved ? "block" : "none";
+        }
+
+        offlineBtn.addEventListener("click", () => {
+            if (!playlistData[currentTrackIndex]) return;
+            toggleOfflineTrack(playlistData[currentTrackIndex]);
+        });
+
+        // 🌟 SLEEP TIMER CONTROLLER 🌟
+        let sleepTimerId = null;
+        let sleepEndTime = null;
+
+        function setSleepTimer(minutes) {
+            if (sleepTimerId) clearInterval(sleepTimerId);
+            if (!minutes || minutes <= 0) {
+                sleepBadge.style.display = "none";
+                sleepTimerId = null;
+                return;
+            }
+            sleepEndTime = Date.now() + minutes * 60 * 1000;
+            sleepBadge.style.display = "block";
+
+            sleepTimerId = setInterval(() => {
+                const remainingMs = sleepEndTime - Date.now();
+                if (remainingMs <= 0) {
+                    clearInterval(sleepTimerId);
+                    sleepTimerId = null;
+                    sleepBadge.style.display = "none";
+                    audio.pause();
+                } else {
+                    const remMin = Math.ceil(remainingMs / 60000);
+                    sleepBadge.innerText = `${remMin}m`;
+                }
+            }, 1000);
+        }
+
+        sleepBtn.addEventListener("click", () => {
+            sleepModal.classList.add("open");
+        });
+        document.getElementById("close-sleep-modal").addEventListener("click", () => {
+            sleepModal.classList.remove("open");
+        });
+        document.querySelectorAll(".btn-timer-opt").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const mins = parseInt(e.target.getAttribute("data-time") || "0");
+                setSleepTimer(mins);
+                sleepModal.classList.remove("open");
+            });
+        });
+
+        // 🌟 EQUALIZER CONTROLLER 🌟
+        const eqPresets = {
+            flat: [0, 0, 0, 0, 0],
+            bass: [6, 4, 0, 0, 0],
+            vocal: [-2, 2, 5, 3, -1],
+            treble: [-2, -1, 1, 4, 6],
+            rock: [5, 3, -1, 3, 5],
+            pop: [-1, 2, 4, 2, -1]
+        };
+
+        function setEqPreset(presetName) {
+            const gains = eqPresets[presetName] || eqPresets.flat;
+            initWebAudio();
+            gains.forEach((g, i) => {
+                if (eqFilters[i]) eqFilters[i].gain.value = g;
+            });
+            const sliders = [document.getElementById("eq-60"), document.getElementById("eq-250"), document.getElementById("eq-1k"), document.getElementById("eq-4k"), document.getElementById("eq-12k")];
+            sliders.forEach((s, i) => { if (s) s.value = gains[i]; });
+        }
+
+        eqBtn.addEventListener("click", () => {
+            eqModal.classList.add("open");
+        });
+        document.getElementById("close-eq-modal").addEventListener("click", () => {
+            eqModal.classList.remove("open");
+        });
+
+        document.querySelectorAll(".eq-preset-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                document.querySelectorAll(".eq-preset-btn").forEach(b => b.classList.remove("active"));
+                e.target.classList.add("active");
+                setEqPreset(e.target.getAttribute("data-preset"));
+            });
+        });
+
+        [
+            { id: "eq-60", idx: 0 },
+            { id: "eq-250", idx: 1 },
+            { id: "eq-1k", idx: 2 },
+            { id: "eq-4k", idx: 3 },
+            { id: "eq-12k", idx: 4 }
+        ].forEach(item => {
+            const el = document.getElementById(item.id);
+            if (el) {
+                el.addEventListener("input", (e) => {
+                    initWebAudio();
+                    if (eqFilters[item.idx]) {
+                        eqFilters[item.idx].gain.value = parseFloat(e.target.value);
+                    }
+                });
+            }
         });
 
         // 🌟 QUEUE COMPUTATION FOR PLAYLIST NAVIGATION 🌟
@@ -1632,6 +2085,13 @@
                 const indices = [];
                 playlistData.forEach((t, i) => {
                     if (likedTracks.has(getTrackKey(t))) indices.push(i);
+                });
+                return indices.length > 0 ? indices : playlistData.map((_, i) => i);
+            } else if (currentQueueMode === 'recent') {
+                const indices = [];
+                playedHistory.forEach(key => {
+                    const idx = playlistData.findIndex(t => getTrackKey(t) === key);
+                    if (idx !== -1) indices.push(idx);
                 });
                 return indices.length > 0 ? indices : playlistData.map((_, i) => i);
             }
@@ -1739,11 +2199,12 @@
 
         document.getElementById("close-modal").addEventListener("click", closeModal);
 
-        // 🌟 PLAYLIST MODAL TAB SWITCHING (ALL SONGS vs LIKED SONGS) 🌟
+        // 🌟 PLAYLIST MODAL TAB SWITCHING 🌟
         tabAll.addEventListener("click", () => {
             currentViewMode = 'all';
             tabAll.classList.add("active");
             tabLiked.classList.remove("active");
+            tabRecent.classList.remove("active");
             renderList();
         });
 
@@ -1751,6 +2212,15 @@
             currentViewMode = 'liked';
             tabLiked.classList.add("active");
             tabAll.classList.remove("active");
+            tabRecent.classList.remove("active");
+            renderList();
+        });
+
+        tabRecent.addEventListener("click", () => {
+            currentViewMode = 'recent';
+            tabRecent.classList.add("active");
+            tabAll.classList.remove("active");
+            tabLiked.classList.remove("active");
             renderList();
         });
 
@@ -1763,13 +2233,22 @@
             document.getElementById("cnt-liked").innerText = likedCount;
 
             let displayTracks = [];
-            playlistData.forEach((t, i) => {
-                const key = getTrackKey(t);
-                const isTrackLiked = likedTracks.has(key);
-                if (currentViewMode === 'all' || isTrackLiked) {
-                    displayTracks.push({ track: t, originalIndex: i, isLiked: isTrackLiked });
-                }
-            });
+            if (currentViewMode === 'recent') {
+                playedHistory.forEach(key => {
+                    const i = playlistData.findIndex(t => getTrackKey(t) === key);
+                    if (i !== -1) {
+                        displayTracks.push({ track: playlistData[i], originalIndex: i, isLiked: likedTracks.has(key) });
+                    }
+                });
+            } else {
+                playlistData.forEach((t, i) => {
+                    const key = getTrackKey(t);
+                    const isTrackLiked = likedTracks.has(key);
+                    if (currentViewMode === 'all' || isTrackLiked) {
+                        displayTracks.push({ track: t, originalIndex: i, isLiked: isTrackLiked });
+                    }
+                });
+            }
 
             if (displayTracks.length === 0 && currentViewMode === 'liked') {
                 optionsList.innerHTML = `

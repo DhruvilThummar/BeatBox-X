@@ -111,10 +111,28 @@ class ThreeBackground {
 
     // 7. Start Loop
     this.clock = new THREE.Clock();
+    this.bassFactor = 0;
+    this.trebleFactor = 0;
     this.animate();
     } catch (err) {
       console.warn("ThreeBackground WebGL initialization skipped or failed:", err);
     }
+  }
+
+  setBeatData(bass, treble) {
+    this.bassFactor = bass || 0;
+    this.trebleFactor = treble || 0;
+  }
+
+  setAccentColor(hexColor) {
+    try {
+      if (this.particleMaterial) {
+        this.particleMaterial.color.setHex(hexColor);
+      }
+      if (this.torusMesh) {
+        this.torusMesh.material.color.setHex(hexColor);
+      }
+    } catch(e) {}
   }
 
   createParticles() {
@@ -211,23 +229,26 @@ class ThreeBackground {
       this.particles.rotation.x = Math.sin(elapsedTime * 0.015) * 0.05;
     }
 
-    // 2. Floating Geometries Animation
+    // 2. Floating Geometries Animation with Audio Beat Pulse
+    const pulseScale = 1 + (this.bassFactor * 0.25);
     if (this.floatingObjects) {
       this.floatingObjects.forEach((obj, idx) => {
-        obj.mesh.rotation.x += obj.rotX;
-        obj.mesh.rotation.y += obj.rotY;
+        obj.mesh.rotation.x += obj.rotX * (1 + this.bassFactor * 0.5);
+        obj.mesh.rotation.y += obj.rotY * (1 + this.bassFactor * 0.5);
         obj.mesh.position.y += Math.sin(elapsedTime * obj.floatSpeed + idx) * 0.02;
+        obj.mesh.scale.set(pulseScale, pulseScale, pulseScale);
       });
     }
 
-    // 3. Multi-Harmonic Wave Grid Animation
+    // 3. Multi-Harmonic Wave Grid Animation (Beat Reactive)
     if (this.gridGeometry) {
       const pos = this.gridGeometry.attributes.position;
+      const waveAmp = 0.9 + (this.bassFactor * 1.5);
       for (let i = 0; i < pos.count; i++) {
         const u = pos.getX(i);
         const v = pos.getY(i);
-        const z = Math.sin(u * 0.18 + elapsedTime * 1.6) * 0.9 +
-                  Math.cos(v * 0.18 + elapsedTime * 1.3) * 0.9 +
+        const z = Math.sin(u * 0.18 + elapsedTime * (1.6 + this.bassFactor)) * waveAmp +
+                  Math.cos(v * 0.18 + elapsedTime * (1.3 + this.bassFactor)) * waveAmp +
                   Math.sin((u + v) * 0.1 + elapsedTime * 2.0) * 0.4;
         pos.setZ(i, z);
       }
