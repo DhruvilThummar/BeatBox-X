@@ -3634,5 +3634,53 @@
         "title": "SIMMBA: Tere Bin | Ranveer Singh, Sara Ali Khan | Tanishk Bagchi, Rahat Fateh Ali Khan, Asees Kaur",
         "artist": "T-Series",
         "category": "All"
+    },
+    {
+        "video_id": "55n0XterUkI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789042737/BeatBoxX/Images/e9cmjdagqjwieudt4u1c.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789042793/BeatBoxX/Music/u7wvqus5rqikfswbhcz6.mp3",
+        "title": "The Sufi Mashup - The Bombay Choir",
+        "artist": "Thebombaychoir",
+        "category": "All"
+    },
+    {
+        "video_id": "wa--U0DVyRU",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789042813/BeatBoxX/Images/g5yrammucpoapkrjqrhv.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789042846/BeatBoxX/Music/j6t6iqasuuvldnerkdsj.mp3",
+        "title": "Saanware - Akhil Sachdeva | Abhishek Kumar | Mannara Chopra | Anshul Garg",
+        "artist": "Play DMF",
+        "category": "All"
+    },
+    {
+        "video_id": "cheftcogFVU",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789042863/BeatBoxX/Images/r0d0ggpr33bvmkmodegk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789042889/BeatBoxX/Music/ykgt9ffr2lcgjcfslc3b.mp3",
+        "title": "Qaafirana",
+        "artist": "Arijit Singh",
+        "category": "All"
+    },
+    {
+        "video_id": "KUpwupYj_tY",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789042924/BeatBoxX/Images/k1nnp0dwzmdbazrxwqm4.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789043016/BeatBoxX/Music/oq8idzknnktbq03gdxxk.mp3",
+        "title": "Tere Hawaale (Full Video) Laal Singh Chaddha | Aamir,Kareena | Arijit,Shilpa | Pritam,Amitabh,Advait",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "mH_LFkWxpI0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789043037/BeatBoxX/Images/ii3xsstjrbrovp9dqheo.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789043059/BeatBoxX/Music/gt7gprajcrjlb4agvist.mp3",
+        "title": "Diljit Dosanjh: LOVER (Official Music Video) Intense | Raj Ranjodh | MoonChild Era",
+        "artist": "Diljit Dosanjh",
+        "category": "All"
+    },
+    {
+        "video_id": "x5zLHQTa7HE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789043095/BeatBoxX/Images/abia0vrj7cfp0g6k8flu.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789043106/BeatBoxX/Music/s80iigueazviqkbhm6af.mp3",
+        "title": "Chand Sifarish | Full Song | Fanaa | Aamir Khan, Kajol | Shaan, Kailash Kher | Jatin-Lalit | Prasoon",
+        "artist": "YRF Music",
+        "category": "All"
     }
 ]

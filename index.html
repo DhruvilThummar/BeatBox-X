@@ -943,6 +943,63 @@
             margin: 0 auto 18px;
         }
 
+        .playlist-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.75);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .tab-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.35), rgba(184, 134, 11, 0.2));
+            border-color: #D4AF37;
+            color: #FFD700;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .item-heart-btn {
+            margin-left: auto;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            padding: 6px;
+            font-size: 18px;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .item-heart-btn:hover {
+            transform: scale(1.2);
+            color: #FF4D6D;
+        }
+
+        .item-heart-btn.is-liked {
+            color: #FF4D6D;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.6);
+        }
+
         .search-bar {
             width: 100%;
             padding: 14px 18px;
@@ -1241,6 +1298,14 @@
     <div class="modal" id="playlist-modal">
         <div class="modal-content ios-glass">
             <div class="sheet-handle"></div>
+            <div class="playlist-tabs">
+                <button class="tab-btn active" id="tab-all-songs">
+                    🎵 All Songs (<span id="cnt-all">0</span>)
+                </button>
+                <button class="tab-btn" id="tab-liked-songs">
+                    ❤️ Liked Songs (<span id="cnt-liked">0</span>)
+                </button>
+            </div>
             <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search songs, artists...">
             <ul class="options" id="options-list"></ul>
             <button id="close-modal"
@@ -1255,6 +1320,9 @@
         let repeatMode = 'off'; // 'off', 'all', 'one'
         let isLiked = false;
         let likedTracks = new Set(JSON.parse(localStorage.getItem("beatbox_liked") || "[]"));
+
+        let currentViewMode = 'all'; // 'all' or 'liked' tab view in playlist modal
+        let currentQueueMode = 'all'; // 'all' or 'liked' active playback queue
 
         const audio = document.getElementById("audio-player");
         const optionsList = document.getElementById("options-list");
@@ -1273,6 +1341,9 @@
         const navSearch = document.getElementById("nav-search");
         const navPlaylist = document.getElementById("nav-playlist");
 
+        const tabAll = document.getElementById("tab-all-songs");
+        const tabLiked = document.getElementById("tab-liked-songs");
+
         const shayariList = [
             "✨ कुछ धुनें कभी पुरानी नहीं होतीं, बस यादें ताज़ा कर देती हैं।",
             "🤎 लफ़्ज़ों की कमी को, संगीत अक्सर पूरा कर देता है।",
@@ -1282,6 +1353,11 @@
             "💫 कुछ बातें होंठों से नहीं, बस इयरफ़ोन से समझी जाती हैं।",
             "✨ संगीत वो जादू है, जो बिना छुए दिल को सहला देता है।"
         ];
+
+        // 🌟 HELPER TO GET UNIQUE TRACK KEY 🌟
+        function getTrackKey(t) {
+            return t ? (t.video_id || t.src) : '';
+        }
 
         // 🌟 WEB AUDIO API FOR TRUE 200% VOLUME BOOST 🌟
         let audioCtx = null;
@@ -1345,7 +1421,8 @@
             document.getElementById("cover").src = track.cover;
 
             // Sync persistent like state
-            isLiked = likedTracks.has(track.src);
+            const key = getTrackKey(track);
+            isLiked = likedTracks.has(key);
             likeBtn.classList.toggle("is-liked", isLiked);
 
             const randomQuote = shayariList[Math.floor(Math.random() * shayariList.length)];
@@ -1523,43 +1600,81 @@
             }
         });
 
-        // 🌟 LIKE / FAVORITE TOGGLE (PERSISTENT) 🌟
+        // 🌟 USER-SIDE LIKED TRACKS MANAGEMENT 🌟
+        function toggleLikeTrack(track) {
+            if (!track) return;
+            const key = getTrackKey(track);
+            if (likedTracks.has(key)) {
+                likedTracks.delete(key);
+            } else {
+                likedTracks.add(key);
+            }
+            localStorage.setItem("beatbox_liked", JSON.stringify(Array.from(likedTracks)));
+
+            // Sync main player heart button if this is the currently playing track
+            if (playlistData[currentTrackIndex] && getTrackKey(playlistData[currentTrackIndex]) === key) {
+                isLiked = likedTracks.has(key);
+                likeBtn.classList.toggle("is-liked", isLiked);
+            }
+
+            renderList();
+        }
+
+        // Toggle like on current track via main player heart button
         likeBtn.addEventListener("click", () => {
             if (!playlistData[currentTrackIndex]) return;
-            const currentTrack = playlistData[currentTrackIndex];
-            isLiked = !isLiked;
-            if (isLiked) {
-                likedTracks.add(currentTrack.src);
-            } else {
-                likedTracks.delete(currentTrack.src);
-            }
-            likeBtn.classList.toggle("is-liked", isLiked);
-            localStorage.setItem("beatbox_liked", JSON.stringify(Array.from(likedTracks)));
+            toggleLikeTrack(playlistData[currentTrackIndex]);
         });
+
+        // 🌟 QUEUE COMPUTATION FOR PLAYLIST NAVIGATION 🌟
+        function getActiveQueueIndices() {
+            if (currentQueueMode === 'liked') {
+                const indices = [];
+                playlistData.forEach((t, i) => {
+                    if (likedTracks.has(getTrackKey(t))) indices.push(i);
+                });
+                return indices.length > 0 ? indices : playlistData.map((_, i) => i);
+            }
+            return playlistData.map((_, i) => i);
+        }
 
         // 🌟 NEXT & PREVIOUS PLAYBACK LOGIC 🌟
         function playNext() {
             if (!playlistData.length) return;
+            const queue = getActiveQueueIndices();
+            if (!queue.length) return;
+
             if (repeatMode === 'one') {
                 loadTrack(currentTrackIndex);
-            } else if (isShuffle) {
-                let nextIdx;
-                if (playlistData.length > 1) {
+                return;
+            }
+
+            const currentPosInQueue = queue.indexOf(currentTrackIndex);
+
+            if (isShuffle) {
+                let nextPos;
+                if (queue.length > 1) {
                     do {
-                        nextIdx = Math.floor(Math.random() * playlistData.length);
-                    } while (nextIdx === currentTrackIndex);
+                        nextPos = Math.floor(Math.random() * queue.length);
+                    } while (queue[nextPos] === currentTrackIndex);
                 } else {
-                    nextIdx = 0;
+                    nextPos = 0;
                 }
-                loadTrack(nextIdx);
+                loadTrack(queue[nextPos]);
             } else {
-                loadTrack((currentTrackIndex + 1) % playlistData.length);
+                const nextPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue + 1) % queue.length;
+                loadTrack(queue[nextPos]);
             }
         }
 
         function playPrev() {
             if (!playlistData.length) return;
-            loadTrack((currentTrackIndex - 1 + playlistData.length) % playlistData.length);
+            const queue = getActiveQueueIndices();
+            if (!queue.length) return;
+
+            const currentPosInQueue = queue.indexOf(currentTrackIndex);
+            const prevPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue - 1 + queue.length) % queue.length;
+            loadTrack(queue[prevPos]);
         }
 
         document.getElementById("next").addEventListener("click", () => {
@@ -1572,7 +1687,7 @@
             playPrev();
         });
 
-        // 🌟 AUTO NEXT SONG ON ENDED ("music end thay etle biju song saru thay") 🌟
+        // 🌟 AUTO NEXT SONG ON ENDED 🌟
         audio.addEventListener("ended", () => {
             playNext();
         });
@@ -1624,24 +1739,84 @@
 
         document.getElementById("close-modal").addEventListener("click", closeModal);
 
+        // 🌟 PLAYLIST MODAL TAB SWITCHING (ALL SONGS vs LIKED SONGS) 🌟
+        tabAll.addEventListener("click", () => {
+            currentViewMode = 'all';
+            tabAll.classList.add("active");
+            tabLiked.classList.remove("active");
+            renderList();
+        });
+
+        tabLiked.addEventListener("click", () => {
+            currentViewMode = 'liked';
+            tabLiked.classList.add("active");
+            tabAll.classList.remove("active");
+            renderList();
+        });
+
         function renderList() {
             optionsList.innerHTML = "";
+            
+            const totalCount = playlistData.length;
+            const likedCount = playlistData.filter(t => likedTracks.has(getTrackKey(t))).length;
+            document.getElementById("cnt-all").innerText = totalCount;
+            document.getElementById("cnt-liked").innerText = likedCount;
+
+            let displayTracks = [];
             playlistData.forEach((t, i) => {
-                let li = document.createElement("li");
-                li.innerHTML = `
-                    <img src="${t.cover}" alt="Cover">
-                    <div>
-                        <span class="s-title">${t.title}</span>
-                        <span class="s-artist">${t.artist}</span>
+                const key = getTrackKey(t);
+                const isTrackLiked = likedTracks.has(key);
+                if (currentViewMode === 'all' || isTrackLiked) {
+                    displayTracks.push({ track: t, originalIndex: i, isLiked: isTrackLiked });
+                }
+            });
+
+            if (displayTracks.length === 0 && currentViewMode === 'liked') {
+                optionsList.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.6);">
+                        <div style="font-size: 40px; margin-bottom: 10px;">❤️</div>
+                        <p style="font-size: 15px; font-weight: bold; color: #fff; margin-bottom: 6px;">No Liked Songs Yet</p>
+                        <p style="font-size: 13px;">Tap the heart icon on any song to save it to your user-side Liked Songs playlist!</p>
                     </div>
                 `;
-                li.onclick = () => {
+                return;
+            }
+
+            displayTracks.forEach(item => {
+                let li = document.createElement("li");
+                li.innerHTML = `
+                    <img src="${item.track.cover}" alt="Cover">
+                    <div>
+                        <span class="s-title">${item.track.title}</span>
+                        <span class="s-artist">${item.track.artist}</span>
+                    </div>
+                    <button class="item-heart-btn ${item.isLiked ? 'is-liked' : ''}" title="${item.isLiked ? 'Unlike' : 'Like'}">
+                        ${item.isLiked ? '❤️' : '🤍'}
+                    </button>
+                `;
+
+                li.onclick = (e) => {
+                    if (e.target.classList.contains("item-heart-btn") || e.target.closest(".item-heart-btn")) {
+                        e.stopPropagation();
+                        toggleLikeTrack(item.track);
+                        return;
+                    }
                     initWebAudio();
-                    loadTrack(i);
+                    currentQueueMode = currentViewMode; // Lock playback queue to active tab
+                    loadTrack(item.originalIndex);
                     closeModal();
                 };
                 optionsList.appendChild(li);
             });
+
+            // Re-apply current search query filter if typed
+            const val = songSearch.value.toLowerCase();
+            if (val) {
+                const items = optionsList.getElementsByTagName("li");
+                Array.from(items).forEach(li => {
+                    li.style.display = li.innerText.toLowerCase().includes(val) ? "flex" : "none";
+                });
+            }
         }
 
         songSearch.addEventListener("input", (e) => {
