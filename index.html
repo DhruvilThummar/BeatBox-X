@@ -1104,9 +1104,221 @@
             gap: 8px;
         }
 
-        .skeleton-title { height: 18px; width: 65%; }
-        .skeleton-artist { height: 14px; width: 45%; }
-        .skeleton-bar { height: 6px; width: 100%; border-radius: 3px; }
+        /* 🌟 STUDIO PRO 5-BAND EQUALIZER STYLES 🌟 */
+        .eq-modal-content {
+            max-width: 480px;
+            width: 92%;
+            padding: 24px 20px 20px;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .eq-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding: 0 4px;
+        }
+
+        .eq-title-group {
+            text-align: left;
+        }
+
+        .eq-title {
+            color: #D4AF37;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .eq-subtitle {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .eq-reset-btn {
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #D4AF37;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .eq-reset-btn:hover {
+            background: rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37;
+            box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .eq-reset-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Preset Pills */
+        .eq-presets {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            scrollbar-width: none;
+        }
+        .eq-presets::-webkit-scrollbar { display: none; }
+
+        .eq-preset-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.75);
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .eq-preset-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+            color: #fff;
+        }
+
+        .eq-preset-btn.active {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            color: #0A0A0E;
+            border-color: #D4AF37;
+            font-weight: 800;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.5);
+        }
+
+        /* SVG Live Visualizer Curve */
+        .eq-curve-box {
+            width: 100%;
+            height: 60px;
+            background: rgba(10, 10, 15, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .eq-curve-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* EQ Sliders Container */
+        .eq-sliders-wrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 8px 14px;
+            position: relative;
+        }
+
+        .eq-band {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            gap: 10px;
+        }
+
+        .eq-val-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #D4AF37;
+            background: rgba(212, 175, 55, 0.14);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2px 7px;
+            border-radius: 8px;
+            min-width: 44px;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            transition: all 0.15s ease;
+        }
+
+        .eq-slider-container {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .eq-slider-v {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 120px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            outline: none;
+            transform: rotate(-90deg);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .eq-slider-v::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFF8DC, #D4AF37);
+            border: 2px solid #000;
+            box-shadow: 0 0 14px rgba(212, 175, 55, 0.85);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .eq-slider-v::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 1);
+        }
+
+        .eq-band-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 2px;
+        }
+
+        .eq-band-sublabel {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: -6px;
+        }
     </style>
 </head>
 
@@ -1358,27 +1570,103 @@
         </div>
     </div>
 
-    <!-- 🌟 EQUALIZER MODAL 🌟 -->
+    <!-- 🌟 STUDIO PRO 5-BAND EQUALIZER MODAL 🌟 -->
     <div class="modal" id="eq-modal">
-        <div class="modal-content ios-glass" style="max-width: 460px; text-align: center;">
+        <div class="modal-content ios-glass eq-modal-content">
             <div class="sheet-handle"></div>
-            <h3 style="color: #D4AF37; margin-bottom: 15px; font-family: 'Cinzel', serif;">🎚️ 5-Band Equalizer</h3>
-            <div class="eq-presets" style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px;">
-                <button class="eq-preset-btn active" data-preset="flat">Flat</button>
-                <button class="eq-preset-btn" data-preset="bass">Bass Boost</button>
-                <button class="eq-preset-btn" data-preset="vocal">Vocal Boost</button>
-                <button class="eq-preset-btn" data-preset="treble">Treble Boost</button>
-                <button class="eq-preset-btn" data-preset="rock">Rock</button>
-                <button class="eq-preset-btn" data-preset="pop">Pop</button>
+            
+            <div class="eq-header">
+                <div class="eq-title-group">
+                    <h3 class="eq-title">🎚️ 5-Band Equalizer</h3>
+                    <div class="eq-subtitle">Studio Audio Engine & Sound Tuning</div>
+                </div>
+                <button class="eq-reset-btn" id="eq-reset-btn">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Reset
+                </button>
             </div>
-            <div class="eq-sliders" style="display: flex; justify-content: space-around; height: 140px; align-items: center;">
-                <div class="eq-band"><input type="range" class="eq-slider" id="eq-60" min="-12" max="12" value="0"><span>60Hz</span></div>
-                <div class="eq-band"><input type="range" class="eq-slider" id="eq-250" min="-12" max="12" value="0"><span>250Hz</span></div>
-                <div class="eq-band"><input type="range" class="eq-slider" id="eq-1k" min="-12" max="12" value="0"><span>1kHz</span></div>
-                <div class="eq-band"><input type="range" class="eq-slider" id="eq-4k" min="-12" max="12" value="0"><span>4kHz</span></div>
-                <div class="eq-band"><input type="range" class="eq-slider" id="eq-12k" min="-12" max="12" value="0"><span>12kHz</span></div>
+
+            <!-- PRESET PILL SELECTOR -->
+            <div class="eq-presets">
+                <button class="eq-preset-btn active" data-preset="flat">⚖️ Flat</button>
+                <button class="eq-preset-btn" data-preset="bass">🔊 Bass Boost</button>
+                <button class="eq-preset-btn" data-preset="vocal">🎙️ Vocal Boost</button>
+                <button class="eq-preset-btn" data-preset="treble">🎻 Treble Boost</button>
+                <button class="eq-preset-btn" data-preset="rock">🎸 Rock</button>
+                <button class="eq-preset-btn" data-preset="pop">🎤 Pop</button>
+                <button class="eq-preset-btn" data-preset="dance">🎧 Dance</button>
+                <button class="eq-preset-btn" data-preset="acoustic">🎼 Acoustic</button>
             </div>
-            <button id="close-eq-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 14px; color: #000; font-weight: bold; cursor: pointer;">Done</button>
+
+            <!-- DYNAMIC REAL-TIME FREQUENCY CURVE -->
+            <div class="eq-curve-box">
+                <svg class="eq-curve-svg" viewBox="0 0 100 50" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="eqCurveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.0"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Neutral 0dB Line -->
+                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,2" stroke-width="1"/>
+                    <!-- Dynamic Area Fill -->
+                    <path id="eq-curve-area" fill="url(#eqCurveGrad)" d="M 10 25 L 10 25 L 30 25 L 50 25 L 70 25 L 90 25 L 90 50 L 10 50 Z"/>
+                    <!-- Dynamic Curve Line -->
+                    <path id="eq-curve-path" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" d="M 10 25 L 30 25 L 50 25 L 70 25 L 90 25"/>
+                    <!-- Points -->
+                    <circle id="eq-pt-0" cx="10" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                    <circle id="eq-pt-1" cx="30" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                    <circle id="eq-pt-2" cx="50" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                    <circle id="eq-pt-3" cx="70" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                    <circle id="eq-pt-4" cx="90" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <!-- SLIDERS WITH LIVE DB READOUT -->
+            <div class="eq-sliders-wrapper">
+                <div class="eq-band">
+                    <span class="eq-val-badge" id="val-eq-60">0 dB</span>
+                    <div class="eq-slider-container">
+                        <input type="range" class="eq-slider-v eq-slider" id="eq-60" min="-12" max="12" value="0">
+                    </div>
+                    <span class="eq-band-label">60 Hz</span>
+                    <span class="eq-band-sublabel">Sub</span>
+                </div>
+                <div class="eq-band">
+                    <span class="eq-val-badge" id="val-eq-250">0 dB</span>
+                    <div class="eq-slider-container">
+                        <input type="range" class="eq-slider-v eq-slider" id="eq-250" min="-12" max="12" value="0">
+                    </div>
+                    <span class="eq-band-label">250 Hz</span>
+                    <span class="eq-band-sublabel">Bass</span>
+                </div>
+                <div class="eq-band">
+                    <span class="eq-val-badge" id="val-eq-1k">0 dB</span>
+                    <div class="eq-slider-container">
+                        <input type="range" class="eq-slider-v eq-slider" id="eq-1k" min="-12" max="12" value="0">
+                    </div>
+                    <span class="eq-band-label">1 kHz</span>
+                    <span class="eq-band-sublabel">Mid</span>
+                </div>
+                <div class="eq-band">
+                    <span class="eq-val-badge" id="val-eq-4k">0 dB</span>
+                    <div class="eq-slider-container">
+                        <input type="range" class="eq-slider-v eq-slider" id="eq-4k" min="-12" max="12" value="0">
+                    </div>
+                    <span class="eq-band-label">4 kHz</span>
+                    <span class="eq-band-sublabel">Presence</span>
+                </div>
+                <div class="eq-band">
+                    <span class="eq-val-badge" id="val-eq-12k">0 dB</span>
+                    <div class="eq-slider-container">
+                        <input type="range" class="eq-slider-v eq-slider" id="eq-12k" min="-12" max="12" value="0">
+                    </div>
+                    <span class="eq-band-label">12 kHz</span>
+                    <span class="eq-band-sublabel">Treble</span>
+                </div>
+            </div>
+
+            <button id="close-eq-modal" style="width: 100%; padding: 14px; margin-top: 20px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 16px; color: #000; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(212,175,55,0.4); transition: transform 0.15s ease;">Done</button>
         </div>
     </div>
 
@@ -2026,15 +2314,59 @@
             });
         });
 
-        // 🌟 EQUALIZER CONTROLLER 🌟
+        // 🌟 STUDIO PRO EQUALIZER CONTROLLER 🌟
         const eqPresets = {
             flat: [0, 0, 0, 0, 0],
-            bass: [6, 4, 0, 0, 0],
-            vocal: [-2, 2, 5, 3, -1],
-            treble: [-2, -1, 1, 4, 6],
-            rock: [5, 3, -1, 3, 5],
-            pop: [-1, 2, 4, 2, -1]
+            bass: [8, 5, 0, 0, -2],
+            vocal: [-2, 1, 6, 4, -1],
+            treble: [-3, -1, 1, 5, 8],
+            rock: [6, 4, -1, 3, 6],
+            pop: [-1, 3, 5, 3, -1],
+            dance: [7, 4, 1, 4, 6],
+            acoustic: [3, 2, 2, 4, 4]
         };
+
+        const eqSliderElements = [
+            { id: "eq-60", valId: "val-eq-60", idx: 0, x: 10 },
+            { id: "eq-250", valId: "val-eq-250", idx: 1, x: 30 },
+            { id: "eq-1k", valId: "val-eq-1k", idx: 2, x: 50 },
+            { id: "eq-4k", valId: "val-eq-4k", idx: 3, x: 70 },
+            { id: "eq-12k", valId: "val-eq-12k", idx: 4, x: 90 }
+        ];
+
+        function updateEqCurve() {
+            const points = [];
+            eqSliderElements.forEach(item => {
+                const el = document.getElementById(item.id);
+                const valEl = document.getElementById(item.valId);
+                const val = parseFloat(el ? el.value : 0);
+                if (valEl) {
+                    valEl.innerText = `${val > 0 ? '+' : ''}${val} dB`;
+                    valEl.style.color = val === 0 ? '#D4AF37' : (val > 0 ? '#FFD700' : '#87CEEB');
+                }
+                // Convert -12 to +12 dB to Y range (50 to 0 inside viewBox 100x50)
+                const y = 25 - (val / 12) * 20;
+                points.push({ x: item.x, y: y });
+                
+                const circle = document.getElementById(`eq-pt-${item.idx}`);
+                if (circle) circle.setAttribute("cy", y.toFixed(1));
+            });
+
+            // Build smooth Bezier path
+            let dPath = `M ${points[0].x} ${points[0].y.toFixed(1)}`;
+            for (let i = 0; i < points.length - 1; i++) {
+                const p0 = points[i];
+                const p1 = points[i + 1];
+                const cp1x = (p0.x + p1.x) / 2;
+                dPath += ` C ${cp1x} ${p0.y.toFixed(1)}, ${cp1x} ${p1.y.toFixed(1)}, ${p1.x} ${p1.y.toFixed(1)}`;
+            }
+
+            const pathEl = document.getElementById("eq-curve-path");
+            const areaEl = document.getElementById("eq-curve-area");
+
+            if (pathEl) pathEl.setAttribute("d", dPath);
+            if (areaEl) areaEl.setAttribute("d", `${dPath} L 90 50 L 10 50 Z`);
+        }
 
         function setEqPreset(presetName) {
             const gains = eqPresets[presetName] || eqPresets.flat;
@@ -2042,39 +2374,47 @@
             gains.forEach((g, i) => {
                 if (eqFilters[i]) eqFilters[i].gain.value = g;
             });
-            const sliders = [document.getElementById("eq-60"), document.getElementById("eq-250"), document.getElementById("eq-1k"), document.getElementById("eq-4k"), document.getElementById("eq-12k")];
-            sliders.forEach((s, i) => { if (s) s.value = gains[i]; });
+            eqSliderElements.forEach((item, i) => {
+                const s = document.getElementById(item.id);
+                if (s) s.value = gains[i];
+            });
+            updateEqCurve();
         }
 
         eqBtn.addEventListener("click", () => {
             eqModal.classList.add("open");
+            updateEqCurve();
         });
+        
         document.getElementById("close-eq-modal").addEventListener("click", () => {
             eqModal.classList.remove("open");
+        });
+
+        document.getElementById("eq-reset-btn").addEventListener("click", () => {
+            document.querySelectorAll(".eq-preset-btn").forEach(b => b.classList.remove("active"));
+            const flatBtn = document.querySelector('.eq-preset-btn[data-preset="flat"]');
+            if (flatBtn) flatBtn.classList.add("active");
+            setEqPreset("flat");
         });
 
         document.querySelectorAll(".eq-preset-btn").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 document.querySelectorAll(".eq-preset-btn").forEach(b => b.classList.remove("active"));
-                e.target.classList.add("active");
-                setEqPreset(e.target.getAttribute("data-preset"));
+                e.currentTarget.classList.add("active");
+                setEqPreset(e.currentTarget.getAttribute("data-preset"));
             });
         });
 
-        [
-            { id: "eq-60", idx: 0 },
-            { id: "eq-250", idx: 1 },
-            { id: "eq-1k", idx: 2 },
-            { id: "eq-4k", idx: 3 },
-            { id: "eq-12k", idx: 4 }
-        ].forEach(item => {
+        eqSliderElements.forEach(item => {
             const el = document.getElementById(item.id);
             if (el) {
                 el.addEventListener("input", (e) => {
                     initWebAudio();
+                    const val = parseFloat(e.target.value);
                     if (eqFilters[item.idx]) {
-                        eqFilters[item.idx].gain.value = parseFloat(e.target.value);
+                        eqFilters[item.idx].gain.value = val;
                     }
+                    updateEqCurve();
                 });
             }
         });
