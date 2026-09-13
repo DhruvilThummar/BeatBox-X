@@ -3754,5 +3754,901 @@
         "title": "Haasil (From \"UR Debut\")",
         "artist": "bhoomi",
         "category": "All"
+    },
+    {
+        "video_id": "xvT1jH8B9AM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291576/BeatBoxX/Images/fqdvzkrrjhntgpfzu7rf.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291586/BeatBoxX/Music/fmtcqupeor3luxiyb5wo.mp3",
+        "title": "KALYANI (with Shreya Ghoshal) OFFICIAL MUSIC VIDEO | ARJN | KDS | FIFTY4 | RONN | SHREYA GHOSHAL |",
+        "artist": "MONEY VERSE RECORDS",
+        "category": "All"
+    },
+    {
+        "video_id": "s2HYl12gmOY",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291612/BeatBoxX/Images/s2zrh1jvrnucmthuopjw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291617/BeatBoxX/Music/ccgfitpjhkezwk3zwdwl.mp3",
+        "title": "Parvati - Full Song | Hanuman Ansh | Sadhu Tiwari | Shobhinaw Satyaa | In Cinemas Now",
+        "artist": "Times Music Spiritual",
+        "category": "All"
+    },
+    {
+        "video_id": "FCRb4kjnRx4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291677/BeatBoxX/Images/xmcj7qlvxnjce5gi9t23.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291682/BeatBoxX/Music/wlt9tjyimocbxvjtqcxh.mp3",
+        "title": "Chhathi Maiya - The VVAAN | Sidharth Malhotra & Tamannaah | Vishal Mishra | Kaushal K | Chinni P",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "cUmUOb7j3dc",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291696/BeatBoxX/Images/iqjgpihplf5gmv6ydgmg.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291699/BeatBoxX/Music/yyklu3kaouf5oowvktgr.mp3",
+        "title": "Dhun Song | Saiyaara | Ahaan Panday, Aneet Padda | Mithoon | Arijit Singh",
+        "artist": "YRF",
+        "category": "All"
+    },
+    {
+        "video_id": "0v5eHPfy5Lk",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291711/BeatBoxX/Images/afucdrcvaylcywsaktbx.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291715/BeatBoxX/Music/ragevgayg2qoplgpwfsn.mp3",
+        "title": "Barbaad Song | Saiyaara | Ahaan Panday, Aneet Padda | The Rish | Jubin Nautiyal",
+        "artist": "YRF",
+        "category": "All"
+    },
+    {
+        "video_id": "N4wK3NtVRT0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291732/BeatBoxX/Images/gcbyghjjpraxvpi084hn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291736/BeatBoxX/Music/ob7mm49ud0rg3jxruqzb.mp3",
+        "title": "Pardesiya - Param Sundari | Sidharth M, Janhvi K | Sachin-Jigar, Sonu Nigam, Krishnakali, Amitabh B",
+        "artist": "Universal Music India",
+        "category": "Gujrati"
+    },
+    {
+        "video_id": "enjkcCdAlXc",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291755/BeatBoxX/Images/wss8g1mp03myco1ptvh1.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291762/BeatBoxX/Music/ffdqpaozv5e2ofs197rh.mp3",
+        "title": "Aavan Jaavan Song | WAR 2 | Hrithik Roshan, Kiara Advani | Pritam, Arijit Singh, Nikhita | Amitabh B",
+        "artist": "YRF",
+        "category": "All"
+    },
+    {
+        "video_id": "BSJa1UytM8w",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291781/BeatBoxX/Images/jmgbek5l8pjl2aps4ios.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291788/BeatBoxX/Music/jduhtgdp9oaeuzickpjj.mp3",
+        "title": "Saiyaara Title Song | Ahaan Panday, Aneet Padda | Tanishk Bagchi, Faheem A, Arslan N | Irshad Kamil",
+        "artist": "YRF",
+        "category": "All"
+    },
+    {
+        "video_id": "GjfxDRRLXAQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291804/BeatBoxX/Images/watpjrnwsxr6gtpenpuu.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291822/BeatBoxX/Music/bdiy4cfhuuewdqxjm1ze.mp3",
+        "title": "Rabba Janda - Full Video | Mission Majnu | Sidharth Malhotra, Rashmika | Jubin N, Tanishk B, Shabbir",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "rkWJyMhIWLo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291837/BeatBoxX/Images/gp4uzcxdxriv6kq6khk3.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291843/BeatBoxX/Music/rtourhkwrfgcsgkh6evh.mp3",
+        "title": "Dekhte Dekhte Full Song | Batti Gul Meter Chalu | Atif Aslam | Shahid K Shraddha K | Nusrat Saab",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "FGTv9-oQhIg",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291865/BeatBoxX/Images/qk3qopriylffscu6xb6p.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291871/BeatBoxX/Music/t8wakhatmtlob7nejdsn.mp3",
+        "title": "Thodi Der -Full Video | Half Girlfriend | Arjun Kapoor & Shraddha Kapoor | Farhan S & Shreya Ghoshal",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "c2gSzYLJ8sY",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291885/BeatBoxX/Images/a9fjrnfigqgi4otk18st.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291896/BeatBoxX/Music/u76owiehsrdpuxaepcpg.mp3",
+        "title": "Ishq Bulaava Full Video - Hasee Toh Phasee|Parineeti, Sidharth|Sanam Puri, Shipra Goyal",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "6ZMSHq13hHQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291915/BeatBoxX/Images/fttg9yd7dh8naltjshai.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291935/BeatBoxX/Music/wyulrxgyiuiyffln4kfg.mp3",
+        "title": "Tere Liye - Lyrical | Atif Aslam, Shreya Ghoshal | Vivek Oberoi, Nandana Sen | Romantic Songs",
+        "artist": "Bollywood Sadabahar",
+        "category": "All"
+    },
+    {
+        "video_id": "K-Ts-NFR62o",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291949/BeatBoxX/Images/ce5sj6e7n1ehooyq1t39.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291954/BeatBoxX/Music/lk8hprumvshmd5cehzr6.mp3",
+        "title": "JAB TAK Full Video | M.S. DHONI -THE UNTOLD STORY | Armaan Malik, Amaal Mallik |Sushant Singh Rajput",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "0NFxcNheoLc",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789291972/BeatBoxX/Images/nbmas9du8kje8ksujkeg.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789291986/BeatBoxX/Music/ub0wxcsfgi9wyiugr9pi.mp3",
+        "title": "Banjaara Full Video Song | Ek Villain | Shraddha Kapoor, Siddharth Malhotra",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "_iktURk0X-A",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292006/BeatBoxX/Images/ahvrcb7ofzda9hxpzf0l.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292021/BeatBoxX/Music/owxafr8tyrngfftffjbw.mp3",
+        "title": "𝐏𝐡𝐢𝐫 𝐁𝐡𝐢 𝐓𝐮𝐦𝐤𝐨 𝐂𝐡𝐚𝐚𝐡𝐮𝐧𝐠𝐚💖 – 𝐅𝐮𝐥𝐥 𝐒𝐨𝐧𝐠 | Arijit Singh | Arjun Kapoor & Shraddha K | Mithoon | Manoj M",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "7SEFsalTzHQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292037/BeatBoxX/Images/okwkigeqhvpbswy1euyp.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292042/BeatBoxX/Music/qow9agtvgmcws5ausdp6.mp3",
+        "title": "Ishq De Fanniyar - Female | Fukrey Returns | Pulkit Samrat & Priya Anand | Jyotica Tangri | Lyrical",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "hVCYwwFwGEE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292058/BeatBoxX/Images/fgtfik6bhhrwovthilzq.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292071/BeatBoxX/Music/y5phqgtkbq9ush78rjkd.mp3",
+        "title": "Luka Chuppi: Duniyaa Full Video Song | Kartik Aaryan Kriti Sanon | Akhil | Dhvani B",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "Y9ozt29tzgs",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292088/BeatBoxX/Images/bszofnuvljaocvarqwcr.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292098/BeatBoxX/Music/xprs2bpmvbswucgovcul.mp3",
+        "title": "Naino Ne Baandhi - Lyrical | Gold | Akshay Kumar | Mouni Roy | Arko | Yasser Desai",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "w8LcxY43N5Y",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292118/BeatBoxX/Images/kthj1rf9lg20mzzkq1yj.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292122/BeatBoxX/Music/izwxmrgouohmp4ibhovs.mp3",
+        "title": "Pal - Lyrical Video | Jalebi | Arijit Singh | Shreya Ghoshal | Rhea & Varun | Javed - Mohsin",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "H1YR5rsScC8",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292146/BeatBoxX/Images/allymlquc0n6b4kpr1wt.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292151/BeatBoxX/Music/ba0y8n8gkt6rml7njelj.mp3",
+        "title": "Janiye | Music Video | Chor Nikal Ke Bhaga | Vishal Mishra, Rashmeet Kaur| Netflix India",
+        "artist": "Netflix India",
+        "category": "All"
+    },
+    {
+        "video_id": "8WGJV2N08eQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292166/BeatBoxX/Images/em4r5eh8irqvb0rpzhve.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292169/BeatBoxX/Music/ultcqcbg310xttg0qvmp.mp3",
+        "title": "Dhoonde Akhiyaan - Full Video | Jabariya Jodi | Sidharth Malhotra, Parineeti C | Yasser & Altamash",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "gRRMSF0nB0c",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292184/BeatBoxX/Images/aicpwyd80msawajhnlzz.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292189/BeatBoxX/Music/s6ttze6hxpvqdhsqkr99.mp3",
+        "title": "Jugraafiya - Full Video | Super 30 | Hrithik Roshan & Mrunal Thakur | Udit Narayan & Shreya Ghoshal",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "aOliIfyH6vI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292203/BeatBoxX/Images/dxzkfm99hxosiymo0ly9.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292214/BeatBoxX/Music/jas49mo7calk8pu0skvl.mp3",
+        "title": "Atrangi Re: Rait Zara Si Full Video |@ARRahman|Akshay, Dhanush,Sara,Arijit, Shashaa | Bhushan K",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "-lVzdxgVNeg",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292226/BeatBoxX/Images/l4x3wpnpc4mqkmpi0q0t.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292233/BeatBoxX/Music/woy5jsfqsifmsc9stzln.mp3",
+        "title": "Lyrical | Saiyaara Reprise - Female Song | Ahaan, Aneet | Tanishk, Faheem, Arslan | Shreya | Irshad",
+        "artist": "YRF",
+        "category": "All"
+    },
+    {
+        "video_id": "UH2cPk24LQw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292249/BeatBoxX/Images/akyn2js4zcgqhm58mfzf.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292260/BeatBoxX/Music/vjv37cjgkujuc7hrcxaq.mp3",
+        "title": "LYRICAL: Tu Hi Tu Full Audio Song with Lyrics | Kick | Salman Khan | Himesh Reshammiya",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "HYUpNJJELeE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292270/BeatBoxX/Images/ez81d0svprmno3gtwwev.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292274/BeatBoxX/Music/r9dcwqrtsvd8b9tldqal.mp3",
+        "title": "Mehrama - Love Aaj Kal | Kartik | Sara | Pritam | Darshan Raval | Antara",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "8of5w7RgcTc",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292289/BeatBoxX/Images/em0hiy65vlhq4etbnii9.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292291/BeatBoxX/Music/tnuhpsmrvmx6rwg6ew9r.mp3",
+        "title": "Afusic - Pal Pal (Official Music Video) Prod. @AliSoomroMusic",
+        "artist": "AFUSIC and AliSoomroMusic",
+        "category": "All"
+    },
+    {
+        "video_id": "cCFajGHuJcI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292302/BeatBoxX/Images/uyqa74cfkryzj17fvlaf.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292306/BeatBoxX/Music/yjybgx8zw8q8i1txqloo.mp3",
+        "title": "Qayde Se - Film Version (Full Video) | Papon | Metro…In Dino |Pritam |Amitabh B |Anurag B |Bhushan K",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "JqmfwbzKp_Y",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292321/BeatBoxX/Images/hcpxboiyusbkhfk9ayks.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292325/BeatBoxX/Music/ed8trmaqnxiufdlpwrch.mp3",
+        "title": "YODHA: Tere Sang Ishq Hua (Full Video) Sidharth Malhotra,Raashii,Arijit Singh,Neeti,Tanishk,Kunaal",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "rnyrDk4G68g",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292345/BeatBoxX/Images/ujobnpfhmo11ldx6mubt.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292350/BeatBoxX/Music/czyxolrik7l0npvqhto2.mp3",
+        "title": "Ishq Di Baajiyaan - Lyrical Video | Soorma | Diljit Dosanjh | Taapsee Pannu | Shankar Ehsaan Loy",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "c7POv4qiZLM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292369/BeatBoxX/Images/hsptmknjof2dlgfzp1hv.jpg",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292379/BeatBoxX/Music/i5grihjn5r8pf9khpewp.mp3",
+        "title": "Rabba Mein Toh Mar Gaya Oye Lyrical Video | Mausam | Shahid kapoor ,Sonam Kapoor",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "q5gGKGyQM9Y",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292389/BeatBoxX/Images/juypx2lkfyybesdyya2q.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292402/BeatBoxX/Music/jbbvztpc1urhr7oi8r8t.mp3",
+        "title": "Jogi | Shaadi Mein Zaroor Aana | Rajkummar Rao,Kriti Kharbanda|Arko ft Aakanksha Sharma",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "OX-h7MtkeOI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292414/BeatBoxX/Images/coqnllzzq6fimcjstdoe.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292432/BeatBoxX/Music/eomme6z8rzo9xknk4k6m.mp3",
+        "title": "O Saathi Video Song | Baaghi 2 | Tiger Shroff | Disha Patani | Arko | Ahmed Khan | Sajid Nadiadwala",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "S5T3nDrKYs0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292450/BeatBoxX/Images/rytobmvegmmyvxzhtuha.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292473/BeatBoxX/Music/svr0v4l6wuc10nv0mygq.mp3",
+        "title": "Tu Mujhse Juda - Mohsin Khan, Eisha Singh | Akhil Sachdeva, Vipin Patwa, Kumaar| Zee Music Originals",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "5CxiBVwapcM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292487/BeatBoxX/Images/ffufec5k6ch8p5xkmiqw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292498/BeatBoxX/Music/pffmoedmuhzoned6q7qb.mp3",
+        "title": "Tumse Behtar Lyric Video | SSKTK | Varun, Janhvi, Sanya, Rohit | Arijit, Tanishk, Manoj ",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "-JMtKCqnkm0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292514/BeatBoxX/Images/quqlb6ufjix30ktotbuk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292518/BeatBoxX/Music/uokrknzoyfexojvxi1kp.mp3",
+        "title": "Nazar Na Lag Jaaye With Lyrics | STREE | Rajkummar Rao, Shraddha Kapoor | Ash King & Sachin-Jigar",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "SgUhzxnV37I",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292533/BeatBoxX/Images/hommgfzlxvuc6u74tbqn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292541/BeatBoxX/Music/i3ltpyhcxno0g3bmdsp3.mp3",
+        "title": "Full Video: Nai Lagda | Notebook | Zaheer Iqbal & Pranutan Bahl | Vishal Mishra Asees Kaur",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "yEJQpoHfw0s",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292556/BeatBoxX/Images/et9nx70c0m30rots4zrk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292568/BeatBoxX/Music/kmi1v4gl0x82wv2bui3w.mp3",
+        "title": "Tenu Na Bol Pawaan - Behen Hogi Teri | Shruti Haasan,Raj Kummar Rao  | Amjad Nadeem",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "AMLWFlZSG48",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292582/BeatBoxX/Images/trle8fyeqkaus1adk1xn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292589/BeatBoxX/Music/x2sytfvyczssnjhanm9d.mp3",
+        "title": "Sitaare (Lyrics) - Arijit Singh | Ikkis",
+        "artist": "Geet Mantra",
+        "category": "All"
+    },
+    {
+        "video_id": "enY83Li8_ps",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292605/BeatBoxX/Images/dlhpzbfd6s8qa2cj5who.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292621/BeatBoxX/Music/v8cqqi6sswtjugdqqwnh.mp3",
+        "title": "Ishq Mashup 2.0 | Faheem Abdullah | Ishq X Tera Mera Rishta | Mustafa Zahid | Naresh Parmar",
+        "artist": "Naresh Parmar",
+        "category": "All"
+    },
+    {
+        "video_id": "55c6IlV7BEo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292635/BeatBoxX/Images/necyg1io35lde6h8mafi.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292658/BeatBoxX/Music/ghygy5be2n1dmp1ozuhc.mp3",
+        "title": "Ranjheya Ve | Zain Zohaib | Yratta media",
+        "artist": "Zain Zohaib",
+        "category": "All"
+    },
+    {
+        "video_id": "6QdFAyYVwSQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292669/BeatBoxX/Images/oxqbzehdqstsiidyizuh.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292677/BeatBoxX/Music/tt94mvs8xvjccaxdnk0w.mp3",
+        "title": "Arijit Singh - Rahogi Meri | Lyrical Song | Kartik Aaryan | Sara Ali Khan | Love Aaj Kal",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "mZQH8CPQ-wo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292692/BeatBoxX/Images/x4oyo8pvsucasbqzdddk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292695/BeatBoxX/Music/kkdzdtt8teinubj14wif.mp3",
+        "title": "With You - AP Dhillon (Official Music Video)",
+        "artist": "APDHILLON",
+        "category": "All"
+    },
+    {
+        "video_id": "vB0V3iCSzQw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292708/BeatBoxX/Images/aqoimo0uhhomsxxewdkn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292711/BeatBoxX/Music/pr77f2e4wbpbgahcxuch.mp3",
+        "title": "GURU RANDHAWA - \"AZUL\"  MV",
+        "artist": "Guru Randhawa",
+        "category": "All"
+    },
+    {
+        "video_id": "kTXilT_KbUM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292730/BeatBoxX/Images/qhdn0pvfw9z9ldvsakts.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292735/BeatBoxX/Music/vauvykcf3iurnu66vrym.mp3",
+        "title": "Lyrical:Tum Jo Aaye |Once Upon A Time In Mumbai| Ajay Devgn,Rahat Fateh Ali Khan,Tulsi Kumar, Pritam",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "WRQHV3kDcyo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292749/BeatBoxX/Images/xlmidrjwx4krclczmqih.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292763/BeatBoxX/Music/ib2xedetot7usybhbdhi.mp3",
+        "title": "SAB TERA Video Song | BAAGHI | Tiger Shroff, Shraddha Kapoor | Armaan Malik | Amaal Mallik |T-Series",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "HeX315M2-OY",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292787/BeatBoxX/Images/tcv4knczdi3fmppyhyl4.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292807/BeatBoxX/Music/cfx0wlvugvmfet2qbyn0.mp3",
+        "title": "Emraan Hashmi Mashup 2023  | SICKVED",
+        "artist": "SICKVED",
+        "category": "All"
+    },
+    {
+        "video_id": "zJlfRrzQYXw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292821/BeatBoxX/Images/mhgg1oizhbelebqyfybn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292825/BeatBoxX/Music/owlzsoyymxjwteh5flis.mp3",
+        "title": "Dard Pahle Se Hai Jyada Fir Dil Se Kiya ye Wada Full sad song (@official_alaina.7",
+        "artist": "Alaina's Creations",
+        "category": "All"
+    },
+    {
+        "video_id": "wa--U0DVyRU",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292839/BeatBoxX/Images/rp9d6caqx6j0sujtosxa.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292842/BeatBoxX/Music/ak3qe2mpkemoctx2ajbj.mp3",
+        "title": "Saanware - Akhil Sachdeva | Abhishek Kumar | Mannara Chopra | Anshul Garg",
+        "artist": "Play DMF",
+        "category": "All"
+    },
+    {
+        "video_id": "ioj6YBaSAyE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292853/BeatBoxX/Images/njtgltlagzirorfwgmum.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292857/BeatBoxX/Music/znfvxyz17sgbh75ixj5h.mp3",
+        "title": "Hoor Song (Full Video) | Hindi Medium | Irrfan Khan & Saba Qamar | Atif Aslam | Sachin- Jigar",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "BWczaSneA0Q",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292871/BeatBoxX/Images/gp9fchexlrkidpb5l5yi.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292883/BeatBoxX/Music/cpnyktwiza7bmzyzu5zg.mp3",
+        "title": "Maanu - Jhol (Acoustic) | Annural Khalid | Abdullah Siddiqui | Asfand",
+        "artist": "Maanu",
+        "category": "All"
+    },
+    {
+        "video_id": "G8EbGxrgY2Q",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292902/BeatBoxX/Images/xrxafu5ncxab0nocucul.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292915/BeatBoxX/Music/yrmkdygtkos3kr1apxau.mp3",
+        "title": "I: Tum Todo Na (Female Version) Lyrical Video | Chiyaan Vikram,Amy Jackson | AR Rahman| Tum Bin Mai",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "KGn-erOG-Bs",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292928/BeatBoxX/Images/rxqiauogxmha9kjfvvwy.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292942/BeatBoxX/Music/fxpi5b8ibwvjoy0doakd.mp3",
+        "title": "LAAL PARI (Song): Yo Yo Honey Singh | Sajid Nadiadwala | Tarun Mansukhani | Housefull 5",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "D5dZAjn_8tw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292955/BeatBoxX/Images/o0cxl8po2ffbnxj4egg8.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292969/BeatBoxX/Music/sc3g6b3kbivuehlxpetg.mp3",
+        "title": "Raanjhana Ve: Antara Mitra | Soham Naik | Uddipan | Sonu | Love Song | New Hindi Song| New Song 2026",
+        "artist": "Times Music",
+        "category": "All"
+    },
+    {
+        "video_id": "T5KsMtTReq4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789292985/BeatBoxX/Images/dtpmnmhpkmncwrkhy7ph.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789292992/BeatBoxX/Music/foglgxf4hg3wvsax3dui.mp3",
+        "title": "Jadu Ki Jhappi Leja Tu Abhi | Girish Kumar, Shruti Hasan | Ramaiya Vastavaiya | Bollywood Dance Song",
+        "artist": "Hindi Music Juction",
+        "category": "All"
+    },
+    {
+        "video_id": "5y1YQH03-88",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293009/BeatBoxX/Images/j1t0ju6mauqbfwx775em.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293018/BeatBoxX/Music/yplfxhvozdniywipu1rm.mp3",
+        "title": "Waade Saare (Official Music Video): Jubin Nautiyal | Navjit B | Shubham S, Kaushal K | Bhushan Kumar",
+        "artist": "T-Series and Jubin Nautiyal",
+        "category": "All"
+    },
+    {
+        "video_id": "VyHO5zCjA5g",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293029/BeatBoxX/Images/o5kk662rhzzch6v9cvon.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293036/BeatBoxX/Music/oh7bl3fmlmiftgg7pmxl.mp3",
+        "title": "Tu Meri - 8K Video | Hrithik Roshan & Katrina Kaif | BANG BANG! | Vishal Shekhar | Romantic Song",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "887biQ3TI_o",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293045/BeatBoxX/Images/e7fmymwrdeliiq31c7hp.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293052/BeatBoxX/Music/dckpbpevdfasmy78h81u.mp3",
+        "title": "Nazm Nazm",
+        "artist": "ARKO",
+        "category": "All"
+    },
+    {
+        "video_id": "ubHCJvgoebU",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293069/BeatBoxX/Images/jtvj2pt9n0a4jhejcmz7.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293094/BeatBoxX/Music/eum7am9rtfqunqpvodnc.mp3",
+        "title": "Kaho Naa Pyaar Hai (Title Track) 8K Video | Hrithik Roshan & Ameesha | Alka Yagnik & Udit Narayan",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "DYGYTWTI_0k",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293106/BeatBoxX/Images/z7ztddf5vnqeg1dkjhys.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293117/BeatBoxX/Music/mm32mnhnqibp8d1sh3zd.mp3",
+        "title": "Main Toh Nahi Haiwaan | Haiwaan | Akshay Kumar, Saif Ali Khan, Shriya P, Saiyami K | Pritam, Raghav",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "-vfS4UDgFb4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293133/BeatBoxX/Images/gbtvh8m9oyntrvoozrje.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293138/BeatBoxX/Music/vvfp1knryiflu1nrvxyj.mp3",
+        "title": "Apna Naam Du (VIDEO) Laqshay K | Asees K | Siddharth Gupta | Riva Arora | Rashmi V | Uddipan Sharma",
+        "artist": "DRJ Records",
+        "category": "All"
+    },
+    {
+        "video_id": "M8-MgrGTS0g",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293148/BeatBoxX/Images/af3tce7riel5dfz22j3l.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293154/BeatBoxX/Music/nqpdzbyzui7vpzzltasg.mp3",
+        "title": "SIMROON TERA NAAM: Yaariyan 2 | Divya Khosla K, Yash |Manan, Sachet| Radhika R, Vinay S | Bhushan K",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "PylcNpYMX4A",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293166/BeatBoxX/Images/dvy60xrnhhxdvfx8wbpa.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293173/BeatBoxX/Music/ywyztcbr9ifeuxc7carf.mp3",
+        "title": "ARIJIT SINGH | Fitratein (Official Video) | Ronak Phukan | Sanam Johar | Kanikka Kapur | Hindi Song",
+        "artist": "Times Music",
+        "category": "All"
+    },
+    {
+        "video_id": "Te1HWfk0e14",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293192/BeatBoxX/Images/p4s8n7c6aq7pxkmawfqw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293197/BeatBoxX/Music/yzi7opzvhhwqmoerrpfk.mp3",
+        "title": "Main Dhoondhne Ko X Piya Aaye Na (Broken Mashup) | Emotional Memories | Lo-fi 2307 | #instatrending",
+        "artist": "Lo-fi 2307",
+        "category": "All"
+    },
+    {
+        "video_id": "UzyTh7yUOls",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293207/BeatBoxX/Images/kmwxk0mi0vjsira58gyt.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293212/BeatBoxX/Music/uscgqe1jaided33zxw1t.mp3",
+        "title": "Maand x Jhol (Ultimate Mashup) | Sagar Swarup",
+        "artist": "Sagar Swarup",
+        "category": "All"
+    },
+    {
+        "video_id": "HsNvF6VLonQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293225/BeatBoxX/Images/lzvfipm2xuaczrz3t6kk.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293236/BeatBoxX/Music/gocda3ktcrx0yxyf7c6d.mp3",
+        "title": "Arijit Singh - Ruan Ruan Club Mix | Sushant Singh, Jacqueline | Vishal Bhardwaj, Varun Grover, Trosk",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "18m9ovEsP6s",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293245/BeatBoxX/Images/edir7erffnrgsp0mgrvu.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293251/BeatBoxX/Music/ynnbbqud2pivnensg2dz.mp3",
+        "title": "Ji Huzoor - Sparsh Shrivastava (Music Video) | New Love Song",
+        "artist": "Sparsh  Shrivastava",
+        "category": "All"
+    },
+    {
+        "video_id": "97oSJ2RfREA",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293266/BeatBoxX/Images/xy19sblr4f3vy3et3bnh.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293271/BeatBoxX/Music/j07gt6onwpa516fzkq1g.mp3",
+        "title": "SHARTAAN (Music Video): Tulsi Kumar | Abhijeet Srivastava | Shayra | Ranju Varghese | Bhushan Kumar",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "dJLCJeNAVo0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293289/BeatBoxX/Images/bzwcxgylzbvhj7o5x5kt.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293298/BeatBoxX/Music/rf0i52bvrauk4lgl0foi.mp3",
+        "title": "AUR - FAASLE (OFFICIAL LYRICAL VIDEO)",
+        "artist": "AUR",
+        "category": "All"
+    },
+    {
+        "video_id": "daUlZRGvrRE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293312/BeatBoxX/Images/mqghndhism7f6zbmplaw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293325/BeatBoxX/Music/soexkm9dtsfks9l6u4ft.mp3",
+        "title": "Tu Mera Raiyyo - Prem Keetanu | Veer Pahariya, Aafiya S | Sachet Tandon, Parampara Tandon, Kunaal V",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "2ATDav3eApE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293344/BeatBoxX/Images/osf83ljpvioqpvzcxlap.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293352/BeatBoxX/Music/gmd0akbceaidcz5gxqzh.mp3",
+        "title": "Tera Mera Rishta- Sufi Version | Awarapan 2 | Niazi Nizami Brothers, Mithoon, Pritam, Mustafa",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "0g7m9SMdCKA",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293370/BeatBoxX/Images/c81u7zhwesb9ipicmzud.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293382/BeatBoxX/Music/cmyur0zhrpnfonzhqn52.mp3",
+        "title": "New song 2026 | New Hindi Song | Tu Zaroorat Ban Gayi | Emraan Hashmi | Genelia | New Song ",
+        "artist": "Sagar Bairagi ",
+        "category": "All"
+    },
+    {
+        "video_id": "ga4Kri9oA1M",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293396/BeatBoxX/Images/hsvqvw1ylgmkuvzed1qo.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293403/BeatBoxX/Music/me895ohzcr3wseyzqz6m.mp3",
+        "title": "Chingariyaan - Toxic (Hindi) | Rocking Star Yash, Kiara Advani | Vishal Mishra, Jonita Gandhi, Raj S",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "SR_cK63NvfE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293419/BeatBoxX/Images/nit69d12daf3tygz704s.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293432/BeatBoxX/Music/zyjoirneh7z6qnli9qyw.mp3",
+        "title": "New Song 2026 | New Hindi Song | Dil Karde Riha | Shahid Kapoor | Yami Gautam | New Song",
+        "artist": "Gaurav Mali",
+        "category": "All"
+    },
+    {
+        "video_id": "O0yHgszgNwg",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293446/BeatBoxX/Images/ibawy5tx5ahx6i8mjsf2.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293449/BeatBoxX/Music/hplzth4lk6h2f8qic0cb.mp3",
+        "title": "Roz Roz Aate Ho - Lyrical Video | The Yellow Diary | Isha Talwar | Shilpa Rao | Rajan Batra",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "3z59OwGmNgE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293460/BeatBoxX/Images/txnblwhlnworygwbtmri.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293462/BeatBoxX/Music/dwfwvkhs474mhwajsbx8.mp3",
+        "title": "Meherbaan - Aditya Rikhari x @RavatorMusic",
+        "artist": "Aditya Rikhari",
+        "category": "All"
+    },
+    {
+        "video_id": "wPKKKNl0PsU",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293473/BeatBoxX/Images/xu2aripf4ypbfovkqtyp.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293475/BeatBoxX/Music/vj0hdw4jszjqjpgdvrdc.mp3",
+        "title": "MANN MERA (REMIX) - Video Song | Table No. 21 | Rajeev Khandelwal & Tina Desai",
+        "artist": "Sony Music India",
+        "category": "All"
+    },
+    {
+        "video_id": "tYKrORILFOg",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293487/BeatBoxX/Images/fkdav3pdjkb1zapijfcz.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293490/BeatBoxX/Music/rxbmo0xsvgm6k2eqxrmd.mp3",
+        "title": "Naam Chale (Official Video) Vikram Sarkar | New Haryanvi Songs Haryanavi 2025 |Latest Haryanvi Songs",
+        "artist": "All Good Music",
+        "category": "All"
+    },
+    {
+        "video_id": "WzD0LzB5Zsw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293501/BeatBoxX/Images/ieispgt7flyggmvjvdpn.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293504/BeatBoxX/Music/vmugsqrp2cqvkxrvbh5u.mp3",
+        "title": "Ishq Tera Lofi Mix | Guru Randhawa | Nushrratt Bharuccha | DJ Gaurav, VDJ Fly | T-Series",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "GnXyV87CbeM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293517/BeatBoxX/Images/qs8jz2dreku80bkuxxkr.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293524/BeatBoxX/Music/h3ve62o0xxzx4dfe6ryo.mp3",
+        "title": "Ratiyaan - Hansika Pareek | @SagnikKolay | Soham M | @StereoAuxHits |Latest Hindi Love Song 2024",
+        "artist": "Hansika Pareek and 2 more",
+        "category": "All"
+    },
+    {
+        "video_id": "Es4NrOnoNb4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293531/BeatBoxX/Images/uoqcdmp9kz1csfu7rrdm.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293535/BeatBoxX/Music/sgppao93wb5ciaoqg5qw.mp3",
+        "title": "Paro - @adityarikhari  UNPLG'd",
+        "artist": "UNPLGd Records and Aditya Rikhari",
+        "category": "All"
+    },
+    {
+        "video_id": "Knw-rWs8M6Y",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293545/BeatBoxX/Images/xqao3dxpbllwwvvrhuyc.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293557/BeatBoxX/Music/itofneiygbozmeimxq9a.mp3",
+        "title": "AROOH - Apna Banale (Official Music Video) | @arooh_music",
+        "artist": "AROOH",
+        "category": "All"
+    },
+    {
+        "video_id": "bmT62FqgOm4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293575/BeatBoxX/Images/xrushwn769kcwzinp4j9.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293580/BeatBoxX/Music/r8kysmynb4cg0ntdq1kl.mp3",
+        "title": "Netic -\"Dil Beqarar\" (Official Music Video)",
+        "artist": "Netic",
+        "category": "All"
+    },
+    {
+        "video_id": "zo-50e1SDHQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293591/BeatBoxX/Images/pmdjzmlrdgxloyw1cydp.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293596/BeatBoxX/Music/ipzhdqi3scpmqzcinlqn.mp3",
+        "title": "GURU RANDHAWA - KILLA - MV - BHUSHAN KUMAR",
+        "artist": "T-Series",
+        "category": "All"
+    },
+    {
+        "video_id": "Ofj861mIklI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293606/BeatBoxX/Images/alqg8npa6gptd9iwazoe.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293614/BeatBoxX/Music/gehv3nyakcsfmrgd9zml.mp3",
+        "title": "Hania Aamir - Pablo | Official Music Video",
+        "artist": "Hania Aamir",
+        "category": "All"
+    },
+    {
+        "video_id": "VMxd99upqo0",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293623/BeatBoxX/Images/lsdfhxrmwc4yzatgsrug.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293638/BeatBoxX/Music/x6eue6zhk2y73tdictan.mp3",
+        "title": "Toxic | Rocking Star Yash & Kiara Advani | Vishal Mishra & Hanita Bhambri",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "4K_jKgVMcYw",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293650/BeatBoxX/Images/qaix0wltn9u9xloskteq.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293657/BeatBoxX/Music/y9njnzrylkh0jbjnisgq.mp3",
+        "title": "New Song 2026 | New Hindi Song | Dil Haar Baithe | Sidharth Malhotra | Tamanna Bhatia | New Song ",
+        "artist": "Prakash Jojawar",
+        "category": "All"
+    },
+    {
+        "video_id": "gqljaNAQJ1A",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293668/BeatBoxX/Images/bvwp6qakcwsnmnbo4zlt.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293673/BeatBoxX/Music/beaykvhiwtpkyoq4hu1x.mp3",
+        "title": "Slap Song - I'm Game (Hindi) | Dulquer Salmaan & Kayadu Lohar | Jakes Bejoy, Bilal Quadri, Numan K",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "3qbDxfNBDhE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293684/BeatBoxX/Images/qccr72gch3bwfuzu4oyw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293689/BeatBoxX/Music/gcasqp2np0nguno83umg.mp3",
+        "title": "Tera Yaar Hoon Main (Title Track) Full Video | Sachet Tandon, Payal Dev, Aditya Dev | Aman, Akanksha",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "nCsroaGUbik",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293703/BeatBoxX/Images/ptbjttomudwuwllfwhiy.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293711/BeatBoxX/Music/bbladxknduuhqhdwvuzg.mp3",
+        "title": "Elysia Vale  -  All Of Me (Original Mix)",
+        "artist": "Elysia Vale",
+        "category": "All"
+    },
+    {
+        "video_id": "KHqDMwHpdy8",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293720/BeatBoxX/Images/utab0uoc3d6z9vj5on2z.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293726/BeatBoxX/Music/ihjgdbyqexy2whqon7jy.mp3",
+        "title": "Unknown Planet",
+        "artist": "이지금 [IU Official]",
+        "category": "All"
+    },
+    {
+        "video_id": "-EBeEbi3qZE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293743/BeatBoxX/Images/dptptliq5jun5f5dwd7r.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293751/BeatBoxX/Music/qkwvd7whvb3vgctnecnq.mp3",
+        "title": "Elysia Vale  -  Love Me Tonight (Original Mix)",
+        "artist": "Elysia Vale",
+        "category": "All"
+    },
+    {
+        "video_id": "9YoZRR3OACo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293761/BeatBoxX/Images/hzx7tdln0ljgn2t0dkhu.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293767/BeatBoxX/Music/hzvrcpb8g7cqtwqwlxoa.mp3",
+        "title": "Gulaab 🌹- Ashu Shukla | Shubham Kabra | Bluk (Official Video)",
+        "artist": "Ashu Shukla and 3 more",
+        "category": "All"
+    },
+    {
+        "video_id": "1DfayCI_8zI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293778/BeatBoxX/Images/aqssknpe8dociqtqzsfh.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293784/BeatBoxX/Music/tgihqkfnpkkvhbqncrrg.mp3",
+        "title": "Raajhna",
+        "artist": "Third Hour",
+        "category": "All"
+    },
+    {
+        "video_id": "UzpjbMY3PaA",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789293794/BeatBoxX/Images/z8t9g37ijjrwpqrlms8z.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789293798/BeatBoxX/Music/obobkmsdemtkifappnbd.mp3",
+        "title": "BALAM | Official Video | Akshay Delu ft. Shiva Choudhary | Kriti verma | New Haryanvi Song 2026",
+        "artist": "AKSHAY DELU",
+        "category": "All"
+    },
+    {
+        "video_id": "3DOtnvOKgBI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294056/BeatBoxX/Images/orvaevzdumn8pa91ce3k.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294066/BeatBoxX/Music/xwqpbzssg0pv5lqbyrmx.mp3",
+        "title": "Yegandham - Lyrical | See U | Kishen Das | Sanjana AK | Santhosh Srivatsan | Zenem",
+        "artist": "Saregama Tamil",
+        "category": "All"
+    },
+    {
+        "video_id": "I-lOSPSeYFE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294080/BeatBoxX/Images/vdyvqwokxtksmxfwy35m.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294083/BeatBoxX/Music/vyclb2frsymsbcbqybvl.mp3",
+        "title": "Spiritbox - Mourning (Official Video)",
+        "artist": "riserecords and 2 more",
+        "category": "All"
+    },
+    {
+        "video_id": "yuawc8QQEDA",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294097/BeatBoxX/Images/d6gij0wesebsu6zjvcoy.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294099/BeatBoxX/Music/nezv8gzsp0ortcgfhfpg.mp3",
+        "title": "Dekhiye Jahaan Jaiye Kahin - Studio Version | Batwara 1947 | Sunny Deol | AR Rahman, Javed, Aanandi",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "MSX3CkNeCnI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294137/BeatBoxX/Images/f5h17o92sxmyzm06agxs.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294204/BeatBoxX/Music/pxqa7gksfl7dub0rt6mz.mp3",
+        "title": "Ladies & Ladies (From \"Toxic - English\")",
+        "artist": "Release - Topic",
+        "category": "All"
+    },
+    {
+        "video_id": "FuuD1NV6VBE",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294220/BeatBoxX/Images/a20wqkbtlzl6rvxthsvw.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294231/BeatBoxX/Music/qpghfsenlsdsl1g8fp0a.mp3",
+        "title": "Banda Tere Liye - Full Video | Happy Patel | Vir Das & Mithila Palkar | Ash King, Ajay, Parth, MxRZI",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "IrS6bc9kZRk",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294243/BeatBoxX/Images/iltalheocbabxlztkdbz.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294249/BeatBoxX/Music/cjcr45hfiztiol7bxdg2.mp3",
+        "title": "Sun Meri Baat ||Anushka Sen \\\\edited by-Lyrics Londa ||||#trending song #lyrics 🥰",
+        "artist": "Lyrics londa",
+        "category": "All"
+    },
+    {
+        "video_id": "i1LErBbKlsQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294258/BeatBoxX/Images/xardco9temfbdhwgkxol.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294260/BeatBoxX/Music/nu7zdrhvic9fcq8y5kmp.mp3",
+        "title": "To Orochi With Love (OG Universe)",
+        "artist": "Thaman S - Topic",
+        "category": "All"
+    },
+    {
+        "video_id": "AENoXVNhT4Y",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294269/BeatBoxX/Images/v1awvgfcatnpcdm4quil.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294274/BeatBoxX/Music/q5bqjrm15fold4gcqwzq.mp3",
+        "title": "Priya Ragu - Finally (Visualiser)",
+        "artist": "Priya Ragu",
+        "category": "All"
+    },
+    {
+        "video_id": "R86LCAZg9jA",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294285/BeatBoxX/Images/qzcewixv0mj3flemb7yu.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294287/BeatBoxX/Music/bnklzchuaninrtjjxpdh.mp3",
+        "title": "Hai Mere Bappa - Tera Yaar Hoon Main | Aman K, Akanksha S, Paresh Rawal | Sanjeev Darshan, Piyush R",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "x4UMYFayJDI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294302/BeatBoxX/Images/pzxw8oez7pfx4wxxrfkg.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294304/BeatBoxX/Music/fsgrsf7vpkwdsabniqqf.mp3",
+        "title": "NOKKANDA (Official Lyrical Visualiser) ARJN X KDS X FIFTY4 X Karan Kanchan| Def Jam India",
+        "artist": "MONEY VERSE RECORDS",
+        "category": "All"
+    },
+    {
+        "video_id": "5DA3dZ3WWjI",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294318/BeatBoxX/Images/nsvhknwogjvorlphtgha.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294321/BeatBoxX/Music/yzvtzkskuj2dukwnsdxk.mp3",
+        "title": "Qismat Kaur (Official Video): Gulab Sidhu | Kulshan Sandhu | Upma Sharma | New Punjabi songs 2026",
+        "artist": "Top Notch Music",
+        "category": "All"
+    },
+    {
+        "video_id": "5qwpTuczWAM",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294330/BeatBoxX/Images/depjlhmlabmcjbb4m6lp.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294334/BeatBoxX/Music/e1ocjfy4qorjjkvvvmbu.mp3",
+        "title": "Marino - Rip Out Your Eyes (Official Lyrics Video)",
+        "artist": "Marino",
+        "category": "All"
+    },
+    {
+        "video_id": "hF3V4NX0LEo",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294348/BeatBoxX/Images/zpidmzjircqp1po1wyjd.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294353/BeatBoxX/Music/secs3l4r60um5d9z5fle.mp3",
+        "title": "Tera Boyfriend Kaunsa ? - Tony Kakkar, Neha Kakkar, Junior",
+        "artist": "Tony Kakkar and Neha Kakkar",
+        "category": "All"
+    },
+    {
+        "video_id": "M3QsxYNWVD4",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294363/BeatBoxX/Images/rgterlwyzsqgpaagktyd.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294377/BeatBoxX/Music/g6sehc33eczi3adrizxr.mp3",
+        "title": "Jee Kare - Rise of Vicky | I'm Game | Dulquer Salmaan, Antony Varghese | Jakes Bejoy, Arivu, Deepak",
+        "artist": "Zee Music Company",
+        "category": "All"
+    },
+    {
+        "video_id": "Y1Lah0BM0KQ",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294391/BeatBoxX/Images/cc2ddgdmwhikk8vv3qri.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294396/BeatBoxX/Music/o3pfqtgnb2u2qhgstbhh.mp3",
+        "title": "LE SSERAFIM (르세라핌) 'Made My Night' OFFICIAL MV with OVERWATCH",
+        "artist": "HYBE LABELS and 2 more",
+        "category": "All"
+    },
+    {
+        "video_id": "s1s2E6hXU_M",
+        "cover": "https://res.cloudinary.com/wctmwqqf/image/upload/v1789294409/BeatBoxX/Images/ehxthzemfozka21kqovz.webp",
+        "src": "https://res.cloudinary.com/wctmwqqf/video/upload/v1789294417/BeatBoxX/Music/ovxnignwqv8mkbkloo92.mp3",
+        "title": "Slipknot - Arsenal [OFFICIAL VIDEO]",
+        "artist": "Slipknot and 2 more",
+        "category": "All"
     }
 ]
