@@ -1407,46 +1407,228 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* 🌟 THEME PALETTE MODAL 🌟 */
+        /* 🌟 BESPOKE 3D AUDIO VISUALIZER & THEME STUDIO 🌟 */
         .theme-modal-content {
-            max-width: 580px;
-            max-height: 85vh;
+            max-width: 640px;
+            max-height: 88vh;
             overflow-y: auto;
+            background: rgba(8, 8, 14, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(138, 92, 255, 0.15);
+            border-radius: 28px;
+            padding: 24px;
+        }
+
+        .theme-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-sup-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .theme-title {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        .theme-subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .theme-live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #00E5FF;
+            white-space: nowrap;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00E5FF;
+            box-shadow: 0 0 8px #00E5FF;
+            animation: pulseFade 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseFade {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        /* 3D Dynamic Controls Box */
+        .theme-controls-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 22px;
+        }
+
+        .theme-box-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+
+        .theme-box-tag {
+            font-size: 9px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .theme-sliders-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .theme-sliders-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .theme-slider-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .theme-slider-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .theme-param-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .theme-param-val {
+            font-size: 11px;
+            font-weight: 800;
+            font-family: monospace;
+            color: var(--accent-light);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        .studio-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+            transition: background 0.2s;
+        }
+
+        .studio-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .studio-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 16px var(--accent);
+        }
+
+        .theme-section-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 12px;
+        }
+
+        .theme-sub-badge {
+            font-size: 10px;
+            color: var(--accent-light);
         }
 
         .theme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 12px;
-            margin-top: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .theme-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             text-align: left;
         }
 
         .theme-card:hover {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-light);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
         }
 
         .theme-card.active {
             border-color: var(--accent);
-            background: rgba(139, 92, 246, 0.16);
-            box-shadow: 0 0 20px var(--accent-glow);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 24px var(--accent-glow), inset 0 0 0 1px var(--accent);
         }
 
         .theme-card-top {
@@ -1455,46 +1637,94 @@
             justify-content: space-between;
         }
 
-        .theme-swatches {
+        .theme-name-group {
             display: flex;
-            gap: 6px;
+            flex-direction: column;
+            gap: 2px;
         }
 
-        .theme-swatch {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-        }
-
-        .theme-active-check {
-            font-size: 11px;
+        .theme-tag {
+            font-size: 9px;
             font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 12px;
-            background: var(--accent);
-            color: #fff;
-            display: none;
-        }
-
-        .theme-card.active .theme-active-check {
-            display: inline-block;
+            letter-spacing: 0.1em;
+            color: var(--accent-light);
+            text-transform: uppercase;
         }
 
         .theme-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
+            font-size: 15px;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .theme-active-indicator {
+            display: none;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .theme-card.active .theme-active-indicator {
+            display: inline-flex;
+        }
+
+        .theme-swatches {
+            display: flex;
+            gap: 7px;
+            align-items: center;
+        }
+
+        .theme-swatch {
+            width: 22px;
+            height: 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+
+        .theme-card:hover .theme-swatch {
+            transform: scaleY(1.3);
         }
 
         .theme-desc {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.45;
+        }
+
+        .theme-apply-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            border: none;
+            border-radius: 16px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .theme-apply-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px var(--accent-glow);
+        }
+
+        .theme-apply-btn:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
@@ -1860,22 +2090,70 @@
         </div>
     </div>
 
-    <!-- 🌟 VISUAL THEME STUDIO & PALETTE MODAL 🌟 -->
+    <!-- 🌟 BESPOKE 3D AUDIO VISUALIZER & THEME STUDIO MODAL 🌟 -->
     <div class="modal" id="theme-modal">
         <div class="modal-content ios-glass theme-modal-content">
             <div class="sheet-handle"></div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                <div>
-                    <h3 style="color: var(--accent-light); font-size: 19px; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">🎨 Visual Theme Studio</h3>
-                    <p style="font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px;">Transform your 3D WebGL background animation & UI palette in real time</p>
+            
+            <div class="theme-header">
+                <div class="theme-title-group">
+                    <div class="theme-sup-label">DSP ENGINE • STITCH AUDIO ARCHITECTURE</div>
+                    <h3 class="theme-title">Visualizer & Theme Studio</h3>
+                    <p class="theme-subtitle">Liquid Chromatic Silk 3D WebGL synthesis with real-time audio FFT coupling</p>
                 </div>
+                <div class="theme-live-badge">
+                    <span class="pulse-dot"></span>
+                    <span>LIVE 60FPS</span>
+                </div>
+            </div>
+
+            <!-- 3D PHYSICS & PARTICLE PARAMETERS SLIDERS -->
+            <div class="theme-controls-box">
+                <div class="theme-box-title">
+                    <span>3D Dynamic Physics Synthesis</span>
+                    <span class="theme-box-tag">PARAMETRIC</span>
+                </div>
+                
+                <div class="theme-sliders-row">
+                    <!-- Wave Velocity -->
+                    <div class="theme-slider-col">
+                        <div class="theme-slider-info">
+                            <span class="theme-param-label">Wave Velocity</span>
+                            <span class="theme-param-val" id="val-wave-speed">1.0x</span>
+                        </div>
+                        <input type="range" id="param-wave-speed" class="studio-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+                    </div>
+
+                    <!-- Particle Density -->
+                    <div class="theme-slider-col">
+                        <div class="theme-slider-info">
+                            <span class="theme-param-label">Quantum Stardust</span>
+                            <span class="theme-param-val" id="val-particle-density">1.0x</span>
+                        </div>
+                        <input type="range" id="param-particle-density" class="studio-slider" min="0.5" max="1.5" step="0.1" value="1.0">
+                    </div>
+
+                    <!-- Audio Bloom -->
+                    <div class="theme-slider-col">
+                        <div class="theme-slider-info">
+                            <span class="theme-param-label">Audio Bloom</span>
+                            <span class="theme-param-val" id="val-audio-bloom">1.0x</span>
+                        </div>
+                        <input type="range" id="param-audio-bloom" class="studio-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-section-label">
+                <span>CHROMATIC PALETTES</span>
+                <span class="theme-sub-badge">5 BESPOKE MODES</span>
             </div>
 
             <div class="theme-grid" id="theme-grid">
                 <!-- Injected via JavaScript with live color swatches and descriptions -->
             </div>
 
-            <button id="close-theme-modal" style="width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent), var(--cyan)); border: none; border-radius: 16px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 20px var(--accent-glow); transition: transform 0.15s ease;">Done</button>
+            <button id="close-theme-modal" class="theme-apply-btn">Apply & Return to Studio</button>
         </div>
     </div>
 
