@@ -2618,26 +2618,55 @@
         });
 
         // 🌟 PLAY TRACK FUNCTION & LOCK SCREEN CONTROLS 🌟
+        let isTransitioningTrack = false;
+        let consecutiveErrors = 0;
+        let shuffleHistoryPool = [];
+
+        function handleTrackEnded() {
+            if (isTransitioningTrack) return;
+            isTransitioningTrack = true;
+            setTimeout(() => { isTransitioningTrack = false; }, 800);
+
+            if (repeatMode === 'one') {
+                audio.currentTime = 0;
+                audio.play().then(() => {
+                    initWebAudio();
+                }).catch(e => console.log("Repeat track error:", e));
+                return;
+            }
+            playNext();
+        }
+
         function loadTrack(index) {
-            currentTrackIndex = index;
-            const track = playlistData[index];
+            if (!playlistData || !playlistData.length) return;
+            currentTrackIndex = (index + playlistData.length) % playlistData.length;
+            const track = playlistData[currentTrackIndex];
             if (!track) return;
 
+            isTransitioningTrack = false;
             showLoading();
+
+            try {
+                audio.pause();
+                audio.currentTime = 0;
+            } catch(e) {}
+
             audio.src = track.src;
             audio.playbackRate = speeds[speedIdx];
+            audio.load();
+
             document.getElementById("title").innerText = track.title;
             document.getElementById("artist").innerText = track.artist;
             document.getElementById("cover").src = track.cover;
 
-            // Extract vibrant cover color for 3D background accent
+            // Extract vibrant cover color for 3D background accent & dynamic theme
             extractCoverColor(track.cover);
 
             // Track Recently Played History
             const key = getTrackKey(track);
             playedHistory = playedHistory.filter(k => k !== key);
             playedHistory.unshift(key);
-            if (playedHistory.length > 30) playedHistory.pop();
+            if (playedHistory.length > 50) playedHistory.pop();
             localStorage.setItem("beatbox_history", JSON.stringify(playedHistory));
 
             // Sync persistent like & offline state
@@ -2714,9 +2743,14 @@
             const playPromise = audio.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
+                    consecutiveErrors = 0;
                     initWebAudio();
+                    if (audioCtx && audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
                 }).catch(e => {
-                    console.log("Audio playback waiting for user gesture:", e);
+                    if (e.name === 'AbortError') return; // Interrupted by rapid skip
+                    console.log("Audio playback awaiting user gesture:", e);
                     document.getElementById("i-loader").style.display = "none";
                     document.getElementById("i-pause").style.display = "none";
                     document.getElementById("i-play").style.display = "block";
@@ -3069,22 +3103,22 @@
             if (!queue.length) return;
 
             if (repeatMode === 'one') {
-                loadTrack(currentTrackIndex);
+                audio.currentTime = 0;
+                audio.play().then(() => initWebAudio()).catch(e => console.log("Repeat track error:", e));
                 return;
             }
 
             const currentPosInQueue = queue.indexOf(currentTrackIndex);
 
             if (isShuffle) {
-                let nextPos;
-                if (queue.length > 1) {
-                    do {
-                        nextPos = Math.floor(Math.random() * queue.length);
-                    } while (queue[nextPos] === currentTrackIndex);
-                } else {
-                    nextPos = 0;
+                shuffleHistoryPool = shuffleHistoryPool.filter(idx => queue.includes(idx) && idx !== currentTrackIndex);
+                if (shuffleHistoryPool.length === 0) {
+                    shuffleHistoryPool = queue.filter(idx => idx !== currentTrackIndex);
+                    if (shuffleHistoryPool.length === 0) shuffleHistoryPool = [...queue];
                 }
-                loadTrack(queue[nextPos]);
+                const randIndex = Math.floor(Math.random() * shuffleHistoryPool.length);
+                const nextTrack = shuffleHistoryPool.splice(randIndex, 1)[0];
+                loadTrack(nextTrack);
             } else {
                 const nextPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue + 1) % queue.length;
                 loadTrack(queue[nextPos]);
@@ -3111,9 +3145,23 @@
             playPrev();
         });
 
-        // 🌟 AUTO NEXT SONG ON ENDED 🌟
+        // 🌟 AUTO NEXT SONG ON ENDED WITH ERROR RECOVERY & WATCHDOG 🌟
         audio.addEventListener("ended", () => {
-            playNext();
+            handleTrackEnded();
+        });
+
+        audio.addEventListener("error", (e) => {
+            console.warn("Audio element error caught:", e);
+            consecutiveErrors++;
+            if (consecutiveErrors <= 4) {
+                showToast("Source unavailable, auto-advancing...", "⚠️");
+                setTimeout(() => { playNext(); }, 600);
+            } else {
+                showToast("Playback error. Check network connection.", "⚠️");
+                document.getElementById("i-loader").style.display = "none";
+                document.getElementById("i-play").style.display = "block";
+                document.getElementById("player").classList.remove("playing");
+            }
         });
 
         // 🌟 BOTTOM NAV & PLAYLIST MODAL 🌟
@@ -3313,6 +3361,11 @@
                 let durSec = Math.floor(audio.duration % 60);
                 document.getElementById("tDur").innerText = `${durMin}:${durSec < 10 ? '0' : ''}${durSec}`;
                 updatePositionState();
+
+                // 🌟 WATCHDOG: Ensure next track fires if browser stalls near end of audio
+                if (!audio.paused && audio.duration > 2 && audio.currentTime >= audio.duration - 0.25) {
+                    handleTrackEnded();
+                }
             } else {
                 document.getElementById("tDur").innerText = "0:00";
             }
@@ -3421,11 +3474,12 @@
             if (window._threeBgInitialized) return;
             window._threeBgInitialized = true;
 
+            const savedTheme = localStorage.getItem("beatbox_theme") || "cosmic";
+
             if (window.ThreeBackground && window.THREE) {
                 try {
                     new window.ThreeBackground({
-                        primaryColor: 0xD4AF37,
-                        secondaryColor: 0x4a3b10,
+                        theme: savedTheme,
                         particleCount: 1000
                     });
                 } catch(e) { console.warn("3D Background Init Exception:", e); }
@@ -3455,8 +3509,7 @@
                         if (window.ThreeBackground) {
                             try {
                                 new window.ThreeBackground({
-                                    primaryColor: 0xD4AF37,
-                                    secondaryColor: 0x4a3b10,
+                                    theme: savedTheme,
                                     particleCount: 1000
                                 });
                             } catch(e) { console.warn("3D Background error:", e); }
