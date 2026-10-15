@@ -351,10 +351,23 @@
         }
 
         .btn.is-on {
-            color: var(--accent-light);
-            background: rgba(139, 92, 246, 0.25);
+            color: #ffffff;
+            background: rgba(139, 92, 246, 0.28);
             border-color: var(--accent);
-            box-shadow: 0 0 18px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .btn.is-on::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 8px var(--cyan);
         }
 
         .btn--icon-only {
@@ -405,14 +418,17 @@
             right: 2px;
             font-size: 9px;
             font-weight: 800;
-            background: var(--accent);
-            color: #fff;
+            background: var(--cyan);
+            color: #05040A;
             border-radius: 50%;
-            width: 13px;
-            height: 13px;
+            width: 14px;
+            height: 14px;
             display: none;
-            line-height: 13px;
+            line-height: 14px;
             text-align: center;
+            box-shadow: 0 0 8px var(--cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            pointer-events: none;
         }
 
         /* Large Play/Pause Primary Orb */
@@ -2195,9 +2211,9 @@
 
             <div class="theme-header">
                 <div class="theme-title-group">
-                    <div class="theme-sup-label">DSP ENGINE • STITCH AUDIO ARCHITECTURE</div>
-                    <h3 class="theme-title">Visualizer & Theme Studio</h3>
-                    <p class="theme-subtitle">Liquid Chromatic Silk 3D WebGL synthesis with real-time audio FFT coupling
+                    <div class="theme-sup-label">3D AUDIO SANCTUARY • STITCH ARCHITECTURE</div>
+                    <h3 class="theme-title">Chill Sanctuary & 3D Theme Studio</h3>
+                    <p class="theme-subtitle">Listener with glowing audiophile headphones under a crystal tree with beat-synced ripples & orbiting equalizer
                     </p>
                 </div>
                 <div class="theme-live-badge">
@@ -2262,8 +2278,10 @@
     <script>
         let playlistData = [];
         let currentTrackIndex = 0;
-        let isShuffle = false;
-        let repeatMode = 'off'; // 'off', 'all', 'one'
+        let isShuffle = localStorage.getItem("beatbox_shuffle") === "true";
+        let repeatMode = localStorage.getItem("beatbox_repeat") || 'off'; // 'off', 'all', 'one'
+        let shuffleHistoryPool = [];
+        let shufflePrevHistory = [];
         let isLiked = false;
         let likedTracks = new Set(JSON.parse(localStorage.getItem("beatbox_liked") || "[]"));
         let playedHistory = JSON.parse(localStorage.getItem("beatbox_history") || "[]");
@@ -3001,7 +3019,6 @@
         // 🌟 PLAY TRACK FUNCTION & LOCK SCREEN CONTROLS 🌟
         let isTransitioningTrack = false;
         let consecutiveErrors = 0;
-        let shuffleHistoryPool = [];
 
         function handleTrackEnded() {
             if (isTransitioningTrack) return;
@@ -3015,7 +3032,7 @@
                 }).catch(e => console.log("Repeat track error:", e));
                 return;
             }
-            playNext();
+            playNext(false); // Natural queue advancement
         }
 
         function loadTrack(index) {
@@ -3223,31 +3240,68 @@
             else { audio.pause(); }
         });
 
-        // 🌟 SHUFFLE MODE TOGGLE 🌟
-        shuffleBtn.addEventListener("click", () => {
-            isShuffle = !isShuffle;
+        // 🌟 SHUFFLE & REPEAT CONTROLLERS (PERSISTENT & TOAST-SYNCED) 🌟
+        function updateShuffleUI(showNotification = false) {
+            if (!shuffleBtn) return;
             shuffleBtn.classList.toggle("is-on", isShuffle);
-        });
+            shuffleBtn.setAttribute("aria-pressed", isShuffle ? "true" : "false");
+            shuffleBtn.setAttribute("title", isShuffle ? "Shuffle: On (Randomized Queue)" : "Shuffle: Off (Sequential Queue)");
 
-        // 🌟 REPEAT MODE CYCLE (OFF -> ALL -> ONE) 🌟
-        repeatBtn.addEventListener("click", () => {
-            if (repeatMode === 'off') {
-                repeatMode = 'all';
+            if (showNotification) {
+                showToast(isShuffle ? "Shuffle Mode: Active" : "Shuffle Mode: Off", "🔀");
+            }
+        }
+
+        function updateRepeatUI(showNotification = false) {
+            if (!repeatBtn || !repeatBadge) return;
+            if (repeatMode === 'all') {
                 repeatBtn.classList.add("is-on");
-                repeatBtn.setAttribute("title", "Repeat All");
                 repeatBadge.style.display = "none";
-            } else if (repeatMode === 'all') {
-                repeatMode = 'one';
+                repeatBtn.setAttribute("aria-pressed", "true");
+                repeatBtn.setAttribute("title", "Repeat: All (Looping Entire Playlist)");
+                if (showNotification) showToast("Repeat All: Enabled", "🔁");
+            } else if (repeatMode === 'one') {
                 repeatBtn.classList.add("is-on");
-                repeatBtn.setAttribute("title", "Repeat One");
                 repeatBadge.style.display = "block";
+                repeatBadge.innerText = "1";
+                repeatBtn.setAttribute("aria-pressed", "true");
+                repeatBtn.setAttribute("title", "Repeat: One (Looping Current Song)");
+                if (showNotification) showToast("Repeat One: Looping Track", "🔂");
             } else {
                 repeatMode = 'off';
                 repeatBtn.classList.remove("is-on");
-                repeatBtn.setAttribute("title", "Repeat Off");
                 repeatBadge.style.display = "none";
+                repeatBtn.setAttribute("aria-pressed", "false");
+                repeatBtn.setAttribute("title", "Repeat: Off");
+                if (showNotification) showToast("Repeat: Off", "➡️");
             }
+        }
+
+        // Toggle Shuffle Mode
+        shuffleBtn.addEventListener("click", () => {
+            isShuffle = !isShuffle;
+            localStorage.setItem("beatbox_shuffle", isShuffle ? "true" : "false");
+            shuffleHistoryPool = [];
+            shufflePrevHistory = [];
+            updateShuffleUI(true);
         });
+
+        // Cycle Repeat Modes (Off -> All -> One)
+        repeatBtn.addEventListener("click", () => {
+            if (repeatMode === 'off') {
+                repeatMode = 'all';
+            } else if (repeatMode === 'all') {
+                repeatMode = 'one';
+            } else {
+                repeatMode = 'off';
+            }
+            localStorage.setItem("beatbox_repeat", repeatMode);
+            updateRepeatUI(true);
+        });
+
+        // Apply saved Shuffle & Repeat UI on load
+        updateShuffleUI(false);
+        updateRepeatUI(false);
 
         // 🌟 USER-SIDE LIKED TRACKS MANAGEMENT 🌟
         function toggleLikeTrack(track) {
@@ -3477,21 +3531,29 @@
             return playlistData.map((_, i) => i);
         }
 
-        // 🌟 NEXT & PREVIOUS PLAYBACK LOGIC 🌟
-        function playNext() {
+        // 🌟 NEXT & PREVIOUS PLAYBACK LOGIC (SHUFFLE & REPEAT INTEGRATED) 🌟
+        function playNext(isManual = false) {
             if (!playlistData.length) return;
             const queue = getActiveQueueIndices();
             if (!queue.length) return;
 
-            if (repeatMode === 'one') {
+            // When repeating one track, only loop if it's natural end, not manual click
+            if (!isManual && repeatMode === 'one') {
                 audio.currentTime = 0;
                 audio.play().then(() => initWebAudio()).catch(e => console.log("Repeat track error:", e));
                 return;
             }
 
+            // Push current track to shuffle previous history
+            if (typeof currentTrackIndex === 'number' && currentTrackIndex >= 0) {
+                shufflePrevHistory.push(currentTrackIndex);
+                if (shufflePrevHistory.length > 50) shufflePrevHistory.shift();
+            }
+
             const currentPosInQueue = queue.indexOf(currentTrackIndex);
 
             if (isShuffle) {
+                // Ensure shuffle pool only contains other tracks in the queue
                 shuffleHistoryPool = shuffleHistoryPool.filter(idx => queue.includes(idx) && idx !== currentTrackIndex);
                 if (shuffleHistoryPool.length === 0) {
                     shuffleHistoryPool = queue.filter(idx => idx !== currentTrackIndex);
@@ -3501,7 +3563,21 @@
                 const nextTrack = shuffleHistoryPool.splice(randIndex, 1)[0];
                 loadTrack(nextTrack);
             } else {
-                const nextPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue + 1) % queue.length;
+                let nextPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue + 1);
+                if (nextPos >= queue.length) {
+                    if (repeatMode === 'off' && !isManual) {
+                        // Natural queue end reached without repeat
+                        audio.pause();
+                        audio.currentTime = 0;
+                        document.getElementById("i-loader").style.display = "none";
+                        document.getElementById("i-pause").style.display = "none";
+                        document.getElementById("i-play").style.display = "block";
+                        document.getElementById("player").classList.remove("playing");
+                        showToast("Queue finished", "⏹️");
+                        return;
+                    }
+                    nextPos = 0; // Loop queue if repeat all or manual click
+                }
                 loadTrack(queue[nextPos]);
             }
         }
@@ -3511,6 +3587,22 @@
             const queue = getActiveQueueIndices();
             if (!queue.length) return;
 
+            // If track has played more than 3 seconds, replay from start
+            if (audio.currentTime > 3) {
+                audio.currentTime = 0;
+                return;
+            }
+
+            // In shuffle mode, pop previously heard song from history stack
+            if (isShuffle && shufflePrevHistory.length > 0) {
+                const prevTrack = shufflePrevHistory.pop();
+                if (queue.includes(prevTrack)) {
+                    loadTrack(prevTrack);
+                    return;
+                }
+            }
+
+            // Sequential previous
             const currentPosInQueue = queue.indexOf(currentTrackIndex);
             const prevPos = (currentPosInQueue === -1) ? 0 : (currentPosInQueue - 1 + queue.length) % queue.length;
             loadTrack(queue[prevPos]);
@@ -3518,7 +3610,7 @@
 
         document.getElementById("next").addEventListener("click", () => {
             initWebAudio();
-            playNext();
+            playNext(true); // isManual = true
         });
 
         document.getElementById("prev").addEventListener("click", () => {
