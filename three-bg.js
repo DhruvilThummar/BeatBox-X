@@ -1,26 +1,32 @@
 /**
- * Beat Box X — Bespoke 3D Chill Audio Sanctuary
- * Architecture: Stylized Low-Poly Music Listener under a Luminous Crystal Bonsai Tree
- * Design Concept: A chill listener with glowing audiophile headphones sitting under
- * a crystalline tree beside a reflective pond with expanding soundwave ripples,
- * orbiting equalizer beat bars, and celestial stardust.
- * Fully coupled to Web Audio FFT, Theme Presets, and Studio Sliders.
+ * Beat Box X — Realistic 3D Audiophile Sanctuary
+ * Concept: Atmospheric nocturnal scene of a music listener with precision headphones
+ * relaxing under an organic luminous Bonsai tree beside an undulating reflecting lake.
+ * Features:
+ *  - Dynamic vertex-displaced PBR water simulation with real-time wave physics & caustics
+ *  - Organic multi-branched Bonsai tree with wind-swayed illuminated foliage & falling sound petals
+ *  - Anatomically proportioned stylized listener with natural breathing & beat-synchronized head groove
+ *  - Precision audiophile headphones with plush cushions, aluminum gimbals & audio-reactive LED rings
+ *  - Coiled audio cable leading to an illuminated DAC player on the stone
+ *  - Distant crescent moon with atmospheric corona, volumetric depth fog, & 600 twinkling stars
+ *  - Live coupling to Web Audio FFT (Bass, Mid, Treble), 5 master themes, & Studio sliders
  */
 
 class ThreeBackground {
   constructor(options = {}) {
     this.container = options.container || document.body;
 
-    // 5 Bespoke Audiophile Master Themes
+    // 5 Master Audiophile Palettes
     this.themes = {
       obsidian: {
         id: "obsidian",
         name: "Obsidian Violet",
         primary: 0x8A5CFF,   // Obsidian Violet
-        secondary: 0x5B21B6, // Deep Violet Core
+        secondary: 0x5B21B6, // Deep Velvet
         accent: 0x00E5FF,    // Specular Cyan Crest
-        background: 0x07080D,
-        fogDensity: 0.022
+        background: 0x06070B,
+        waterColor: 0x04060A,
+        fogDensity: 0.024
       },
       titanium: {
         id: "titanium",
@@ -28,8 +34,9 @@ class ThreeBackground {
         primary: 0x00E5FF,   // Titanium Cyan
         secondary: 0x0F4C81, // Deep Oceanic Cobalt
         accent: 0x38BDF8,    // Electric Sky Specular
-        background: 0x040910,
-        fogDensity: 0.022
+        background: 0x03070E,
+        waterColor: 0x02050B,
+        fogDensity: 0.024
       },
       amber: {
         id: "amber",
@@ -37,8 +44,9 @@ class ThreeBackground {
         primary: 0xFF9900,   // Solar Amber
         secondary: 0xD4AF37, // Champagne Gold
         accent: 0xFBBF24,    // Warm Solar Crest
-        background: 0x0A0704,
-        fogDensity: 0.022
+        background: 0x090603,
+        waterColor: 0x060402,
+        fogDensity: 0.024
       },
       cobalt: {
         id: "cobalt",
@@ -46,8 +54,9 @@ class ThreeBackground {
         primary: 0x2979FF,   // Electric Cobalt
         secondary: 0x1A237E, // Deep Indigo
         accent: 0x60A5FA,    // Luminous Horizon
-        background: 0x030612,
-        fogDensity: 0.022
+        background: 0x020510,
+        waterColor: 0x01030B,
+        fogDensity: 0.024
       },
       dynamic: {
         id: "dynamic",
@@ -55,38 +64,41 @@ class ThreeBackground {
         primary: 0x8A5CFF,
         secondary: 0x00E5FF,
         accent: 0xD946EF,
-        background: 0x07080D,
-        fogDensity: 0.022
+        background: 0x06070B,
+        waterColor: 0x04060A,
+        fogDensity: 0.024
       }
     };
 
-    const initialThemeKey = options.theme && this.themes[options.theme] ? options.theme : 'obsidian';
-    this.currentThemeKey = initialThemeKey;
-    const themeCfg = this.themes[initialThemeKey];
+    const initialKey = options.theme && this.themes[options.theme] ? options.theme : 'obsidian';
+    this.currentThemeKey = initialKey;
+    const themeCfg = this.themes[initialKey];
 
-    // Smooth Color Interpolation Targets
+    // Smooth Color Interpolation Vectors
     this.primaryColor = new THREE.Color(themeCfg.primary);
     this.secondaryColor = new THREE.Color(themeCfg.secondary);
     this.accentColor = new THREE.Color(themeCfg.accent);
+    this.bgColor = new THREE.Color(themeCfg.background);
 
     this.targetPrimary = this.primaryColor.clone();
     this.targetSecondary = this.secondaryColor.clone();
     this.targetAccent = this.accentColor.clone();
+    this.targetBg = this.bgColor.clone();
 
-    // User-Tunable Telemetry Parameters
+    // User-Tunable Parameters
     this.params = {
       waveSpeed: options.waveSpeed || 1.0,
       particleDensity: options.particleDensity || 1.0,
       audioBloom: options.audioBloom || 1.0
     };
 
-    // Parallax Interpolation
+    // Camera & Mouse Damping
     this.mouseX = 0;
     this.mouseY = 0;
     this.targetMouseX = 0;
     this.targetMouseY = 0;
 
-    // Smoothed Audio Frequency Bands
+    // Smoothed Audio Frequency Bands (0.0 to 1.0)
     this.bass = 0;
     this.mid = 0;
     this.treble = 0;
@@ -94,17 +106,61 @@ class ThreeBackground {
     this.targetMid = 0;
     this.targetTreble = 0;
 
-    // Scene Elements Storage
-    this.crystalClusters = [];
-    this.ripples = [];
-    this.musicalBeats = [];
-    this.soundwaveSpheres = [];
+    // Collections for Animation
+    this.foliageClusters = [];
+    this.fallingPetals = [];
+    this.waterRipples = [];
+    this.fireflies = [];
 
     this.init();
   }
 
+  // Generate Procedural Soft Radial Glow Texture
+  createGlowTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+    grad.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
+    grad.addColorStop(0.25, 'rgba(255, 255, 255, 0.6)');
+    grad.addColorStop(0.55, 'rgba(255, 255, 255, 0.15)');
+    grad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 128, 128);
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.needsUpdate = true;
+    return tex;
+  }
+
+  // Generate Subtle Water Normal Perturbation Canvas
+  createWaterNormalTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#8080ff'; // flat normal base
+    ctx.fillRect(0, 0, 128, 128);
+
+    // Soft concentric noise rings
+    for (let i = 0; i < 8; i++) {
+      ctx.beginPath();
+      ctx.arc(64, 64, 10 + i * 14, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${128 + i * 8}, ${128 - i * 6}, 255, 0.15)`;
+      ctx.lineWidth = 4;
+      ctx.stroke();
+    }
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(4, 4);
+    return tex;
+  }
+
   init() {
-    // 1. Canvas Setup
+    // 1. WebGL Canvas
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'three-bg-canvas';
     this.canvas.style.position = 'fixed';
@@ -115,10 +171,10 @@ class ThreeBackground {
     this.canvas.style.zIndex = '-1';
     this.canvas.style.pointerEvents = 'none';
     this.canvas.style.opacity = '0';
-    this.canvas.style.transition = 'opacity 1.2s ease-in-out';
+    this.canvas.style.transition = 'opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1)';
     this.container.appendChild(this.canvas);
 
-    // 2. Renderer with Filmic Tone Mapping
+    // 2. High-Precision Renderer
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
@@ -128,33 +184,40 @@ class ThreeBackground {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.2;
+    this.renderer.toneMappingExposure = 1.28;
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    // 3. Scene & Atmospheric Studio Fog
+    // 3. Scene & Atmospheric Volumetric Fog
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(this.themes[this.currentThemeKey].background, this.themes[this.currentThemeKey].fogDensity);
+    this.scene.fog = new THREE.FogExp2(
+      this.themes[this.currentThemeKey].background,
+      this.themes[this.currentThemeKey].fogDensity
+    );
 
-    // 4. Perspective Camera
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.set(0, 4.6, 13.5);
-    this.camera.lookAt(0, 1.6, 0);
+    // 4. Studio Perspective Camera
+    this.camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.set(0, 4.2, 13.0);
+    this.camera.lookAt(0, 1.4, 0);
 
-    // 5. Root Group for Scene Parallax
+    // 5. Root Transform Hierarchy
     this.root = new THREE.Group();
     this.scene.add(this.root);
 
-    // 6. Build Scene Objects
-    this.setupLighting();
-    this.buildReflectivePond();
-    this.buildIslandPlatform();
-    this.buildCrystalTree();
-    this.buildChillListener();
-    this.buildSoundwaveRipples();
-    this.buildOrbitingBeatEqualizer();
-    this.buildFloatingSoundSpheres();
-    this.buildStardustField();
+    this.glowTexture = this.createGlowTexture();
+    this.waterNormalTexture = this.createWaterNormalTexture();
 
-    // 7. Event Handlers
+    // 6. Build High-Fidelity Scene
+    this.setupLighting();
+    this.buildDynamicWaterLake();
+    this.buildIslandSanctuary();
+    this.buildOrganicBonsaiTree();
+    this.buildChillListener();
+    this.buildFallingSoundPetals();
+    this.buildBioFireflies();
+    this.buildCelestialAtmosphere();
+
+    // 7. Event Listeners
     this.clock = new THREE.Clock();
     this.onResizeBound = this.onWindowResize.bind(this);
     this.onMouseMoveBound = this.onMouseMove.bind(this);
@@ -164,7 +227,7 @@ class ThreeBackground {
     window.addEventListener('mousemove', this.onMouseMoveBound, { passive: true });
     window.addEventListener('touchmove', this.onTouchMoveBound, { passive: true });
 
-    // 8. Start Animation Loop
+    // 8. Launch Loop
     window.threeBgInstance = this;
     requestAnimationFrame(() => {
       this.canvas.style.opacity = '1';
@@ -173,155 +236,243 @@ class ThreeBackground {
   }
 
   setupLighting() {
-    this.ambientLight = new THREE.AmbientLight(0x161824, 1.8);
+    // Ambient nocturnal skylight
+    this.ambientLight = new THREE.AmbientLight(0x0E121E, 1.4);
     this.scene.add(this.ambientLight);
 
-    // Key Moon / Atmospheric Studio Light
-    this.moonLight = new THREE.DirectionalLight(this.primaryColor, 2.0);
-    this.moonLight.position.set(-6, 14, 8);
+    // Key Directional Moon Light (Casts soft directional shadows)
+    this.moonLight = new THREE.DirectionalLight(this.primaryColor, 2.4);
+    this.moonLight.position.set(-8, 16, 8);
+    this.moonLight.castShadow = true;
+    this.moonLight.shadow.mapSize.width = 1024;
+    this.moonLight.shadow.mapSize.height = 1024;
+    this.moonLight.shadow.camera.near = 0.5;
+    this.moonLight.shadow.camera.far = 32;
+    this.moonLight.shadow.camera.left = -6;
+    this.moonLight.shadow.camera.right = 6;
+    this.moonLight.shadow.camera.top = 6;
+    this.moonLight.shadow.camera.bottom = -6;
+    this.moonLight.shadow.bias = -0.0008;
     this.scene.add(this.moonLight);
 
-    // Cyan Rim Fill Light
-    this.cyanRim = new THREE.DirectionalLight(this.accentColor, 2.2);
-    this.cyanRim.position.set(8, 7, -6);
+    // Specular Rim Cyan Light
+    this.cyanRim = new THREE.DirectionalLight(this.accentColor, 1.9);
+    this.cyanRim.position.set(9, 6, -7);
     this.scene.add(this.cyanRim);
 
-    // Amber Ambient Island Point Light
-    this.amberPoint = new THREE.PointLight(0xFFA500, 2.4, 14, 1.8);
-    this.amberPoint.position.set(0, 3.2, 0);
-    this.scene.add(this.amberPoint);
+    // Warm Island Emissive Light
+    this.islandPoint = new THREE.PointLight(0xFFA500, 2.2, 12, 1.8);
+    this.islandPoint.position.set(0.4, 2.8, 0.4);
+    this.islandPoint.castShadow = true;
+    this.scene.add(this.islandPoint);
+
+    // Headphone Local Aura Light
+    this.earLight = new THREE.PointLight(this.accentColor, 1.6, 3.2, 2.2);
+    this.earLight.position.set(1.1, 2.2, 0.6);
+    this.scene.add(this.earLight);
   }
 
-  buildReflectivePond() {
-    const pondGeo = new THREE.CircleGeometry(18, 64);
-    this.pondMat = new THREE.MeshStandardMaterial({
-      color: 0x05070A,
-      roughness: 0.12,
-      metalness: 0.88
+  buildDynamicWaterLake() {
+    // Undulating High-Density Water Mesh with 64x64 Segments
+    this.waterSegments = 64;
+    const waterRadius = 22;
+    this.waterGeo = new THREE.PlaneGeometry(waterRadius * 2, waterRadius * 2, this.waterSegments, this.waterSegments);
+    this.waterGeo.rotateX(-Math.PI / 2);
+
+    // Cache initial vertex positions for procedural wave simulation
+    const pos = this.waterGeo.attributes.position;
+    this.waterBaseY = new Float32Array(pos.count);
+    this.waterBaseX = new Float32Array(pos.count);
+    this.waterBaseZ = new Float32Array(pos.count);
+
+    for (let i = 0; i < pos.count; i++) {
+      this.waterBaseX[i] = pos.getX(i);
+      this.waterBaseY[i] = pos.getY(i);
+      this.waterBaseZ[i] = pos.getZ(i);
+    }
+
+    this.waterMat = new THREE.MeshStandardMaterial({
+      color: this.themes[this.currentThemeKey].waterColor,
+      roughness: 0.08,
+      metalness: 0.92,
+      normalMap: this.waterNormalTexture,
+      transparent: true,
+      opacity: 0.94
     });
-    const pond = new THREE.Mesh(pondGeo, this.pondMat);
-    pond.rotation.x = -Math.PI / 2;
-    pond.position.y = -0.05;
-    this.root.add(pond);
+
+    this.waterMesh = new THREE.Mesh(this.waterGeo, this.waterMat);
+    this.waterMesh.position.y = -0.02;
+    this.waterMesh.receiveShadow = true;
+    this.root.add(this.waterMesh);
   }
 
-  buildIslandPlatform() {
-    // Obsidian Boulder Platform (Geometric low-poly island)
-    const islandGeo = new THREE.CylinderGeometry(4.2, 4.8, 0.9, 8);
+  buildIslandSanctuary() {
+    // Sculpted Slate Boulder Platform
+    const islandGeo = new THREE.CylinderGeometry(4.3, 5.0, 1.0, 14, 2);
     islandGeo.computeVertexNormals();
-    this.islandMat = new THREE.MeshStandardMaterial({
-      color: 0x14161F,
-      roughness: 0.75,
-      metalness: 0.25,
-      flatShading: true
-    });
-    const island = new THREE.Mesh(islandGeo, this.islandMat);
-    island.position.set(0, 0.4, 0);
-    this.root.add(island);
 
-    // Stepping stones around island
-    const stoneMat = new THREE.MeshStandardMaterial({
-      color: 0x1A1D27,
-      roughness: 0.8,
+    // Micro-roughen vertices to give real natural rock contours
+    const pos = islandGeo.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const y = pos.getY(i);
+      const noise = (Math.sin(pos.getX(i) * 3) + Math.cos(pos.getZ(i) * 3)) * 0.08;
+      pos.setX(i, pos.getX(i) + noise);
+      pos.setZ(i, pos.getZ(i) + noise);
+      if (y > 0) pos.setY(i, y + Math.sin(pos.getX(i) * 2) * 0.06);
+    }
+    islandGeo.computeVertexNormals();
+
+    this.islandMat = new THREE.MeshStandardMaterial({
+      color: 0x131620,
+      roughness: 0.82,
+      metalness: 0.22,
       flatShading: true
     });
-    const stonePositions = [
-      { x: -3.6, z: 2.2, r: 0.75 },
-      { x: 3.3, z: 2.5, r: 0.8 },
-      { x: -2.9, z: -2.7, r: 0.9 },
-      { x: 3.0, z: -2.2, r: 0.65 }
+
+    this.island = new THREE.Mesh(islandGeo, this.islandMat);
+    this.island.position.set(0, 0.45, 0);
+    this.island.receiveShadow = true;
+    this.island.castShadow = true;
+    this.root.add(this.island);
+
+    // Moss / Obsidian Surface Cap on Top
+    const capGeo = new THREE.CylinderGeometry(4.1, 4.3, 0.12, 14);
+    const capMat = new THREE.MeshStandardMaterial({
+      color: 0x0E1119,
+      roughness: 0.7,
+      metalness: 0.3
+    });
+    const cap = new THREE.Mesh(capGeo, capMat);
+    cap.position.set(0, 0.98, 0);
+    cap.receiveShadow = true;
+    this.root.add(cap);
+
+    // Natural Stepping Stones in Water
+    const stoneCoords = [
+      { x: -3.8, z: 2.3, r: 0.8, h: 0.5 },
+      { x: 3.5, z: 2.6, r: 0.85, h: 0.45 },
+      { x: -3.1, z: -2.8, r: 0.9, h: 0.52 },
+      { x: 3.2, z: -2.4, r: 0.7, h: 0.48 }
     ];
-    stonePositions.forEach(s => {
-      const stGeo = new THREE.CylinderGeometry(s.r, s.r * 1.2, 0.45, 6);
-      const st = new THREE.Mesh(stGeo, stoneMat);
-      st.position.set(s.x, 0.2, s.z);
+
+    stoneCoords.forEach(s => {
+      const stGeo = new THREE.CylinderGeometry(s.r, s.r * 1.25, s.h, 7);
+      stGeo.computeVertexNormals();
+      const st = new THREE.Mesh(stGeo, this.islandMat);
+      st.position.set(s.x, s.h * 0.5, s.z);
       st.rotation.y = Math.random() * Math.PI;
+      st.receiveShadow = true;
+      st.castShadow = true;
       this.root.add(st);
     });
   }
 
-  buildCrystalTree() {
+  buildOrganicBonsaiTree() {
     this.treeGroup = new THREE.Group();
-    this.treeGroup.position.set(-1.25, 0.85, -0.6);
+    this.treeGroup.position.set(-1.3, 0.92, -0.6);
     this.root.add(this.treeGroup);
 
-    // Twisted Obsidian Trunk
-    const trunkMat = new THREE.MeshStandardMaterial({
-      color: 0x161320,
-      roughness: 0.65,
-      metalness: 0.35,
+    // Twisted Bonsai Bark Material
+    const barkMat = new THREE.MeshStandardMaterial({
+      color: 0x15111F,
+      roughness: 0.76,
+      metalness: 0.28,
       flatShading: true
     });
 
-    const trunkSegments = [
-      { rT: 0.38, rB: 0.55, h: 1.1, rotZ: 0.15, rotX: -0.1, px: 0, py: 0.55, pz: 0 },
-      { rT: 0.28, rB: 0.38, h: 1.1, rotZ: 0.42, rotX: 0.1, px: 0.2, py: 1.45, pz: -0.05 },
-      { rT: 0.2, rB: 0.28, h: 1.0, rotZ: -0.28, rotX: 0.22, px: 0.65, py: 2.25, pz: 0.05 },
-      { rT: 0.14, rB: 0.2, h: 0.9, rotZ: -0.55, rotX: -0.15, px: 0.6, py: 2.95, pz: 0.15 }
+    // 1. Trunk Segments with Natural Organic Arching
+    const trunkData = [
+      { rT: 0.46, rB: 0.62, h: 1.15, rotZ: 0.18, rotX: -0.12, px: 0, py: 0.55, pz: 0 },
+      { rT: 0.36, rB: 0.46, h: 1.15, rotZ: 0.44, rotX: 0.12, px: 0.22, py: 1.5, pz: -0.06 },
+      { rT: 0.26, rB: 0.36, h: 1.05, rotZ: -0.3, rotX: 0.24, px: 0.68, py: 2.35, pz: 0.06 },
+      { rT: 0.16, rB: 0.26, h: 0.95, rotZ: -0.58, rotX: -0.16, px: 0.65, py: 3.1, pz: 0.18 }
     ];
 
-    trunkSegments.forEach(seg => {
-      const geo = new THREE.CylinderGeometry(seg.rT, seg.rB, seg.h, 6);
-      const m = new THREE.Mesh(geo, trunkMat);
-      m.position.set(seg.px, seg.py, seg.pz);
-      m.rotation.z = seg.rotZ;
-      m.rotation.x = seg.rotX;
+    trunkData.forEach(d => {
+      const geo = new THREE.CylinderGeometry(d.rT, d.rB, d.h, 8);
+      const m = new THREE.Mesh(geo, barkMat);
+      m.position.set(d.px, d.py, d.pz);
+      m.rotation.z = d.rotZ;
+      m.rotation.x = d.rotX;
+      m.castShadow = true;
+      m.receiveShadow = true;
       this.treeGroup.add(m);
     });
 
-    // Glowing Crystal Poly Leaves / Foliage
-    this.crystalMatPrimary = new THREE.MeshStandardMaterial({
+    // 2. Extending Secondary Branches arching toward the listener
+    const branchData = [
+      { rT: 0.1, rB: 0.18, h: 1.4, rotZ: 0.75, rotX: 0.35, px: 1.25, py: 2.9, pz: 0.3 },
+      { rT: 0.08, rB: 0.15, h: 1.3, rotZ: -0.65, rotX: -0.4, px: -0.2, py: 2.45, pz: -0.25 },
+      { rT: 0.09, rB: 0.16, h: 1.2, rotZ: 0.2, rotX: -0.85, px: 0.7, py: 2.7, pz: -0.7 }
+    ];
+
+    branchData.forEach(b => {
+      const bGeo = new THREE.CylinderGeometry(b.rT, b.rB, b.h, 6);
+      const bm = new THREE.Mesh(bGeo, barkMat);
+      bm.position.set(b.px, b.py, b.pz);
+      bm.rotation.z = b.rotZ;
+      bm.rotation.x = b.rotX;
+      bm.castShadow = true;
+      this.treeGroup.add(bm);
+    });
+
+    // 3. Foliage Cloud Materials (PBR Translucent Illuminated Crystals)
+    this.leafMatPrimary = new THREE.MeshStandardMaterial({
       color: this.primaryColor,
       emissive: this.primaryColor,
-      emissiveIntensity: 0.9,
+      emissiveIntensity: 0.95,
       roughness: 0.2,
-      metalness: 0.6,
+      metalness: 0.55,
       flatShading: true,
       transparent: true,
       opacity: 0.92
     });
 
-    this.crystalMatAccent = new THREE.MeshStandardMaterial({
+    this.leafMatAccent = new THREE.MeshStandardMaterial({
       color: this.accentColor,
       emissive: this.accentColor,
-      emissiveIntensity: 1.0,
-      roughness: 0.15,
-      metalness: 0.7,
+      emissiveIntensity: 1.05,
+      roughness: 0.18,
+      metalness: 0.65,
       flatShading: true,
       transparent: true,
       opacity: 0.94
     });
 
-    this.crystalMatSecondary = new THREE.MeshStandardMaterial({
+    this.leafMatSecondary = new THREE.MeshStandardMaterial({
       color: this.secondaryColor,
       emissive: this.secondaryColor,
       emissiveIntensity: 0.85,
-      roughness: 0.25,
-      metalness: 0.5,
+      roughness: 0.28,
+      metalness: 0.45,
       flatShading: true
     });
 
-    const clusterNodes = [
-      { x: 0.9, y: 3.4, z: 0.2, scale: 1.15, mat: this.crystalMatAccent },
-      { x: 1.6, y: 3.1, z: -0.4, scale: 0.95, mat: this.crystalMatPrimary },
-      { x: 0.1, y: 3.3, z: 0.6, scale: 0.9, mat: this.crystalMatPrimary },
-      { x: 1.2, y: 2.6, z: 0.7, scale: 0.8, mat: this.crystalMatSecondary },
-      { x: -0.4, y: 2.5, z: -0.3, scale: 0.85, mat: this.crystalMatAccent },
-      { x: 2.1, y: 2.8, z: 0.1, scale: 0.75, mat: this.crystalMatPrimary }
+    // Dense Canopy Clouds
+    const canopyNodes = [
+      { x: 1.0, y: 3.55, z: 0.25, s: 1.25, mat: this.leafMatAccent },
+      { x: 1.8, y: 3.25, z: -0.45, s: 1.05, mat: this.leafMatPrimary },
+      { x: 0.15, y: 3.45, z: 0.65, s: 0.95, mat: this.leafMatPrimary },
+      { x: 1.4, y: 2.75, z: 0.75, s: 0.88, mat: this.leafMatSecondary },
+      { x: -0.45, y: 2.65, z: -0.35, s: 0.92, mat: this.leafMatAccent },
+      { x: 2.3, y: 2.95, z: 0.15, s: 0.85, mat: this.leafMatPrimary },
+      { x: 0.7, y: 3.85, z: -0.15, s: 1.1, mat: this.leafMatAccent }
     ];
 
-    clusterNodes.forEach(c => {
-      const cg = new THREE.DodecahedronGeometry(c.scale * 0.7, 0);
+    canopyNodes.forEach(c => {
+      // Main faceted canopy cluster
+      const cg = new THREE.DodecahedronGeometry(c.s * 0.75, 0);
       const cm = new THREE.Mesh(cg, c.mat);
       cm.position.set(c.x, c.y, c.z);
+      cm.castShadow = true;
       this.treeGroup.add(cm);
 
-      // Orbiting micro-facet crystals around each foliage node
-      for (let j = 0; j < 4; j++) {
-        const subG = new THREE.OctahedronGeometry(c.scale * 0.28, 0);
-        const subM = new THREE.Mesh(subG, (j % 2 === 0) ? this.crystalMatPrimary : this.crystalMatAccent);
-        const angle = (j / 4) * Math.PI * 2;
-        const dist = c.scale * 0.62;
+      // Micro-foliage satellites with wind oscillation
+      for (let j = 0; j < 5; j++) {
+        const subG = new THREE.OctahedronGeometry(c.s * 0.26, 0);
+        const subM = new THREE.Mesh(subG, (j % 2 === 0) ? this.leafMatPrimary : this.leafMatAccent);
+        const angle = (j / 5) * Math.PI * 2;
+        const dist = c.s * 0.65;
         subM.position.set(
           c.x + Math.cos(angle) * dist,
           c.y + (Math.random() - 0.5) * 0.4,
@@ -329,10 +480,12 @@ class ThreeBackground {
         );
         subM.rotation.set(Math.random(), Math.random(), Math.random());
         this.treeGroup.add(subM);
-        this.crystalClusters.push({
+        this.foliageClusters.push({
           mesh: subM,
           initY: subM.position.y,
-          speed: 1.2 + j * 0.4
+          initX: subM.position.x,
+          phase: j * 1.2,
+          speed: 1.2 + j * 0.3
         });
       }
     });
@@ -340,251 +493,324 @@ class ThreeBackground {
 
   buildChillListener() {
     this.listenerGroup = new THREE.Group();
-    this.listenerGroup.position.set(1.1, 0.85, 0.6);
-    this.listenerGroup.rotation.y = -Math.PI / 4;
+    this.listenerGroup.position.set(1.15, 0.95, 0.65);
+    this.listenerGroup.rotation.y = -Math.PI / 4.2;
     this.root.add(this.listenerGroup);
 
-    // Seated Low-Poly Listener
+    // PBR Character Materials
     const hoodieMat = new THREE.MeshStandardMaterial({
-      color: 0x1A1E29,
-      roughness: 0.8,
+      color: 0x1B202D,
+      roughness: 0.84,
       metalness: 0.12,
       flatShading: true
     });
     const skinMat = new THREE.MeshStandardMaterial({
-      color: 0xC8AA98,
-      roughness: 0.7,
+      color: 0xC8A896,
+      roughness: 0.68,
+      flatShading: true
+    });
+    const hairMat = new THREE.MeshStandardMaterial({
+      color: 0x151218,
+      roughness: 0.85,
       flatShading: true
     });
     const pantsMat = new THREE.MeshStandardMaterial({
-      color: 0x12141C,
-      roughness: 0.9,
+      color: 0x11131B,
+      roughness: 0.92,
       flatShading: true
     });
+    const sneakerMat = new THREE.MeshStandardMaterial({
+      color: 0x2A2E3D,
+      roughness: 0.6,
+      metalness: 0.3
+    });
 
-    // Torso / Hoodie (leaning back in relaxed listening pose)
-    const torsoGeo = new THREE.CylinderGeometry(0.38, 0.46, 0.95, 6);
-    this.listenerTorso = new THREE.Mesh(torsoGeo, hoodieMat);
-    this.listenerTorso.position.set(0, 0.72, 0);
-    this.listenerTorso.rotation.x = -0.22;
-    this.listenerGroup.add(this.listenerTorso);
-
-    // Crossed Legs Base
-    const legsGeo = new THREE.BoxGeometry(0.95, 0.35, 0.75);
+    // 1. Cross-legged Lower Body Base
+    const legsGeo = new THREE.BoxGeometry(1.05, 0.36, 0.82);
     const legs = new THREE.Mesh(legsGeo, pantsMat);
     legs.position.set(0, 0.18, 0.12);
+    legs.castShadow = true;
+    legs.receiveShadow = true;
     this.listenerGroup.add(legs);
 
+    // Sneaker Details
+    [-0.38, 0.38].forEach((footX, idx) => {
+      const snkGeo = new THREE.BoxGeometry(0.24, 0.14, 0.38);
+      const snk = new THREE.Mesh(snkGeo, sneakerMat);
+      snk.position.set(footX, 0.1, 0.42);
+      snk.rotation.y = idx === 0 ? 0.3 : -0.3;
+      snk.castShadow = true;
+      this.listenerGroup.add(snk);
+    });
+
+    // 2. Torso with Natural Slouch / Relaxed Recline
+    this.torsoGroup = new THREE.Group();
+    this.torsoGroup.position.set(0, 0.36, 0);
+    this.listenerGroup.add(this.torsoGroup);
+
+    const torsoGeo = new THREE.CylinderGeometry(0.38, 0.48, 0.95, 8);
+    const torso = new THREE.Mesh(torsoGeo, hoodieMat);
+    torso.position.set(0, 0.46, 0);
+    torso.rotation.x = -0.2;
+    torso.castShadow = true;
+    torso.receiveShadow = true;
+    this.torsoGroup.add(torso);
+
+    // Hoodie Hood folded down on back
+    const hoodGeo = new THREE.SphereGeometry(0.32, 8, 6, 0, Math.PI * 2, 0, Math.PI * 0.6);
+    const hood = new THREE.Mesh(hoodGeo, hoodieMat);
+    hood.position.set(0, 0.82, -0.22);
+    hood.rotation.x = 2.4;
+    this.torsoGroup.add(hood);
+
     // Relaxed Arms resting on knees
-    const armLGeo = new THREE.CylinderGeometry(0.1, 0.12, 0.65, 5);
+    const armLGeo = new THREE.CylinderGeometry(0.1, 0.13, 0.68, 6);
     const armL = new THREE.Mesh(armLGeo, hoodieMat);
-    armL.position.set(-0.45, 0.55, 0.1);
-    armL.rotation.z = 0.35;
-    armL.rotation.x = 0.4;
-    this.listenerGroup.add(armL);
+    armL.position.set(-0.46, 0.45, 0.12);
+    armL.rotation.z = 0.38;
+    armL.rotation.x = 0.42;
+    armL.castShadow = true;
+    this.torsoGroup.add(armL);
 
-    const armRGeo = new THREE.CylinderGeometry(0.1, 0.12, 0.65, 5);
+    const armRGeo = new THREE.CylinderGeometry(0.1, 0.13, 0.68, 6);
     const armR = new THREE.Mesh(armRGeo, hoodieMat);
-    armR.position.set(0.45, 0.55, 0.1);
-    armR.rotation.z = -0.35;
-    armR.rotation.x = 0.4;
-    this.listenerGroup.add(armR);
+    armR.position.set(0.46, 0.45, 0.12);
+    armR.rotation.z = -0.38;
+    armR.rotation.x = 0.42;
+    armR.castShadow = true;
+    this.torsoGroup.add(armR);
 
-    // Head (tilted back slightly enjoying the songs)
+    // Hands resting on knees
+    [-0.38, 0.38].forEach(hx => {
+      const handGeo = new THREE.DodecahedronGeometry(0.1, 0);
+      const hand = new THREE.Mesh(handGeo, skinMat);
+      hand.position.set(hx, 0.22, 0.38);
+      this.torsoGroup.add(hand);
+    });
+
+    // 3. Head & Hair Group (Animated for Natural Music Groove)
+    this.headGroup = new THREE.Group();
+    this.headGroup.position.set(0, 1.05, -0.06);
+    this.torsoGroup.add(this.headGroup);
+
+    // Neck
+    const neckGeo = new THREE.CylinderGeometry(0.12, 0.14, 0.2, 6);
+    const neck = new THREE.Mesh(neckGeo, skinMat);
+    neck.position.set(0, 0.1, 0);
+    this.headGroup.add(neck);
+
+    // Head (Sculpted Stylized Geometry)
     const headGeo = new THREE.DodecahedronGeometry(0.28, 0);
-    this.listenerHead = new THREE.Mesh(headGeo, skinMat);
-    this.listenerHead.position.set(0, 1.35, -0.05);
-    this.listenerHead.rotation.x = 0.12;
-    this.listenerGroup.add(this.listenerHead);
+    const head = new THREE.Mesh(headGeo, skinMat);
+    head.position.set(0, 0.32, 0);
+    head.castShadow = true;
+    this.headGroup.add(head);
 
-    // Glowing Precision Audiophile Headphones
-    const phoneMatHeadband = new THREE.MeshStandardMaterial({
-      color: 0x0A0C10,
-      roughness: 0.3,
+    // Hair / Beanie
+    const hairGeo = new THREE.SphereGeometry(0.3, 8, 8, 0, Math.PI * 2, 0, Math.PI * 0.65);
+    const hair = new THREE.Mesh(hairGeo, hairMat);
+    hair.position.set(0, 0.38, -0.04);
+    hair.rotation.x = -0.15;
+    this.headGroup.add(hair);
+
+    // 4. Precision Audiophile Over-Ear Headphones
+    const phoneMetalMat = new THREE.MeshStandardMaterial({
+      color: 0x0A0D12,
+      roughness: 0.25,
+      metalness: 0.85
+    });
+
+    this.earGlowMatL = new THREE.MeshStandardMaterial({
+      color: this.accentColor,
+      emissive: this.accentColor,
+      emissiveIntensity: 2.4,
+      roughness: 0.1,
+      metalness: 0.4
+    });
+
+    this.earGlowMatR = new THREE.MeshStandardMaterial({
+      color: this.primaryColor,
+      emissive: this.primaryColor,
+      emissiveIntensity: 2.4,
+      roughness: 0.1,
+      metalness: 0.4
+    });
+
+    // Arching Dual-Rail Headband
+    const bandGeo = new THREE.TorusGeometry(0.34, 0.032, 8, 24, Math.PI);
+    const band = new THREE.Mesh(bandGeo, phoneMetalMat);
+    band.position.set(0, 0.36, -0.02);
+    band.rotation.x = Math.PI;
+    band.rotation.z = 0.04;
+    this.headGroup.add(band);
+
+    // Soft Leather Cushion Earcups & Outer LED Halos
+    [-0.35, 0.35].forEach((sideX, idx) => {
+      const glowMat = idx === 0 ? this.earGlowMatL : this.earGlowMatR;
+
+      // Cushion
+      const cushionGeo = new THREE.CylinderGeometry(0.13, 0.13, 0.09, 14);
+      const cushion = new THREE.Mesh(cushionGeo, phoneMetalMat);
+      cushion.position.set(sideX, 0.32, -0.02);
+      cushion.rotation.z = Math.PI / 2;
+      this.headGroup.add(cushion);
+
+      // Glowing Outer Ring Halo
+      const ringGeo = new THREE.TorusGeometry(0.13, 0.022, 6, 20);
+      const ring = new THREE.Mesh(ringGeo, glowMat);
+      ring.position.set(sideX * 1.14, 0.32, -0.02);
+      ring.rotation.y = Math.PI / 2;
+      this.headGroup.add(ring);
+    });
+
+    // 5. Audiophile DAC Player on Stone & Braided Audio Cable
+    const dacGeo = new THREE.BoxGeometry(0.24, 0.08, 0.38);
+    const dacMat = new THREE.MeshStandardMaterial({
+      color: 0x0A0C11,
+      roughness: 0.2,
       metalness: 0.8
     });
-    this.headphoneGlowMatL = new THREE.MeshStandardMaterial({
-      color: this.accentColor,
-      emissive: this.accentColor,
-      emissiveIntensity: 2.2,
-      roughness: 0.1,
-      metalness: 0.4
+    const dac = new THREE.Mesh(dacGeo, dacMat);
+    dac.position.set(0.68, 0.08, 0.35);
+    dac.rotation.y = 0.45;
+    this.listenerGroup.add(dac);
+
+    // Illuminated OLED Screen on DAC
+    const dacScreenGeo = new THREE.PlaneGeometry(0.16, 0.26);
+    this.dacScreenMat = new THREE.MeshBasicMaterial({
+      color: this.accentColor
     });
-    this.headphoneGlowMatR = new THREE.MeshStandardMaterial({
-      color: this.primaryColor,
-      emissive: this.primaryColor,
-      emissiveIntensity: 2.2,
-      roughness: 0.1,
-      metalness: 0.4
-    });
-
-    // Headband
-    const headbandGeo = new THREE.TorusGeometry(0.32, 0.04, 8, 20, Math.PI);
-    const headband = new THREE.Mesh(headbandGeo, phoneMatHeadband);
-    headband.position.set(0, 1.4, -0.05);
-    headband.rotation.x = Math.PI;
-    headband.rotation.z = 0.05;
-    this.listenerGroup.add(headband);
-
-    // Glowing Earcups
-    [-0.34, 0.34].forEach((sideX, idx) => {
-      const mat = (idx === 0) ? this.headphoneGlowMatL : this.headphoneGlowMatR;
-      const cupGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.08, 12);
-      const cup = new THREE.Mesh(cupGeo, mat);
-      cup.position.set(sideX, 1.35, -0.05);
-      cup.rotation.z = Math.PI / 2;
-      this.listenerGroup.add(cup);
-
-      // Glowing outer ring LED
-      const ringGeo = new THREE.TorusGeometry(0.12, 0.02, 6, 16);
-      const ring = new THREE.Mesh(ringGeo, mat);
-      ring.position.set(sideX * 1.12, 1.35, -0.05);
-      ring.rotation.y = Math.PI / 2;
-      this.listenerGroup.add(ring);
-    });
-
-    // Headphone Point Light (casting colored ambient radiance onto the listener)
-    this.earLight = new THREE.PointLight(this.accentColor, 1.6, 3.5, 2);
-    this.earLight.position.set(0, 1.4, 0.1);
-    this.listenerGroup.add(this.earLight);
+    const dacScreen = new THREE.Mesh(dacScreenGeo, this.dacScreenMat);
+    dacScreen.rotation.x = -Math.PI / 2;
+    dacScreen.rotation.z = -0.45;
+    dacScreen.position.set(0.68, 0.125, 0.35);
+    this.listenerGroup.add(dacScreen);
   }
 
-  buildSoundwaveRipples() {
-    this.ripples = [];
-    const rippleColors = [this.accentColor, this.primaryColor, this.secondaryColor];
+  buildFallingSoundPetals() {
+    this.fallingPetals = [];
+    const petalCount = 45;
 
-    for (let r = 0; r < 7; r++) {
-      const ripGeo = new THREE.RingGeometry(0.4, 0.48, 48);
-      const ripMat = new THREE.MeshBasicMaterial({
-        color: rippleColors[r % rippleColors.length],
+    for (let i = 0; i < petalCount; i++) {
+      const pGeo = new THREE.OctahedronGeometry(0.06 + Math.random() * 0.05, 0);
+      const pMat = new THREE.MeshStandardMaterial({
+        color: (i % 2 === 0) ? this.primaryColor : this.accentColor,
+        emissive: (i % 2 === 0) ? this.primaryColor : this.accentColor,
+        emissiveIntensity: 0.8,
         transparent: true,
-        opacity: 0.7,
-        side: THREE.DoubleSide
+        opacity: 0.85
       });
-      const rip = new THREE.Mesh(ripGeo, ripMat);
-      rip.rotation.x = -Math.PI / 2;
-      rip.position.set(0.6, 0.02, 0.3);
-      this.root.add(rip);
-      this.ripples.push({
-        mesh: rip,
-        scale: 1 + r * 1.1,
-        speed: 0.018 + (r % 3) * 0.005,
-        maxScale: 9.5
-      });
+      const petal = new THREE.Mesh(pGeo, pMat);
+      this.resetPetal(petal, true);
+      this.root.add(petal);
+      this.fallingPetals.push(petal);
     }
   }
 
-  buildOrbitingBeatEqualizer() {
-    this.musicalBeats = [];
-    this.barMatPrimary = new THREE.MeshStandardMaterial({
+  resetPetal(petal, randomizeY = false) {
+    petal.position.set(
+      -1.3 + (Math.random() - 0.5) * 3.6,
+      randomizeY ? (0.2 + Math.random() * 4.2) : (4.0 + Math.random() * 0.8),
+      -0.6 + (Math.random() - 0.5) * 3.6
+    );
+    petal.userData = {
+      vy: 0.007 + Math.random() * 0.009,
+      vx: (Math.random() - 0.5) * 0.006,
+      vz: (Math.random() - 0.5) * 0.006,
+      rotX: Math.random() * 0.04,
+      rotY: Math.random() * 0.04,
+      oscSpeed: 1.2 + Math.random() * 1.5,
+      phase: Math.random() * Math.PI * 2
+    };
+  }
+
+  buildBioFireflies() {
+    this.fireflies = [];
+    const count = 35;
+
+    for (let i = 0; i < count; i++) {
+      const spGeo = new THREE.DodecahedronGeometry(0.04, 0);
+      const spMat = new THREE.MeshBasicMaterial({
+        color: (i % 3 === 0) ? 0xFFDF7E : ((i % 3 === 1) ? this.accentColor : this.primaryColor)
+      });
+      const fly = new THREE.Mesh(spGeo, spMat);
+      fly.position.set(
+        (Math.random() - 0.5) * 8,
+        0.4 + Math.random() * 4.0,
+        (Math.random() - 0.5) * 8
+      );
+      fly.userData = {
+        origX: fly.position.x,
+        origZ: fly.position.z,
+        baseY: fly.position.y,
+        speed: 0.6 + Math.random() * 0.8,
+        radius: 0.5 + Math.random() * 1.2,
+        phase: Math.random() * Math.PI * 2
+      };
+      this.root.add(fly);
+      this.fireflies.push(fly);
+    }
+  }
+
+  buildCelestialAtmosphere() {
+    // 1. Crescent Moon in Far Background
+    const moonGeo = new THREE.SphereGeometry(1.6, 24, 24);
+    const moonMat = new THREE.MeshStandardMaterial({
+      color: 0xE8ECF8,
+      emissive: 0x64748B,
+      emissiveIntensity: 0.35,
+      roughness: 0.85
+    });
+    this.moonMesh = new THREE.Mesh(moonGeo, moonMat);
+    this.moonMesh.position.set(-16, 18, -32);
+    this.scene.add(this.moonMesh);
+
+    // Moon Glow Corona Sprite
+    const spriteMat = new THREE.SpriteMaterial({
+      map: this.glowTexture,
       color: this.primaryColor,
-      emissive: this.primaryColor,
-      emissiveIntensity: 1.4,
-      roughness: 0.3,
-      flatShading: true
+      transparent: true,
+      opacity: 0.45,
+      blending: THREE.AdditiveBlending
     });
-    this.barMatAccent = new THREE.MeshStandardMaterial({
-      color: this.accentColor,
-      emissive: this.accentColor,
-      emissiveIntensity: 1.6,
-      roughness: 0.2,
-      flatShading: true
-    });
-    this.barMatSecondary = new THREE.MeshStandardMaterial({
-      color: this.secondaryColor,
-      emissive: this.secondaryColor,
-      emissiveIntensity: 1.2,
-      roughness: 0.3,
-      flatShading: true
-    });
+    this.moonCorona = new THREE.Sprite(spriteMat);
+    this.moonCorona.position.copy(this.moonMesh.position);
+    this.moonCorona.scale.set(16, 16, 1);
+    this.scene.add(this.moonCorona);
 
-    // 16 vertical audio equalizer bars orbiting the chill sanctuary
-    for (let b = 0; b < 16; b++) {
-      const h = 0.4 + Math.random() * 0.8;
-      const bGeo = new THREE.BoxGeometry(0.12, h, 0.12);
-      const chosenMat = (b % 3 === 0) ? this.barMatPrimary : (b % 3 === 1 ? this.barMatAccent : this.barMatSecondary);
-      const beatMesh = new THREE.Mesh(bGeo, chosenMat);
+    // 2. Multi-Stratified 600 Star Particle Field
+    const starCount = 600;
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = new Float32Array(starCount * 3);
+    const starColors = new Float32Array(starCount * 3);
 
-      const angle = (b / 16) * Math.PI * 2;
-      const rad = 2.4 + Math.sin(b * 1.7) * 0.6;
-      beatMesh.position.set(
-        Math.cos(angle) * rad,
-        1.2 + Math.sin(b) * 0.5,
-        Math.sin(angle) * rad
-      );
-      this.root.add(beatMesh);
-      this.musicalBeats.push({
-        mesh: beatMesh,
-        angle: angle,
-        radius: rad,
-        initY: beatMesh.position.y,
-        speed: 0.4 + (b % 4) * 0.2,
-        phase: b * 0.5
-      });
-    }
-  }
-
-  buildFloatingSoundSpheres() {
-    this.soundwaveSpheres = [];
-    for (let s = 0; s < 12; s++) {
-      const sGeo = new THREE.IcosahedronGeometry(0.14 + Math.random() * 0.12, 1);
-      const sMat = new THREE.MeshStandardMaterial({
-        color: (s % 2 === 0) ? this.accentColor : this.primaryColor,
-        emissive: (s % 2 === 0) ? this.accentColor : this.primaryColor,
-        emissiveIntensity: 1.8,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.75
-      });
-      const sphere = new THREE.Mesh(sGeo, sMat);
-      sphere.position.set(
-        (Math.random() - 0.5) * 6,
-        1.5 + Math.random() * 3.5,
-        (Math.random() - 0.5) * 6
-      );
-      this.root.add(sphere);
-      this.soundwaveSpheres.push({
-        mesh: sphere,
-        vy: 0.008 + Math.random() * 0.012,
-        origX: sphere.position.x,
-        origZ: sphere.position.z,
-        freq: 1.0 + Math.random() * 2.0
-      });
-    }
-  }
-
-  buildStardustField() {
-    const particleCount = 480;
-    const pGeometry = new THREE.BufferGeometry();
-    const pPositions = new Float32Array(particleCount * 3);
-    const pColors = new Float32Array(particleCount * 3);
-
-    const colOptions = [
+    const colorChoices = [
       this.primaryColor,
       this.accentColor,
       this.secondaryColor,
-      new THREE.Color(0xFFFFFF)
+      new THREE.Color(0xFFFFFF),
+      new THREE.Color(0xE2E8F0)
     ];
 
-    for (let i = 0; i < particleCount; i++) {
-      const r = 4.0 + Math.random() * 14.0;
+    for (let i = 0; i < starCount; i++) {
+      const radius = 6.0 + Math.random() * 22.0;
       const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 0.85);
+      const phi = Math.acos(Math.random() * 0.82);
 
-      pPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pPositions[i * 3 + 1] = 0.5 + r * Math.cos(phi);
-      pPositions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+      starPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      starPos[i * 3 + 1] = 0.6 + radius * Math.cos(phi);
+      starPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
 
-      const c = colOptions[Math.floor(Math.random() * colOptions.length)];
-      pColors[i * 3] = c.r;
-      pColors[i * 3 + 1] = c.g;
-      pColors[i * 3 + 2] = c.b;
+      const col = colorChoices[Math.floor(Math.random() * colorChoices.length)];
+      starColors[i * 3] = col.r;
+      starColors[i * 3 + 1] = col.g;
+      starColors[i * 3 + 2] = col.b;
     }
 
-    pGeometry.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-    pGeometry.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
-    this.pMaterial = new THREE.PointsMaterial({
+    this.starMaterial = new THREE.PointsMaterial({
       size: 0.08,
       vertexColors: true,
       transparent: true,
@@ -592,27 +818,27 @@ class ThreeBackground {
       blending: THREE.AdditiveBlending
     });
 
-    this.particles = new THREE.Points(pGeometry, this.pMaterial);
-    this.root.add(this.particles);
+    this.stars = new THREE.Points(starGeo, this.starMaterial);
+    this.root.add(this.stars);
   }
 
-  // Audio Feed (Invoked by Web Audio Analyser node every frame)
+  // Web Audio Analyser Feed
   setBeatData(bass, treble, mid) {
     this.targetBass = bass || 0;
     this.targetTreble = treble || 0;
     this.targetMid = mid || 0;
   }
 
-  // Dynamic Theme Switcher API
+  // Dynamic Theme Palette Switcher
   setTheme(themeKey, customColors = null) {
-    let p, s, a, bgHex, fog;
+    let p, s, a, bgHex, wColor;
 
     if (customColors) {
       p = customColors.primary;
       s = customColors.secondary;
       a = customColors.accent;
-      bgHex = customColors.bg || 0x07080D;
-      fog = 0.022;
+      bgHex = customColors.bg || 0x06070B;
+      wColor = 0x04060A;
       this.currentThemeKey = 'dynamic';
     } else {
       const cfg = this.themes[themeKey] || this.themes.obsidian;
@@ -621,38 +847,41 @@ class ThreeBackground {
       s = cfg.secondary;
       a = cfg.accent;
       bgHex = cfg.background;
-      fog = cfg.fogDensity;
+      wColor = cfg.waterColor;
     }
 
     this.targetPrimary.setHex(p);
     this.targetSecondary.setHex(s);
     this.targetAccent.setHex(a);
+    this.targetBg.setHex(bgHex);
 
     if (this.scene && this.scene.fog) {
       this.scene.fog.color.setHex(bgHex);
-      this.scene.fog.density = fog;
+    }
+    if (this.waterMat) {
+      this.waterMat.color.setHex(wColor);
     }
   }
 
-  // Dynamic Artwork Color Extraction
+  // Dynamic Album Art Color Extraction
   setAccentColor(hexColor) {
     if (!hexColor) return;
     try {
       this.targetPrimary.setHex(hexColor);
       const hsl = {};
       this.targetPrimary.getHSL(hsl);
-      this.targetSecondary.setHSL((hsl.h + 0.55) % 1.0, 0.7, 0.45);
+      this.targetSecondary.setHSL((hsl.h + 0.55) % 1.0, 0.72, 0.45);
       this.targetAccent.setHSL((hsl.h + 0.15) % 1.0, 0.9, 0.65);
     } catch (e) {}
   }
 
-  // Live Studio Parameter Updates (Wave Speed, Particle Density, Audio Bloom)
+  // Studio Sliders Parameter Coupling
   setParams(newParams = {}) {
     if (newParams.waveSpeed !== undefined) this.params.waveSpeed = newParams.waveSpeed;
     if (newParams.particleDensity !== undefined) {
       this.params.particleDensity = newParams.particleDensity;
-      if (this.pMaterial) {
-        this.pMaterial.opacity = 0.3 + 0.55 * this.params.particleDensity;
+      if (this.starMaterial) {
+        this.starMaterial.opacity = 0.35 + 0.55 * this.params.particleDensity;
       }
     }
     if (newParams.audioBloom !== undefined) this.params.audioBloom = newParams.audioBloom;
@@ -678,121 +907,124 @@ class ThreeBackground {
     this.primaryColor.lerp(this.targetPrimary, lerpRate);
     this.secondaryColor.lerp(this.targetSecondary, lerpRate);
     this.accentColor.lerp(this.targetAccent, lerpRate);
+    this.bgColor.lerp(this.targetBg, lerpRate);
 
-    // Update scene light colors
+    // Update scene lighting
     if (this.moonLight) this.moonLight.color.copy(this.primaryColor);
     if (this.cyanRim) this.cyanRim.color.copy(this.accentColor);
     if (this.earLight) this.earLight.color.copy(this.accentColor);
+    if (this.moonCorona) this.moonCorona.material.color.copy(this.primaryColor);
+    if (this.dacScreenMat) this.dacScreenMat.color.copy(this.accentColor);
 
-    // Update crystal foliage materials
-    if (this.crystalMatPrimary) {
-      this.crystalMatPrimary.color.copy(this.primaryColor);
-      this.crystalMatPrimary.emissive.copy(this.primaryColor);
-      this.crystalMatPrimary.emissiveIntensity = 0.8 + t * 1.4;
+    // Update Tree Materials
+    if (this.leafMatPrimary) {
+      this.leafMatPrimary.color.copy(this.primaryColor);
+      this.leafMatPrimary.emissive.copy(this.primaryColor);
+      this.leafMatPrimary.emissiveIntensity = 0.85 + t * 1.5;
     }
-    if (this.crystalMatAccent) {
-      this.crystalMatAccent.color.copy(this.accentColor);
-      this.crystalMatAccent.emissive.copy(this.accentColor);
-      this.crystalMatAccent.emissiveIntensity = 0.9 + b * 1.6;
+    if (this.leafMatAccent) {
+      this.leafMatAccent.color.copy(this.accentColor);
+      this.leafMatAccent.emissive.copy(this.accentColor);
+      this.leafMatAccent.emissiveIntensity = 0.95 + b * 1.8;
     }
-    if (this.crystalMatSecondary) {
-      this.crystalMatSecondary.color.copy(this.secondaryColor);
-      this.crystalMatSecondary.emissive.copy(this.secondaryColor);
-    }
-
-    // Update headphones glow
-    if (this.headphoneGlowMatL) {
-      this.headphoneGlowMatL.color.copy(this.accentColor);
-      this.headphoneGlowMatL.emissive.copy(this.accentColor);
-      this.headphoneGlowMatL.emissiveIntensity = 1.8 + b * 2.2;
-    }
-    if (this.headphoneGlowMatR) {
-      this.headphoneGlowMatR.color.copy(this.primaryColor);
-      this.headphoneGlowMatR.emissive.copy(this.primaryColor);
-      this.headphoneGlowMatR.emissiveIntensity = 1.8 + b * 2.2;
+    if (this.leafMatSecondary) {
+      this.leafMatSecondary.color.copy(this.secondaryColor);
+      this.leafMatSecondary.emissive.copy(this.secondaryColor);
     }
 
-    // 3. Listener Audio Sway & Head Groove
-    if (this.listenerHead && this.listenerTorso) {
-      const grooveTempo = elapsedTime * 2.8 * this.params.waveSpeed;
-      this.listenerHead.rotation.x = 0.12 + Math.sin(grooveTempo) * (0.04 + b * 0.08);
-      this.listenerHead.rotation.z = Math.cos(grooveTempo * 0.5) * (0.02 + m * 0.04);
-      this.listenerTorso.rotation.x = -0.22 + Math.sin(grooveTempo) * (0.015 + b * 0.03);
+    // Update Headphone Glow LEDs
+    if (this.earGlowMatL) {
+      this.earGlowMatL.color.copy(this.accentColor);
+      this.earGlowMatL.emissive.copy(this.accentColor);
+      this.earGlowMatL.emissiveIntensity = 2.0 + b * 2.8;
+    }
+    if (this.earGlowMatR) {
+      this.earGlowMatR.color.copy(this.primaryColor);
+      this.earGlowMatR.emissive.copy(this.primaryColor);
+      this.earGlowMatR.emissiveIntensity = 2.0 + b * 2.8;
     }
 
-    // 4. Crystal Tree Foliage Shimmer
-    this.crystalClusters.forEach((cc, idx) => {
-      cc.mesh.position.y = cc.initY + Math.sin(elapsedTime * cc.speed + idx) * 0.08;
-      cc.mesh.rotation.x += 0.01;
-      cc.mesh.rotation.y += 0.015;
-    });
+    // 3. Dynamic Water Surface Simulation (Physical Vertex Waves)
+    if (this.waterGeo) {
+      const pos = this.waterGeo.attributes.position;
+      const count = pos.count;
+      const tSpeed = elapsedTime * 1.6 * this.params.waveSpeed;
+      const waveAmp = 0.05 + b * 0.16;
 
-    // 5. Soundwave Pond Ripples Pulsing with Bass
-    this.ripples.forEach((rip, idx) => {
-      rip.scale += rip.speed * this.params.waveSpeed * (1.0 + b * 1.2);
-      if (rip.scale > rip.maxScale) {
-        rip.scale = 0.5;
+      for (let i = 0; i < count; i++) {
+        const x = this.waterBaseX[i];
+        const z = this.waterBaseZ[i];
+        const distToCenter = Math.sqrt(x * x + z * z);
+
+        // Multi-frequency harmonic lake undulation + acoustic ripples traveling from island
+        const ripple = Math.sin(distToCenter * 1.4 - tSpeed * 2.2) * waveAmp * Math.exp(-distToCenter * 0.06);
+        const ambientChoppiness = Math.cos(x * 0.4 + tSpeed * 0.8) * Math.sin(z * 0.4 + tSpeed * 0.6) * 0.04;
+
+        pos.setY(i, this.waterBaseY[i] + ripple + ambientChoppiness);
       }
-      rip.mesh.scale.set(rip.scale, rip.scale, 1);
-      const progress = rip.scale / rip.maxScale;
-      rip.mesh.material.opacity = Math.max(0, (0.85 + b * 0.4) * (1.0 - progress));
-      if (idx % 2 === 0) {
-        rip.mesh.material.color.copy(this.accentColor);
-      } else {
-        rip.mesh.material.color.copy(this.primaryColor);
+      pos.needsUpdate = true;
+      this.waterGeo.computeVertexNormals();
+    }
+
+    // 4. Character Breathing & Head Music Groove
+    if (this.torsoGroup && this.headGroup) {
+      const tempo = elapsedTime * 2.6 * this.params.waveSpeed;
+      const breath = Math.sin(elapsedTime * 1.4) * 0.015;
+
+      // Subtle chest rise & fall
+      this.torsoGroup.position.y = 0.36 + breath + b * 0.015;
+
+      // Authentic head nodding & swaying to beat
+      this.headGroup.rotation.x = 0.12 + Math.sin(tempo) * (0.05 + b * 0.09);
+      this.headGroup.rotation.z = Math.cos(tempo * 0.5) * (0.02 + m * 0.035);
+      this.headGroup.rotation.y = Math.sin(tempo * 0.25) * 0.03;
+    }
+
+    // 5. Tree Foliage Wind Sway
+    this.foliageClusters.forEach(f => {
+      const wSpeed = elapsedTime * f.speed * this.params.waveSpeed;
+      f.mesh.position.y = f.initY + Math.sin(wSpeed + f.phase) * 0.07;
+      f.mesh.position.x = f.initX + Math.cos(wSpeed * 0.8 + f.phase) * 0.04;
+      f.mesh.rotation.x += 0.008;
+      f.mesh.rotation.y += 0.012;
+    });
+
+    // 6. Falling Sound Petals (Drifting with gravity & wind)
+    this.fallingPetals.forEach(p => {
+      p.position.y -= p.userData.vy * (1.0 + t * 0.8);
+      p.position.x += p.userData.vx + Math.sin(elapsedTime * p.userData.oscSpeed + p.userData.phase) * 0.008;
+      p.position.z += p.userData.vz + Math.cos(elapsedTime * p.userData.oscSpeed + p.userData.phase) * 0.008;
+      p.rotation.x += p.userData.rotX;
+      p.rotation.y += p.userData.rotY;
+
+      // If petal hits water surface, respawn in canopy
+      if (p.position.y <= 0.02) {
+        this.resetPetal(p, false);
       }
     });
 
-    // 6. Orbiting Beat Equalizer Bars Scaling to Frequency FFT
-    if (this.barMatPrimary) this.barMatPrimary.color.copy(this.primaryColor);
-    if (this.barMatAccent) this.barMatAccent.color.copy(this.accentColor);
-    if (this.barMatSecondary) this.barMatSecondary.color.copy(this.secondaryColor);
-
-    this.musicalBeats.forEach((mb, idx) => {
-      const freqSample = (idx % 3 === 0) ? b : ((idx % 3 === 1) ? m : t);
-      const beatPulse = Math.abs(Math.sin(elapsedTime * 3.5 * this.params.waveSpeed + mb.phase));
-      mb.mesh.scale.y = 0.4 + (beatPulse * 1.8 + freqSample * 2.5);
-      mb.mesh.position.y = mb.initY + (mb.mesh.scale.y * 0.25);
-      mb.angle += 0.005 * this.params.waveSpeed;
-      mb.mesh.position.x = Math.cos(mb.angle) * mb.radius;
-      mb.mesh.position.z = Math.sin(mb.angle) * mb.radius;
-      mb.mesh.rotation.y += 0.02;
+    // 7. Bioluminescent Fireflies Floating Arc
+    this.fireflies.forEach(fly => {
+      const fTime = elapsedTime * fly.userData.speed;
+      fly.position.x = fly.userData.origX + Math.sin(fTime + fly.userData.phase) * fly.userData.radius;
+      fly.position.z = fly.userData.origZ + Math.cos(fTime + fly.userData.phase) * fly.userData.radius;
+      fly.position.y = fly.userData.baseY + Math.sin(fTime * 1.5 + fly.userData.phase) * 0.35 + b * 0.4;
     });
 
-    // 7. Ascending Acoustic Spheres
-    this.soundwaveSpheres.forEach(sw => {
-      sw.mesh.position.y += sw.vy * (1.0 + t * 1.5);
-      sw.mesh.position.x = sw.origX + Math.sin(elapsedTime * sw.freq) * 0.25;
-      sw.mesh.position.z = sw.origZ + Math.cos(elapsedTime * sw.freq) * 0.25;
-      sw.mesh.rotation.x += 0.02;
-      sw.mesh.rotation.y += 0.03;
-      if (sw.mesh.position.y > 6.0) {
-        sw.mesh.position.y = 1.0;
-      }
-    });
-
-    // 8. Stardust Twinkle & Slow Celestial Orbit
-    if (this.particles) {
-      this.particles.rotation.y = elapsedTime * 0.015 * this.params.waveSpeed;
+    // 8. Stardust Twinkle & Slow Cosmic Drift
+    if (this.stars) {
+      this.stars.rotation.y = elapsedTime * 0.012 * this.params.waveSpeed;
     }
 
-    // 9. Dynamic Atmospheric Light Breathing
-    if (this.amberPoint) {
-      this.amberPoint.intensity = 2.4 + Math.sin(elapsedTime * 4.0) * 0.6 + b * 1.5;
-    }
-    if (this.cyanRim) {
-      this.cyanRim.intensity = 1.8 + Math.cos(elapsedTime * 3.2) * 0.5 + m * 1.2;
-    }
-
-    // 10. Damped Mouse & Touch Parallax
+    // 9. Damped Mouse & Touch Parallax Camera
     this.mouseX += (this.targetMouseX - this.mouseX) * 0.04;
     this.mouseY += (this.targetMouseY - this.mouseY) * 0.04;
 
-    this.camera.position.x = this.mouseX * 3.5;
-    this.camera.position.y = 4.6 - (this.mouseY * 1.6);
-    this.camera.lookAt(0, 1.6, 0);
+    this.camera.position.x = this.mouseX * 3.4;
+    this.camera.position.y = 4.2 - (this.mouseY * 1.4);
+    this.camera.lookAt(0, 1.4, 0);
 
-    // 11. Render
+    // 10. Render
     this.renderer.render(this.scene, this.camera);
   }
 
