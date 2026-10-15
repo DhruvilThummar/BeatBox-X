@@ -1376,15 +1376,148 @@
         .btn-timer-opt:active {
             transform: scale(0.97);
         }
+
+        /* 🌟 FLOATING TOAST NOTIFICATION 🌟 */
+        .toast-bubble {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: rgba(15, 10, 30, 0.95);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px var(--accent-glow);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .toast-bubble.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* 🌟 THEME PALETTE MODAL 🌟 */
+        .theme-modal-content {
+            max-width: 580px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-light);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .theme-card.active {
+            border-color: var(--accent);
+            background: rgba(139, 92, 246, 0.16);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .theme-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .theme-swatches {
+            display: flex;
+            gap: 6px;
+        }
+
+        .theme-swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .theme-active-check {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #fff;
+            display: none;
+        }
+
+        .theme-card.active .theme-active-check {
+            display: inline-block;
+        }
+
+        .theme-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-desc {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.4;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- 🌟 FLOATING TOAST NOTIFICATION 🌟 -->
+    <div id="toast-bubble" class="toast-bubble">
+        <span id="toast-icon">⚡</span>
+        <span id="toast-msg">Beat Box X</span>
+    </div>
+
     <!-- 🌟 STICKY TOP APP BAR 🌟 -->
     <header class="top-app-bar">
         <h1 class="app-title">BEAT BOX X</h1>
         <div class="top-bar-actions">
+            <!-- Theme Studio Button -->
+            <button id="theme-btn" class="btn btn--icon-only" aria-label="Visual Themes" title="Theme Studio & Colors">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+            </button>
+
             <!-- Sleep Timer -->
             <button id="sleep-btn" class="btn btn--icon-only" aria-label="Sleep Timer" title="Sleep Timer" style="position:relative;">
             <span id="sleep-badge" style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#8B5CF6; color:#fff; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
@@ -1727,6 +1860,25 @@
         </div>
     </div>
 
+    <!-- 🌟 VISUAL THEME STUDIO & PALETTE MODAL 🌟 -->
+    <div class="modal" id="theme-modal">
+        <div class="modal-content ios-glass theme-modal-content">
+            <div class="sheet-handle"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <div>
+                    <h3 style="color: var(--accent-light); font-size: 19px; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">🎨 Visual Theme Studio</h3>
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px;">Transform your 3D WebGL background animation & UI palette in real time</p>
+                </div>
+            </div>
+
+            <div class="theme-grid" id="theme-grid">
+                <!-- Injected via JavaScript with live color swatches and descriptions -->
+            </div>
+
+            <button id="close-theme-modal" style="width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent), var(--cyan)); border: none; border-radius: 16px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 20px var(--accent-glow); transition: transform 0.15s ease;">Done</button>
+        </div>
+    </div>
+
     <script>
         let playlistData = [];
         let currentTrackIndex = 0;
@@ -1767,6 +1919,235 @@
         const sleepModal = document.getElementById("sleep-modal");
         const eqBtn = document.getElementById("eq-btn");
         const eqModal = document.getElementById("eq-modal");
+
+        // 🌟 THEME STUDIO & TOAST ELEMENTS 🌟
+        const themeBtn = document.getElementById("theme-btn");
+        const themeModal = document.getElementById("theme-modal");
+        const themeGrid = document.getElementById("theme-grid");
+        const closeThemeModal = document.getElementById("close-theme-modal");
+        const toastBubble = document.getElementById("toast-bubble");
+        const toastMsg = document.getElementById("toast-msg");
+        const toastIcon = document.getElementById("toast-icon");
+
+        let toastTimeout = null;
+        function showToast(message, icon = "⚡") {
+            if (!toastBubble) return;
+            toastMsg.innerText = message;
+            toastIcon.innerText = icon;
+            toastBubble.classList.add("show");
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toastBubble.classList.remove("show");
+            }, 2600);
+        }
+
+        // 🌟 THEME ENGINE (6 SIGNATURE THEMES + DYNAMIC ART REACTIVE) 🌟
+        const THEME_PRESETS = {
+            cosmic: {
+                id: "cosmic",
+                name: "Cosmic Aurora",
+                icon: "🌌",
+                desc: "Signature deep space with violet, cyan & neon magenta waves",
+                swatches: ["#8B5CF6", "#06B6D4", "#EC4899"],
+                vars: {
+                    "--accent": "#8B5CF6",
+                    "--accent-light": "#A78BFA",
+                    "--accent-dark": "#6D28D9",
+                    "--accent-glow": "rgba(139, 92, 246, 0.5)",
+                    "--cyan": "#06B6D4",
+                    "--cyan-glow": "rgba(6, 182, 212, 0.4)",
+                    "--pink": "#EC4899",
+                    "--bg-deep": "#050510",
+                    "--bg-card": "rgba(12, 10, 30, 0.88)",
+                    "--border-glass": "rgba(139, 92, 246, 0.22)",
+                    "--border-top-glass": "rgba(139, 92, 246, 0.45)"
+                },
+                three: { primary: 0x8B5CF6, secondary: 0x06B6D4, accent: 0xEC4899, bg: 0x050510 }
+            },
+            cyberpunk: {
+                id: "cyberpunk",
+                name: "Cyberpunk Neon",
+                icon: "⚡",
+                desc: "High-voltage neon crimson, radioactive cyan & cyber yellow strobe",
+                swatches: ["#FF0055", "#00FFCC", "#FFE600"],
+                vars: {
+                    "--accent": "#FF0055",
+                    "--accent-light": "#FF3377",
+                    "--accent-dark": "#CC0044",
+                    "--accent-glow": "rgba(255, 0, 85, 0.5)",
+                    "--cyan": "#00FFCC",
+                    "--cyan-glow": "rgba(0, 255, 204, 0.4)",
+                    "--pink": "#FFE600",
+                    "--bg-deep": "#08000F",
+                    "--bg-card": "rgba(16, 2, 25, 0.9)",
+                    "--border-glass": "rgba(255, 0, 85, 0.28)",
+                    "--border-top-glass": "rgba(255, 0, 85, 0.5)"
+                },
+                three: { primary: 0xFF0055, secondary: 0x00FFCC, accent: 0xFFE600, bg: 0x08000F }
+            },
+            retrowave: {
+                id: "retrowave",
+                name: "Sunset Retrowave",
+                icon: "🌅",
+                desc: "Warm sunset orange, synthwave violet & nostalgic retro magenta",
+                swatches: ["#FF5E3A", "#9B5DE5", "#F15BB5"],
+                vars: {
+                    "--accent": "#FF5E3A",
+                    "--accent-light": "#FFA07A",
+                    "--accent-dark": "#D63E1B",
+                    "--accent-glow": "rgba(255, 94, 58, 0.5)",
+                    "--cyan": "#9B5DE5",
+                    "--cyan-glow": "rgba(155, 93, 229, 0.4)",
+                    "--pink": "#F15BB5",
+                    "--bg-deep": "#0F051D",
+                    "--bg-card": "rgba(25, 10, 38, 0.9)",
+                    "--border-glass": "rgba(255, 94, 58, 0.25)",
+                    "--border-top-glass": "rgba(255, 94, 58, 0.45)"
+                },
+                three: { primary: 0xFF5E3A, secondary: 0x9B5DE5, accent: 0xF15BB5, bg: 0x0F051D }
+            },
+            ocean: {
+                id: "ocean",
+                name: "Ocean Abyss",
+                icon: "🌊",
+                desc: "Bioluminescent aqua, abyssal ocean depth & cobalt wave currents",
+                swatches: ["#00F5D4", "#00BBF9", "#4361EE"],
+                vars: {
+                    "--accent": "#00F5D4",
+                    "--accent-light": "#70FFF0",
+                    "--accent-dark": "#00BFA5",
+                    "--accent-glow": "rgba(0, 245, 212, 0.5)",
+                    "--cyan": "#00BBF9",
+                    "--cyan-glow": "rgba(0, 187, 249, 0.4)",
+                    "--pink": "#4361EE",
+                    "--bg-deep": "#030D1A",
+                    "--bg-card": "rgba(5, 20, 38, 0.9)",
+                    "--border-glass": "rgba(0, 245, 212, 0.25)",
+                    "--border-top-glass": "rgba(0, 245, 212, 0.45)"
+                },
+                three: { primary: 0x00F5D4, secondary: 0x00BBF9, accent: 0x4361EE, bg: 0x030D1A }
+            },
+            gold: {
+                id: "gold",
+                name: "Royal Gold",
+                icon: "👑",
+                desc: "Champagne gold, deep amber & imperial black luxury aesthetic",
+                swatches: ["#D4AF37", "#FFB703", "#FFE8A3"],
+                vars: {
+                    "--accent": "#D4AF37",
+                    "--accent-light": "#F5D77F",
+                    "--accent-dark": "#AA820A",
+                    "--accent-glow": "rgba(212, 175, 55, 0.5)",
+                    "--cyan": "#FFB703",
+                    "--cyan-glow": "rgba(255, 183, 3, 0.4)",
+                    "--pink": "#FFE8A3",
+                    "--bg-deep": "#0A0905",
+                    "--bg-card": "rgba(22, 18, 10, 0.92)",
+                    "--border-glass": "rgba(212, 175, 55, 0.28)",
+                    "--border-top-glass": "rgba(212, 175, 55, 0.5)"
+                },
+                three: { primary: 0xD4AF37, secondary: 0xFFB703, accent: 0xFFE8A3, bg: 0x0A0905 }
+            },
+            emerald: {
+                id: "emerald",
+                name: "Emerald Matrix",
+                icon: "🌿",
+                desc: "Radiant jade, glowing mint bioluminescence & futuristic matrix aura",
+                swatches: ["#10B981", "#06D6A0", "#34D399"],
+                vars: {
+                    "--accent": "#10B981",
+                    "--accent-light": "#34D399",
+                    "--accent-dark": "#047857",
+                    "--accent-glow": "rgba(16, 185, 129, 0.5)",
+                    "--cyan": "#06D6A0",
+                    "--cyan-glow": "rgba(6, 214, 160, 0.4)",
+                    "--pink": "#34D399",
+                    "--bg-deep": "#02140D",
+                    "--bg-card": "rgba(5, 28, 18, 0.92)",
+                    "--border-glass": "rgba(16, 185, 129, 0.28)",
+                    "--border-top-glass": "rgba(16, 185, 129, 0.5)"
+                },
+                three: { primary: 0x10B981, secondary: 0x06D6A0, accent: 0x34D399, bg: 0x02140D }
+            },
+            dynamic: {
+                id: "dynamic",
+                name: "Album Reactive (Auto)",
+                icon: "🎨",
+                desc: "Live dynamic palette that automatically matches whatever song is currently playing",
+                swatches: ["#FF007F", "#7928CA", "#00DFD8"],
+                vars: null,
+                three: null
+            }
+        };
+
+        let currentActiveTheme = localStorage.getItem("beatbox_theme") || "cosmic";
+
+        function applyTheme(themeKey) {
+            const preset = THEME_PRESETS[themeKey] || THEME_PRESETS.cosmic;
+            currentActiveTheme = themeKey;
+            localStorage.setItem("beatbox_theme", themeKey);
+
+            if (preset.vars) {
+                const root = document.documentElement;
+                Object.entries(preset.vars).forEach(([prop, val]) => {
+                    root.style.setProperty(prop, val);
+                });
+            }
+
+            if (window.threeBgInstance) {
+                if (themeKey === 'dynamic') {
+                    if (playlistData[currentTrackIndex]) {
+                        extractCoverColor(playlistData[currentTrackIndex].cover);
+                    }
+                } else {
+                    window.threeBgInstance.setTheme(themeKey);
+                }
+            }
+
+            renderThemeGrid();
+        }
+
+        function renderThemeGrid() {
+            if (!themeGrid) return;
+            themeGrid.innerHTML = "";
+
+            Object.values(THEME_PRESETS).forEach(theme => {
+                const card = document.createElement("div");
+                card.className = `theme-card ${currentActiveTheme === theme.id ? 'active' : ''}`;
+                card.innerHTML = `
+                    <div class="theme-card-top">
+                        <span class="theme-name">${theme.icon} ${theme.name}</span>
+                        <span class="theme-active-check">Active</span>
+                    </div>
+                    <div class="theme-swatches">
+                        ${theme.swatches.map(c => `<span class="theme-swatch" style="background: ${c};"></span>`).join('')}
+                    </div>
+                    <div class="theme-desc">${theme.desc}</div>
+                `;
+
+                card.onclick = () => {
+                    applyTheme(theme.id);
+                    showToast(`Applied ${theme.name} theme!`, theme.icon);
+                };
+
+                themeGrid.appendChild(card);
+            });
+        }
+
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                themeModal.classList.add("open");
+                renderThemeGrid();
+            });
+        }
+        if (closeThemeModal) {
+            closeThemeModal.addEventListener("click", () => {
+                themeModal.classList.remove("open");
+            });
+        }
+
+        // Apply saved theme immediately on boot
+        applyTheme(currentActiveTheme);
 
         const shayariList = [
             // 🎶 MUSIC & CHILL VIBES
