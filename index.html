@@ -8,11 +8,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVHP81KQKE"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-BVHP81KQKE');
+        gtag('config', 'G-BVHP81KQKE');
     </script>
 
     <!-- ==========================================
@@ -113,7 +113,8 @@
          ========================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -144,7 +145,8 @@
             touch-action: manipulation;
         }
 
-        input, textarea {
+        input,
+        textarea {
             -webkit-user-select: text;
             user-select: text;
         }
@@ -156,7 +158,8 @@
             height: 0;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             width: 100%;
             overflow: hidden;
@@ -176,11 +179,25 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 50% 100%; }
-            50% { background-position: 100% 50%; }
-            75% { background-position: 50% 0%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 50% 100%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 50% 0%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* 🌟 STICKY TOP APP BAR 🌟 */
@@ -368,9 +385,17 @@
         }
 
         @keyframes heartBeat {
-            0% { transform: scale(0.8); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(0.8);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Repeat Badge */
@@ -416,9 +441,17 @@
         }
 
         @keyframes playPulse {
-            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
-            70% { box-shadow: 0 0 0 18px rgba(139, 92, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 18px rgba(139, 92, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+            }
         }
 
         .spinner {
@@ -428,7 +461,9 @@
         }
 
         @keyframes rotate {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* 🌟 SEEK BAR & SLIDER 🌟 */
@@ -546,7 +581,8 @@
                 justify-content: center;
             }
 
-            .player, .skeleton-card {
+            .player,
+            .skeleton-card {
                 position: fixed;
                 bottom: 74px;
                 left: 50%;
@@ -609,7 +645,9 @@
             }
 
             @keyframes spin {
-                100% { transform: rotate(360deg); }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
 
             .meta {
@@ -695,7 +733,8 @@
                 min-height: 100dvh;
             }
 
-            .player, .skeleton-card {
+            .player,
+            .skeleton-card {
                 position: relative;
                 width: 92%;
                 max-width: 420px;
@@ -754,7 +793,9 @@
             }
 
             @keyframes spin {
-                100% { transform: rotate(360deg); }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
 
             .meta {
@@ -871,7 +912,9 @@
 
         /* 🌟 SMALL MOBILE SCREENS (<= 380px) 🌟 */
         @media (max-width: 380px) {
-            .player, .skeleton-card {
+
+            .player,
+            .skeleton-card {
                 padding: 16px 10px;
                 gap: 10px;
             }
@@ -1116,8 +1159,13 @@
         }
 
         @keyframes skeletonShimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         .skeleton-card {
@@ -1215,7 +1263,10 @@
             padding-bottom: 6px;
             scrollbar-width: none;
         }
-        .eq-presets::-webkit-scrollbar { display: none; }
+
+        .eq-presets::-webkit-scrollbar {
+            display: none;
+        }
 
         .eq-preset-btn {
             background: rgba(139, 92, 246, 0.06);
@@ -1390,7 +1441,7 @@
             font-size: 13px;
             font-weight: 600;
             border: 1px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
             z-index: 1000;
             opacity: 0;
             pointer-events: none;
@@ -1479,8 +1530,17 @@
         }
 
         @keyframes pulseFade {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
         }
 
         /* 3D Dynamic Controls Box */
@@ -1690,7 +1750,7 @@
             height: 10px;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
             transition: transform 0.2s;
         }
 
@@ -1746,39 +1806,47 @@
             <!-- Theme Studio Button -->
             <button id="theme-btn" class="btn btn--icon-only" aria-label="Visual Themes" title="Theme Studio & Colors">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    <path
+                        d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
                 </svg>
             </button>
 
             <!-- Sleep Timer -->
-            <button id="sleep-btn" class="btn btn--icon-only" aria-label="Sleep Timer" title="Sleep Timer" style="position:relative;">
-            <span id="sleep-badge" style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#8B5CF6; color:#fff; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
+            <button id="sleep-btn" class="btn btn--icon-only" aria-label="Sleep Timer" title="Sleep Timer"
+                style="position:relative;">
+                <span id="sleep-badge"
+                    style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#8B5CF6; color:#fff; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-.76 1.08z"/>
+                    <path
+                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-.76 1.08z" />
                 </svg>
             </button>
 
             <!-- Equalizer -->
             <button id="eq-btn" class="btn btn--icon-only" aria-label="Audio Equalizer" title="Equalizer">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"/>
+                    <path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z" />
                 </svg>
             </button>
 
             <!-- Offline Save Track -->
             <button id="offline-btn" class="btn btn--icon-only" aria-label="Save Track Offline" title="Save Offline">
                 <svg id="icon-offline-download" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                    <path
+                        d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
                 </svg>
-                <svg id="icon-offline-saved" viewBox="0 0 24 24" width="20" height="20" fill="#FFD700" style="display:none;">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <svg id="icon-offline-saved" viewBox="0 0 24 24" width="20" height="20" fill="#FFD700"
+                    style="display:none;">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                 </svg>
             </button>
 
             <!-- Search Tracks -->
             <button id="top-search-btn" class="btn btn--icon-only" aria-label="Search Tracks" title="Search Tracks">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
                 </svg>
             </button>
         </div>
@@ -1799,7 +1867,7 @@
 
         <!-- 🌟 LIVE PLAYER CARD (SPOTIFY / APPLE MUSIC & CENTERED MOBILE VIEW) 🌟 -->
         <section class="player ios-glass" id="player" style="display:none; opacity:0; transition: opacity 0.4s ease;">
-            
+
             <!-- LEFT SECTION: Disc, Song Info & Favorite -->
             <div class="player-left">
                 <div class="disc" id="disc">
@@ -1809,10 +1877,14 @@
                 <div class="meta">
                     <div class="title-wrap">
                         <p class="meta__title" id="title">Loading Cloud Sync...</p>
-                        <button id="like-btn" class="btn btn--icon-only btn--like" aria-label="Favorite Track" title="Favorite">
+                        <button id="like-btn" class="btn btn--icon-only btn--like" aria-label="Favorite Track"
+                            title="Favorite">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path class="heart-outline" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <path class="heart-filled" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                <path class="heart-outline"
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                    fill="none" stroke="currentColor" stroke-width="2" />
+                                <path class="heart-filled"
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                         </button>
                     </div>
@@ -1827,14 +1899,16 @@
                     <!-- Shuffle -->
                     <button id="shuffle" class="btn" aria-label="Shuffle" title="Shuffle Mode">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+                            <path
+                                d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
                         </svg>
                     </button>
 
                     <!-- Rewind 10 Sec -->
                     <button id="rewind-10" class="btn" aria-label="Rewind 10 seconds" title="Rewind 10s">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/>
+                            <path
+                                d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" />
                         </svg>
                     </button>
 
@@ -1850,7 +1924,8 @@
                         <svg id="i-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                             <path d="M8 5v14l11-7z"></path>
                         </svg>
-                        <svg id="i-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none;">
+                        <svg id="i-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"
+                            style="display:none;">
                             <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
                         </svg>
                         <svg id="i-loader" class="spinner" viewBox="0 0 50 50" style="display:none;">
@@ -1868,14 +1943,15 @@
                     <!-- Forward 10 Sec -->
                     <button id="forward-10" class="btn" aria-label="Forward 10 seconds" title="Forward 10s">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z"/>
+                            <path
+                                d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z" />
                         </svg>
                     </button>
 
                     <!-- Repeat Mode Button -->
                     <button id="repeat" class="btn" aria-label="Repeat Mode" title="Repeat Off">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                            <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+                            <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
                         </svg>
                         <span id="repeat-badge" class="repeat-badge">1</span>
                     </button>
@@ -1891,7 +1967,8 @@
             <!-- RIGHT SECTION: Playback Speed, Volume 200% & Playlist Modal Trigger -->
             <div class="player-right">
                 <!-- Playback Speed -->
-                <button id="speed-btn" class="btn" aria-label="Playback Speed" title="Playback Speed" style="font-size: 11px; font-weight: 700; color: #A78BFA;">
+                <button id="speed-btn" class="btn" aria-label="Playback Speed" title="Playback Speed"
+                    style="font-size: 11px; font-weight: 700; color: #A78BFA;">
                     1.0x
                 </button>
 
@@ -1907,22 +1984,28 @@
                     <div class="vol-popup" id="vol-popup">
                         <span id="vol-percent-text" class="vol-percentage">100%</span>
                         <div class="vol-slider-wrap">
-                            <input type="range" id="volume-bar" min="0" max="2" step="0.02" value="1" aria-label="Volume Slider">
+                            <input type="range" id="volume-bar" min="0" max="2" step="0.02" value="1"
+                                aria-label="Volume Slider">
                         </div>
                     </div>
                     <button id="mute-btn" class="btn" aria-label="Volume controls" title="Volume Controls">
                         <svg id="vol-icon-high" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                             <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
                             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
-                            <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+                            <path
+                                d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                            </path>
                         </svg>
-                        <svg id="vol-icon-low" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none;">
+                        <svg id="vol-icon-low" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"
+                            style="display:none;">
                             <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
                             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
                         </svg>
-                        <svg id="vol-icon-mute" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none;">
+                        <svg id="vol-icon-mute" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"
+                            style="display:none;">
                             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
-                            <path d="M4.27 3L3 4.27l4.66 4.66H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                            <path
+                                d="M4.27 3L3 4.27l4.66 4.66H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
                         </svg>
                     </button>
                 </div>
@@ -1936,19 +2019,21 @@
     <nav class="bottom-nav-bar">
         <button class="nav-item active" id="nav-player">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
             </svg>
             <span>Player</span>
         </button>
         <button class="nav-item" id="nav-search">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
             </svg>
             <span>Search</span>
         </button>
         <button class="nav-item" id="nav-playlist">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+                <path
+                    d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z" />
             </svg>
             <span>Playlist</span>
         </button>
@@ -1972,7 +2057,8 @@
             <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search songs, artists...">
             <ul class="options" id="options-list"></ul>
             <button id="close-modal"
-                style="width: 100%; padding: 14px; margin-top: 15px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; font-weight: bold; cursor: pointer; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">Close Playlist</button>
+                style="width: 100%; padding: 14px; margin-top: 15px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; font-weight: bold; cursor: pointer; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">Close
+                Playlist</button>
         </div>
     </div>
 
@@ -1980,7 +2066,8 @@
     <div class="modal" id="sleep-modal">
         <div class="modal-content ios-glass" style="max-width: 400px; text-align: center;">
             <div class="sheet-handle"></div>
-            <h3 style="color: #A78BFA; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">⏳ Sleep Timer</h3>
+            <h3 style="color: #A78BFA; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">⏳ Sleep Timer
+            </h3>
             <div class="timer-options" style="display: flex; flex-direction: column; gap: 10px;">
                 <button class="btn-timer-opt" data-time="0">Turn Off Timer</button>
                 <button class="btn-timer-opt" data-time="15">15 Minutes</button>
@@ -1988,7 +2075,8 @@
                 <button class="btn-timer-opt" data-time="45">45 Minutes</button>
                 <button class="btn-timer-opt" data-time="60">60 Minutes</button>
             </div>
-            <button id="close-sleep-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); border-radius: 14px; color: #fff; font-weight: bold; cursor: pointer;">Close</button>
+            <button id="close-sleep-modal"
+                style="width: 100%; padding: 12px; margin-top: 20px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); border-radius: 14px; color: #fff; font-weight: bold; cursor: pointer;">Close</button>
         </div>
     </div>
 
@@ -1996,14 +2084,18 @@
     <div class="modal" id="eq-modal">
         <div class="modal-content ios-glass eq-modal-content">
             <div class="sheet-handle"></div>
-            
+
             <div class="eq-header">
                 <div class="eq-title-group">
                     <h3 class="eq-title">🎚️ 5-Band Equalizer</h3>
                     <div class="eq-subtitle">Studio Audio Engine & Sound Tuning</div>
                 </div>
                 <button class="eq-reset-btn" id="eq-reset-btn">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
                     Reset
                 </button>
             </div>
@@ -2025,22 +2117,25 @@
                 <svg class="eq-curve-svg" viewBox="0 0 100 50" preserveAspectRatio="none">
                     <defs>
                         <linearGradient id="eqCurveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4"/>
-                            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.0"/>
+                            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4" />
+                            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.0" />
                         </linearGradient>
                     </defs>
                     <!-- Neutral 0dB Line -->
-                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,2" stroke-width="1"/>
+                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,2"
+                        stroke-width="1" />
                     <!-- Dynamic Area Fill -->
-                    <path id="eq-curve-area" fill="url(#eqCurveGrad)" d="M 10 25 L 10 25 L 30 25 L 50 25 L 70 25 L 90 25 L 90 50 L 10 50 Z"/>
+                    <path id="eq-curve-area" fill="url(#eqCurveGrad)"
+                        d="M 10 25 L 10 25 L 30 25 L 50 25 L 70 25 L 90 25 L 90 50 L 10 50 Z" />
                     <!-- Dynamic Curve Line -->
-                    <path id="eq-curve-path" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" d="M 10 25 L 30 25 L 50 25 L 70 25 L 90 25"/>
+                    <path id="eq-curve-path" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"
+                        d="M 10 25 L 30 25 L 50 25 L 70 25 L 90 25" />
                     <!-- Points -->
-                    <circle id="eq-pt-0" cx="10" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
-                    <circle id="eq-pt-1" cx="30" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
-                    <circle id="eq-pt-2" cx="50" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
-                    <circle id="eq-pt-3" cx="70" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
-                    <circle id="eq-pt-4" cx="90" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1"/>
+                    <circle id="eq-pt-0" cx="10" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1" />
+                    <circle id="eq-pt-1" cx="30" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1" />
+                    <circle id="eq-pt-2" cx="50" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1" />
+                    <circle id="eq-pt-3" cx="70" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1" />
+                    <circle id="eq-pt-4" cx="90" cy="25" r="3" fill="#FFF8DC" stroke="#D4AF37" stroke-width="1" />
                 </svg>
             </div>
 
@@ -2088,7 +2183,8 @@
                 </div>
             </div>
 
-            <button id="close-eq-modal" style="width: 100%; padding: 14px; margin-top: 20px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(139,92,246,0.4); transition: transform 0.15s ease;">Done</button>
+            <button id="close-eq-modal"
+                style="width: 100%; padding: 14px; margin-top: 20px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(139,92,246,0.4); transition: transform 0.15s ease;">Done</button>
         </div>
     </div>
 
@@ -2096,12 +2192,13 @@
     <div class="modal" id="theme-modal">
         <div class="modal-content ios-glass theme-modal-content">
             <div class="sheet-handle"></div>
-            
+
             <div class="theme-header">
                 <div class="theme-title-group">
                     <div class="theme-sup-label">DSP ENGINE • STITCH AUDIO ARCHITECTURE</div>
                     <h3 class="theme-title">Visualizer & Theme Studio</h3>
-                    <p class="theme-subtitle">Liquid Chromatic Silk 3D WebGL synthesis with real-time audio FFT coupling</p>
+                    <p class="theme-subtitle">Liquid Chromatic Silk 3D WebGL synthesis with real-time audio FFT coupling
+                    </p>
                 </div>
                 <div class="theme-live-badge">
                     <span class="pulse-dot"></span>
@@ -2115,7 +2212,7 @@
                     <span>3D Dynamic Physics Synthesis</span>
                     <span class="theme-box-tag">PARAMETRIC</span>
                 </div>
-                
+
                 <div class="theme-sliders-row">
                     <!-- Wave Velocity -->
                     <div class="theme-slider-col">
@@ -2123,7 +2220,8 @@
                             <span class="theme-param-label">Wave Velocity</span>
                             <span class="theme-param-val" id="val-wave-speed">1.0x</span>
                         </div>
-                        <input type="range" id="param-wave-speed" class="studio-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <input type="range" id="param-wave-speed" class="studio-slider" min="0.5" max="2.0" step="0.1"
+                            value="1.0">
                     </div>
 
                     <!-- Particle Density -->
@@ -2132,7 +2230,8 @@
                             <span class="theme-param-label">Quantum Stardust</span>
                             <span class="theme-param-val" id="val-particle-density">1.0x</span>
                         </div>
-                        <input type="range" id="param-particle-density" class="studio-slider" min="0.5" max="1.5" step="0.1" value="1.0">
+                        <input type="range" id="param-particle-density" class="studio-slider" min="0.5" max="1.5"
+                            step="0.1" value="1.0">
                     </div>
 
                     <!-- Audio Bloom -->
@@ -2141,7 +2240,8 @@
                             <span class="theme-param-label">Audio Bloom</span>
                             <span class="theme-param-val" id="val-audio-bloom">1.0x</span>
                         </div>
-                        <input type="range" id="param-audio-bloom" class="studio-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <input type="range" id="param-audio-bloom" class="studio-slider" min="0.5" max="2.0" step="0.1"
+                            value="1.0">
                     </div>
                 </div>
             </div>
@@ -2764,7 +2864,7 @@
                 if (AudioContext) {
                     audioCtx = new AudioContext();
                     sourceNode = audioCtx.createMediaElementSource(audio);
-                    
+
                     // 5-Band EQ filters (60Hz, 250Hz, 1kHz, 4kHz, 12kHz)
                     const freqs = [60, 250, 1000, 4000, 12000];
                     const types = ['lowshelf', 'peaking', 'peaking', 'peaking', 'highshelf'];
@@ -2802,7 +2902,7 @@
         function startBeatAnalyser() {
             if (!analyserNode) return;
             const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
-            
+
             function updateBeat() {
                 animAnalyserId = requestAnimationFrame(updateBeat);
                 if (audio.paused) {
@@ -2870,7 +2970,7 @@
                     if (window.threeBgInstance) {
                         window.threeBgInstance.setAccentColor(hex);
                     }
-                } catch(e) {}
+                } catch (e) { }
             };
             img.src = imgUrl;
         }
@@ -2930,7 +3030,7 @@
             try {
                 audio.pause();
                 audio.currentTime = 0;
-            } catch(e) {}
+            } catch (e) { }
 
             audio.src = track.src;
             audio.playbackRate = speeds[speedIdx];
@@ -3011,14 +3111,14 @@
                         if (!playlistData[currentTrackIndex]) return;
                         toggleLikeTrack(playlistData[currentTrackIndex]);
                     });
-                } catch (e) {}
+                } catch (e) { }
 
                 try {
                     navigator.mediaSession.setActionHandler('togglefavorite', () => {
                         if (!playlistData[currentTrackIndex]) return;
                         toggleLikeTrack(playlistData[currentTrackIndex]);
                     });
-                } catch (e) {}
+                } catch (e) { }
             }
 
             const playPromise = audio.play();
@@ -3178,7 +3278,7 @@
             if (!track) return;
             const key = getTrackKey(track);
             const isSaved = offlineTracks.has(key);
-            
+
             if ('caches' in window) {
                 try {
                     const cache = await caches.open('beatbox-audio-offline-v1');
@@ -3194,7 +3294,7 @@
                     localStorage.setItem("beatbox_offline", JSON.stringify(Array.from(offlineTracks)));
                     updateOfflineIcon(key);
                     renderList();
-                } catch(e) {
+                } catch (e) {
                     console.log("Offline cache error:", e);
                 }
             }
@@ -3286,7 +3386,7 @@
                 // Convert -12 to +12 dB to Y range (50 to 0 inside viewBox 100x50)
                 const y = 25 - (val / 12) * 20;
                 points.push({ x: item.x, y: y });
-                
+
                 const circle = document.getElementById(`eq-pt-${item.idx}`);
                 if (circle) circle.setAttribute("cy", y.toFixed(1));
             });
@@ -3324,7 +3424,7 @@
             eqModal.classList.add("open");
             updateEqCurve();
         });
-        
+
         document.getElementById("close-eq-modal").addEventListener("click", () => {
             eqModal.classList.remove("open");
         });
@@ -3519,7 +3619,7 @@
 
         function renderList() {
             optionsList.innerHTML = "";
-            
+
             const totalCount = playlistData.length;
             const likedCount = playlistData.filter(t => likedTracks.has(getTrackKey(t))).length;
             document.getElementById("cnt-all").innerText = totalCount;
@@ -3660,7 +3760,7 @@
             const volHigh = document.getElementById("vol-icon-high");
             const volLow = document.getElementById("vol-icon-low");
             const volMute = document.getElementById("vol-icon-mute");
-            
+
             if (vol === 0 || audio.muted) {
                 volHigh.style.display = "none";
                 volLow.style.display = "none";
@@ -3763,7 +3863,7 @@
                         theme: savedTheme,
                         particleCount: 1000
                     });
-                } catch(e) { console.warn("3D Background Init Exception:", e); }
+                } catch (e) { console.warn("3D Background Init Exception:", e); }
                 return;
             }
 
@@ -3793,7 +3893,7 @@
                                     theme: savedTheme,
                                     particleCount: 1000
                                 });
-                            } catch(e) { console.warn("3D Background error:", e); }
+                            } catch (e) { console.warn("3D Background error:", e); }
                         }
                     };
                     document.body.appendChild(bgScript);
