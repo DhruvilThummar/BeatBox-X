@@ -27,7 +27,7 @@
     <meta name="author" content="Dhruvil Thummar">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
-    <meta name="theme-color" content="#D4AF37">
+    <meta name="theme-color" content="#8B5CF6">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://beat-box-x.vercel.app/">
@@ -113,10 +113,27 @@
          ========================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Quicksand:wght@500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
+        :root {
+            --accent: #8B5CF6;
+            --accent-light: #A78BFA;
+            --accent-dark: #6D28D9;
+            --accent-glow: rgba(139, 92, 246, 0.5);
+            --cyan: #06B6D4;
+            --cyan-glow: rgba(6, 182, 212, 0.4);
+            --pink: #EC4899;
+            --pink-glow: rgba(236, 72, 153, 0.4);
+            --bg-deep: #050510;
+            --bg-card: rgba(12, 10, 30, 0.88);
+            --border-glass: rgba(139, 92, 246, 0.22);
+            --border-top-glass: rgba(139, 92, 246, 0.45);
+            --text-primary: #F0EEFF;
+            --text-secondary: rgba(224, 218, 255, 0.7);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -143,9 +160,9 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            background: #0a0a0c;
-            color: #fff;
-            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Outfit', 'Space Grotesk', sans-serif;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
@@ -153,14 +170,16 @@
         body {
             display: flex;
             flex-direction: column;
-            background: linear-gradient(-45deg, #0a0a0c, #1a1a24, #0a0a0c, #1f1f2e);
+            background: linear-gradient(-45deg, #050510, #0D0B1E, #0A0520, #10082A, #050510);
             background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
+            animation: gradientBG 25s ease infinite;
         }
 
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
             50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
             100% { background-position: 0% 50%; }
         }
 
@@ -174,10 +193,10 @@
             padding-top: env(safe-area-inset-top, 0px);
             padding-left: max(20px, env(safe-area-inset-left, 0px));
             padding-right: max(20px, env(safe-area-inset-right, 0px));
-            background: rgba(10, 10, 12, 0.75);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            background: rgba(5, 5, 16, 0.75);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -185,13 +204,17 @@
         }
 
         .app-title {
-            font-family: 'Cinzel', serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 20px;
             font-weight: 700;
-            color: rgba(212, 175, 55, 0.95);
+            color: var(--accent-light);
             letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+            text-shadow: 0 0 20px var(--accent-glow);
             margin: 0;
+            background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .top-bar-actions {
@@ -231,10 +254,10 @@
             padding-bottom: env(safe-area-inset-bottom, 0px);
             padding-left: env(safe-area-inset-left, 0px);
             padding-right: env(safe-area-inset-right, 0px);
-            background: rgba(10, 10, 14, 0.92);
+            background: rgba(5, 5, 16, 0.92);
             backdrop-filter: blur(30px) saturate(180%);
             -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -246,7 +269,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(224, 218, 255, 0.5);
             background: transparent;
             border: none;
             cursor: pointer;
@@ -257,12 +280,12 @@
             font-size: 11px;
             font-weight: 600;
             gap: 3px;
-            transition: color 0.2s, transform 0.15s ease, opacity 0.15s ease;
+            transition: color 0.3s, transform 0.15s ease, opacity 0.15s ease;
         }
 
         .nav-item.active {
-            color: #D4AF37;
-            text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+            color: var(--accent-light);
+            text-shadow: 0 0 14px var(--accent-glow);
         }
 
         .nav-item:active {
@@ -272,18 +295,18 @@
 
         /* 🌟 GLASSMORPHISM CARDS 🌟 */
         .ios-glass {
-            background: rgba(18, 18, 24, 0.88);
+            background: var(--bg-card);
             backdrop-filter: blur(40px) saturate(190%);
             -webkit-backdrop-filter: blur(40px) saturate(190%);
-            border: 1px solid rgba(212, 175, 55, 0.22);
-            border-top: 1px solid rgba(212, 175, 55, 0.45);
+            border: 1px solid var(--border-glass);
+            border-top: 1px solid var(--border-top-glass);
         }
 
         /* 🌟 PLAYER BUTTONS (SPOTIFY & APPLE MUSIC STYLE) 🌟 */
         .btn {
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            background: rgba(139, 92, 246, 0.06);
+            color: rgba(224, 218, 255, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.18);
             cursor: pointer;
             min-width: 44px;
             min-height: 44px;
@@ -298,11 +321,11 @@
         }
 
         .btn:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.5);
             color: #fff;
             transform: scale(1.08);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
         .btn:active {
@@ -311,10 +334,10 @@
         }
 
         .btn.is-on {
-            color: #D4AF37;
-            background: rgba(212, 175, 55, 0.25);
-            border-color: #D4AF37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            color: var(--accent-light);
+            background: rgba(139, 92, 246, 0.25);
+            border-color: var(--accent);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
         .btn--icon-only {
@@ -325,7 +348,7 @@
         }
 
         .btn--icon-only:hover {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(139, 92, 246, 0.15);
             box-shadow: none;
         }
 
@@ -357,8 +380,8 @@
             right: 2px;
             font-size: 9px;
             font-weight: 800;
-            background: #D4AF37;
-            color: #000;
+            background: var(--accent);
+            color: #fff;
             border-radius: 50%;
             width: 13px;
             height: 13px;
@@ -369,18 +392,18 @@
 
         /* Large Play/Pause Primary Orb */
         .btn--play {
-            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #9A7B1C 100%);
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, var(--accent-dark) 100%);
             border-radius: 50%;
             width: 58px;
             height: 58px;
-            color: #0a0a0c;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 6px 25px var(--accent-glow), inset 0 2px 4px rgba(255, 255, 255, 0.3);
         }
 
         .btn--play:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 35px var(--accent-glow), inset 0 2px 4px rgba(255, 255, 255, 0.5);
             border-color: #fff;
         }
 
@@ -393,9 +416,9 @@
         }
 
         @keyframes playPulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 16px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+            70% { box-shadow: 0 0 0 18px rgba(139, 92, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
         }
 
         .spinner {
@@ -431,12 +454,12 @@
             appearance: none;
             width: 100%;
             height: 6px;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(139, 92, 246, 0.12);
             border-radius: 6px;
             outline: none;
             cursor: pointer;
             --progress: 0%;
-            background-image: linear-gradient(90deg, #D4AF37, #FFD700);
+            background-image: linear-gradient(90deg, var(--accent), var(--cyan));
             background-size: var(--progress) 100%;
             background-repeat: no-repeat;
             transition: height 0.15s;
@@ -453,7 +476,7 @@
             width: 16px;
             border-radius: 50%;
             background: #fff;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.9);
+            box-shadow: 0 0 14px var(--accent-glow);
             transition: transform 0.15s;
         }
 
@@ -483,9 +506,9 @@
             transform: translateX(-50%) translateY(15px) scale(0.9);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 600;
-            background: rgba(18, 18, 24, 0.96);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            background: rgba(12, 10, 30, 0.96);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 92, 246, 0.1);
         }
 
         .vol-popup.show {
@@ -498,7 +521,7 @@
             font-size: 12px;
             font-weight: bold;
             margin-bottom: 12px;
-            color: #D4AF37;
+            color: var(--accent-light);
         }
 
         .vol-slider-wrap {
@@ -513,7 +536,7 @@
             width: 100px;
             height: 6px;
             transform: rotate(-90deg);
-            background-image: linear-gradient(#D4AF37, #FFD700);
+            background-image: linear-gradient(var(--accent), var(--cyan));
         }
 
         /* 🌟 SPOTIFY / APPLE MUSIC PC DOCK LAYOUT (> 768px) 🌟 */
@@ -539,7 +562,7 @@
                 justify-content: space-between;
                 gap: 20px;
                 z-index: 450;
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.18);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 92, 246, 0.15);
             }
 
             .player-left {
@@ -557,9 +580,9 @@
                 border-radius: 50%;
                 position: relative;
                 flex-shrink: 0;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(139, 92, 246, 0.3);
                 animation: spin 6s linear infinite paused;
-                border: 2px solid rgba(212, 175, 55, 0.6);
+                border: 2px solid rgba(139, 92, 246, 0.5);
                 overflow: hidden;
             }
 
@@ -624,7 +647,7 @@
 
             .meta__quote {
                 font-size: 11px;
-                color: #D4AF37;
+                color: var(--cyan);
                 font-style: italic;
                 font-weight: 600;
                 white-space: nowrap;
@@ -685,7 +708,7 @@
                 text-align: center;
                 gap: 14px;
                 margin: auto;
-                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.25);
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(139, 92, 246, 0.2);
             }
 
             .player-left {
@@ -702,9 +725,9 @@
                 border-radius: 50%;
                 position: relative;
                 flex-shrink: 0;
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.35);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.95), 0 0 30px rgba(139, 92, 246, 0.35);
                 animation: spin 6s linear infinite paused;
-                border: 3px solid rgba(212, 175, 55, 0.6);
+                border: 3px solid rgba(139, 92, 246, 0.5);
                 overflow: hidden;
             }
 
@@ -773,7 +796,7 @@
 
             .meta__quote {
                 font-size: 11px;
-                color: #D4AF37;
+                color: var(--cyan);
                 font-style: italic;
                 margin-top: 4px;
                 white-space: nowrap;
@@ -833,7 +856,7 @@
                 justify-content: center;
                 gap: 18px;
                 width: 100%;
-                border-top: 1px solid rgba(212, 175, 55, 0.18);
+                border-top: 1px solid rgba(139, 92, 246, 0.18);
                 padding-top: 12px;
             }
 
@@ -911,7 +934,7 @@
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(5, 5, 16, 0.8);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             display: flex;
@@ -929,14 +952,14 @@
         }
 
         .modal-content {
-            background: rgba(18, 18, 24, 0.97);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(12, 10, 30, 0.97);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             border-top-left-radius: 32px;
             border-top-right-radius: 32px;
             width: 100%;
             max-width: 580px;
             padding: 18px 24px calc(24px + env(safe-area-inset-bottom, 0px));
-            box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.95);
+            box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(139, 92, 246, 0.1);
             transform: translateY(100%);
             transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
         }
@@ -949,7 +972,7 @@
             width: 44px;
             height: 5px;
             border-radius: 3px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(139, 92, 246, 0.4);
             margin: 0 auto 18px;
         }
 
@@ -963,10 +986,10 @@
             flex: 1;
             padding: 10px 14px;
             border-radius: 14px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.75);
-            font-family: 'Quicksand', sans-serif;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            background: rgba(139, 92, 246, 0.05);
+            color: rgba(224, 218, 255, 0.75);
+            font-family: 'Outfit', sans-serif;
             font-size: 13px;
             font-weight: 700;
             cursor: pointer;
@@ -978,15 +1001,15 @@
         }
 
         .tab-btn:hover {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(139, 92, 246, 0.15);
             color: #fff;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.35), rgba(184, 134, 11, 0.2));
-            border-color: #D4AF37;
-            color: #FFD700;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(6, 182, 212, 0.2));
+            border-color: var(--accent);
+            color: var(--accent-light);
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .item-heart-btn {
@@ -1014,19 +1037,19 @@
             width: 100%;
             padding: 14px 18px;
             border-radius: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            background: rgba(5, 5, 16, 0.7);
             color: #fff;
             margin-bottom: 16px;
             outline: none;
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 15px;
             transition: 0.3s;
         }
 
         .search-bar:focus {
-            border-color: #D4AF37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            border-color: var(--accent);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
         .options {
@@ -1051,7 +1074,7 @@
         }
 
         .options li:active {
-            background: rgba(212, 175, 55, 0.25);
+            background: rgba(139, 92, 246, 0.25);
             transform: scale(0.98);
         }
 
@@ -1086,7 +1109,7 @@
 
         /* 🌟 SKELETON LOADERS (ZERO CLS) 🌟 */
         .skeleton {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(212, 175, 55, 0.18) 50%, rgba(255, 255, 255, 0.05) 75%);
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.05) 25%, rgba(139, 92, 246, 0.18) 50%, rgba(139, 92, 246, 0.05) 75%);
             background-size: 200% 100%;
             animation: skeletonShimmer 1.6s infinite ease-in-out;
             border-radius: 8px;
@@ -1098,8 +1121,8 @@
         }
 
         .skeleton-card {
-            background: rgba(18, 18, 24, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(12, 10, 30, 0.7);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             transition: opacity 0.4s ease;
         }
 
@@ -1121,7 +1144,7 @@
             padding: 24px 20px 20px;
             border-radius: 28px;
             text-align: center;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 92, 246, 0.15);
         }
 
         .eq-header {
@@ -1137,30 +1160,30 @@
         }
 
         .eq-title {
-            color: #D4AF37;
+            color: var(--accent-light);
             font-size: 20px;
             font-weight: 700;
-            font-family: 'Cinzel', serif;
+            font-family: 'Space Grotesk', sans-serif;
             letter-spacing: 0.5px;
             margin: 0;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .eq-subtitle {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(224, 218, 255, 0.5);
             margin-top: 2px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .eq-reset-btn {
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #D4AF37;
+            background: rgba(139, 92, 246, 0.12);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--accent-light);
             font-size: 12px;
             font-weight: 600;
             padding: 6px 14px;
@@ -1173,9 +1196,9 @@
         }
 
         .eq-reset-btn:hover {
-            background: rgba(212, 175, 55, 0.25);
-            border-color: #D4AF37;
-            box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+            background: rgba(139, 92, 246, 0.25);
+            border-color: var(--accent);
+            box-shadow: 0 0 14px var(--accent-glow);
             transform: translateY(-1px);
         }
 
@@ -1195,9 +1218,9 @@
         .eq-presets::-webkit-scrollbar { display: none; }
 
         .eq-preset-btn {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: rgba(255, 255, 255, 0.75);
+            background: rgba(139, 92, 246, 0.06);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            color: rgba(224, 218, 255, 0.75);
             padding: 7px 15px;
             border-radius: 20px;
             font-size: 12px;
@@ -1211,26 +1234,26 @@
         }
 
         .eq-preset-btn:hover {
-            background: rgba(212, 175, 55, 0.15);
-            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.4);
             color: #fff;
         }
 
         .eq-preset-btn.active {
-            background: linear-gradient(135deg, #D4AF37, #FFD700);
-            color: #0A0A0E;
-            border-color: #D4AF37;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: #fff;
+            border-color: var(--accent);
             font-weight: 800;
-            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 4px 18px var(--accent-glow);
         }
 
         /* SVG Live Visualizer Curve */
         .eq-curve-box {
             width: 100%;
             height: 60px;
-            background: rgba(10, 10, 15, 0.6);
+            background: rgba(5, 5, 16, 0.6);
             border-radius: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             margin-bottom: 18px;
             position: relative;
             overflow: hidden;
@@ -1247,9 +1270,9 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(139, 92, 246, 0.03);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(139, 92, 246, 0.08);
             padding: 16px 8px 14px;
             position: relative;
         }
@@ -1265,14 +1288,14 @@
         .eq-val-badge {
             font-size: 11px;
             font-weight: 700;
-            color: #D4AF37;
-            background: rgba(212, 175, 55, 0.14);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-light);
+            background: rgba(139, 92, 246, 0.14);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             padding: 2px 7px;
             border-radius: 8px;
             min-width: 44px;
             text-align: center;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            text-shadow: 0 0 8px var(--accent-glow);
             transition: all 0.15s ease;
         }
 
@@ -1289,7 +1312,7 @@
             appearance: none;
             width: 120px;
             height: 6px;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(139, 92, 246, 0.12);
             border-radius: 4px;
             outline: none;
             transform: rotate(-90deg);
@@ -1303,31 +1326,55 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FFF8DC, #D4AF37);
-            border: 2px solid #000;
-            box-shadow: 0 0 14px rgba(212, 175, 55, 0.85);
+            background: linear-gradient(135deg, #E0DFFE, var(--accent));
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 14px var(--accent-glow);
             cursor: pointer;
             transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .eq-slider-v::-webkit-slider-thumb:hover {
             transform: scale(1.25);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 1);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .eq-band-label {
             font-size: 12px;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(224, 218, 255, 0.9);
             margin-top: 2px;
         }
 
         .eq-band-sublabel {
             font-size: 9px;
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(224, 218, 255, 0.45);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: -6px;
+        }
+
+        /* 🌟 TIMER OPTIONS 🌟 */
+        .btn-timer-opt {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            color: var(--text-primary);
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-timer-opt:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .btn-timer-opt:active {
+            transform: scale(0.97);
         }
     </style>
 </head>
@@ -1340,7 +1387,7 @@
         <div class="top-bar-actions">
             <!-- Sleep Timer -->
             <button id="sleep-btn" class="btn btn--icon-only" aria-label="Sleep Timer" title="Sleep Timer" style="position:relative;">
-                <span id="sleep-badge" style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#D4AF37; color:#000; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
+            <span id="sleep-badge" style="display:none; font-size:10px; position:absolute; top:-2px; right:-2px; background:#8B5CF6; color:#fff; font-weight:bold; padding:2px 5px; border-radius:10px;"></span>
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                     <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-.76 1.08z"/>
                 </svg>
@@ -1479,7 +1526,7 @@
             <!-- RIGHT SECTION: Playback Speed, Volume 200% & Playlist Modal Trigger -->
             <div class="player-right">
                 <!-- Playback Speed -->
-                <button id="speed-btn" class="btn" aria-label="Playback Speed" title="Playback Speed" style="font-size: 11px; font-weight: 700; color: #D4AF37;">
+                <button id="speed-btn" class="btn" aria-label="Playback Speed" title="Playback Speed" style="font-size: 11px; font-weight: 700; color: #A78BFA;">
                     1.0x
                 </button>
 
@@ -1560,7 +1607,7 @@
             <input type="text" id="song-search" class="search-bar" placeholder="🔍 Search songs, artists...">
             <ul class="options" id="options-list"></ul>
             <button id="close-modal"
-                style="width: 100%; padding: 14px; margin-top: 15px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 16px; font-weight: bold; cursor: pointer; color: #000; font-family: 'Quicksand', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">Close Playlist</button>
+                style="width: 100%; padding: 14px; margin-top: 15px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; font-weight: bold; cursor: pointer; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">Close Playlist</button>
         </div>
     </div>
 
@@ -1568,7 +1615,7 @@
     <div class="modal" id="sleep-modal">
         <div class="modal-content ios-glass" style="max-width: 400px; text-align: center;">
             <div class="sheet-handle"></div>
-            <h3 style="color: #D4AF37; margin-bottom: 15px; font-family: 'Cinzel', serif;">⏳ Sleep Timer</h3>
+            <h3 style="color: #A78BFA; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">⏳ Sleep Timer</h3>
             <div class="timer-options" style="display: flex; flex-direction: column; gap: 10px;">
                 <button class="btn-timer-opt" data-time="0">Turn Off Timer</button>
                 <button class="btn-timer-opt" data-time="15">15 Minutes</button>
@@ -1576,7 +1623,7 @@
                 <button class="btn-timer-opt" data-time="45">45 Minutes</button>
                 <button class="btn-timer-opt" data-time="60">60 Minutes</button>
             </div>
-            <button id="close-sleep-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 14px; color: #fff; font-weight: bold; cursor: pointer;">Close</button>
+            <button id="close-sleep-modal" style="width: 100%; padding: 12px; margin-top: 20px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); border-radius: 14px; color: #fff; font-weight: bold; cursor: pointer;">Close</button>
         </div>
     </div>
 
@@ -1676,7 +1723,7 @@
                 </div>
             </div>
 
-            <button id="close-eq-modal" style="width: 100%; padding: 14px; margin-top: 20px; background: linear-gradient(135deg, #D4AF37, #B8860B); border: none; border-radius: 16px; color: #000; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(212,175,55,0.4); transition: transform 0.15s ease;">Done</button>
+            <button id="close-eq-modal" style="width: 100%; padding: 14px; margin-top: 20px; background: linear-gradient(135deg, #8B5CF6, #06B6D4); border: none; border-radius: 16px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(139,92,246,0.4); transition: transform 0.15s ease;">Done</button>
         </div>
     </div>
 
