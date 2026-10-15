@@ -2517,7 +2517,7 @@
             }
         }
 
-        // 🌟 BEAT-SYNCED 3D VISUALIZER ANALYSER 🌟
+        // 🌟 BEAT-SYNCED 3D VISUALIZER ANALYSER (BASS, MID & TREBLE) 🌟
         function startBeatAnalyser() {
             if (!analyserNode) return;
             const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
@@ -2525,16 +2525,28 @@
             function updateBeat() {
                 animAnalyserId = requestAnimationFrame(updateBeat);
                 if (audio.paused) {
-                    if (window.threeBgInstance) window.threeBgInstance.setBeatData(0, 0);
+                    if (window.threeBgInstance) window.threeBgInstance.setBeatData(0, 0, 0);
                     return;
                 }
                 analyserNode.getByteFrequencyData(dataArray);
+
+                // Bass (bins 0..3)
                 let bassSum = 0;
                 for (let i = 0; i < 4; i++) bassSum += dataArray[i];
-                const bassAvg = (bassSum / 4) / 255; // 0.0 to 1.0
+                const bassAvg = (bassSum / 4) / 255;
+
+                // Mid (bins 4..11)
+                let midSum = 0;
+                for (let i = 4; i < 12; i++) midSum += dataArray[i];
+                const midAvg = (midSum / 8) / 255;
+
+                // Treble (bins 12..24)
+                let trebleSum = 0;
+                for (let i = 12; i < 25; i++) trebleSum += dataArray[i];
+                const trebleAvg = (trebleSum / 13) / 255;
 
                 if (window.threeBgInstance) {
-                    window.threeBgInstance.setBeatData(bassAvg, 0);
+                    window.threeBgInstance.setBeatData(bassAvg, trebleAvg, midAvg);
                 }
             }
             updateBeat();
@@ -2565,6 +2577,15 @@
                     b = Math.floor(b / count);
 
                     const hex = (r << 16) | (g << 8) | b;
+                    const hexStr = `#${((1 << 24) + hex).toString(16).slice(1)}`;
+
+                    if (currentActiveTheme === 'dynamic') {
+                        const root = document.documentElement;
+                        root.style.setProperty('--accent', hexStr);
+                        root.style.setProperty('--accent-light', hexStr);
+                        root.style.setProperty('--accent-glow', `rgba(${r}, ${g}, ${b}, 0.5)`);
+                    }
+
                     if (window.threeBgInstance) {
                         window.threeBgInstance.setAccentColor(hex);
                     }
