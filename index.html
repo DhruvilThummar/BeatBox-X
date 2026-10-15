@@ -234,6 +234,30 @@
             background-clip: text;
         }
 
+        .app-title a,
+        .app-title-link {
+            text-decoration: none;
+            color: inherit;
+            background: inherit;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            display: inline-block;
+        }
+
+        .app-title a:hover,
+        .app-title-link:hover {
+            opacity: 0.88;
+            transform: scale(1.02);
+        }
+
+        .app-title a:active,
+        .app-title-link:active {
+            transform: scale(0.96);
+        }
+
         .top-bar-actions {
             display: flex;
             align-items: center;
@@ -1817,7 +1841,9 @@
 
     <!-- 🌟 STICKY TOP APP BAR 🌟 -->
     <header class="top-app-bar">
-        <h1 class="app-title">BEAT BOX X</h1>
+        <h1 class="app-title">
+            <a href="javascript:void(0);" id="brand-force-refresh" class="app-title-link" title="Force Refresh Beat Box X" onclick="forceRefreshApp(event);">BEAT BOX X</a>
+        </h1>
         <div class="top-bar-actions">
             <!-- Theme Studio Button -->
             <button id="theme-btn" class="btn btn--icon-only" aria-label="Visual Themes" title="Theme Studio & Colors">
@@ -2337,6 +2363,34 @@
             toastTimeout = setTimeout(() => {
                 toastBubble.classList.remove("show");
             }, 2600);
+        }
+
+        // 🌟 FORCE REFRESH HANDLER (RELOADS EXACT SAME PAGE WITH CACHE BUSTING) 🌟
+        function forceRefreshApp(e) {
+            if (e) {
+                if (typeof e.preventDefault === "function") e.preventDefault();
+                if (typeof e.stopPropagation === "function") e.stopPropagation();
+            }
+            try {
+                showToast("Force refreshing Beat Box X...", "🔄");
+            } catch (_) {}
+
+            setTimeout(() => {
+                // If loaded via file:// protocol, reload directly so it stays on this exact file
+                if (window.location.protocol === "file:") {
+                    window.location.reload();
+                    return;
+                }
+                // If on http/https, bust cache by setting a timestamp query param
+                try {
+                    const u = new URL(window.location.href);
+                    u.searchParams.set("_refresh", Date.now().toString());
+                    window.location.replace(u.href);
+                } catch (_) {
+                    window.location.reload();
+                }
+            }, 100);
+            return false;
         }
 
         // 🌟 BESPOKE THEME ENGINE & 3D SYNTHESIS (OBSIDIAN PRECISION AUDIO) 🌟
